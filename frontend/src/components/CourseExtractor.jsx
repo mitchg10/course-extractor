@@ -9,32 +9,76 @@ import {
   ListItemIcon,
   ListItemText,
   Alert,
-  CircularProgress
+  CircularProgress,
+  IconButton,
+  ListItemSecondaryAction,
+  Snackbar
 } from '@mui/material';
 import {
   Upload as UploadIcon,
   FileText as FileTextIcon,
   Database as DatabaseIcon,
   AlertCircle as AlertCircleIcon,
-  CheckCircle as CheckCircleIcon
+  CheckCircle as CheckCircleIcon,
+  Trash2 as TrashIcon,
+  XCircle as XCircleIcon
 } from 'lucide-react';
 
 const CourseExtractor = () => {
   const [files, setFiles] = useState([]);
   const [processing, setProcessing] = useState(false);
   const [status, setStatus] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const validateFiles = (newFiles) => {
+    const invalidFiles = newFiles.filter(file =>
+      file.type !== 'application/pdf' &&
+      !file.name.toLowerCase().endsWith('.pdf')
+    );
+
+    if (invalidFiles.length > 0) {
+      const fileNames = invalidFiles.map(f => f.name).join(', ');
+      setErrorMessage(`Invalid file type(s): ${fileNames}. Only PDF files are allowed.`);
+      return newFiles.filter(file =>
+        file.type === 'application/pdf' ||
+        file.name.toLowerCase().endsWith('.pdf')
+      );
+    }
+    return newFiles;
+  };
+
+  const handleCloseError = () => {
+    setErrorMessage('');
+  };
 
   const handleDrop = (e) => {
     e.preventDefault();
-    const droppedFiles = Array.from(e.dataTransfer.files).filter(
-      file => file.type === 'application/pdf'
-    );
-    setFiles(prevFiles => [...prevFiles, ...droppedFiles]);
+    // const droppedFiles = Array.from(e.dataTransfer.files).filter(
+    //   file => file.type === 'application/pdf'
+    // );
+    // setFiles(prevFiles => [...prevFiles, ...droppedFiles]);
+    const droppedFiles = Array.from(e.dataTransfer.files);
+    const validFiles = validateFiles(droppedFiles);
+    if (validFiles.length > 0) {
+      setFiles(prevFiles => [...prevFiles, ...validFiles]);
+    }
   };
 
   const handleFileSelect = (e) => {
+    // const selectedFiles = Array.from(e.target.files);
+    // setFiles(prevFiles => [...prevFiles, ...selectedFiles]);
     const selectedFiles = Array.from(e.target.files);
-    setFiles(prevFiles => [...prevFiles, ...selectedFiles]);
+    const validFiles = validateFiles(selectedFiles);
+    if (validFiles.length > 0) {
+      setFiles(prevFiles => [...prevFiles, ...validFiles]);
+    }
+  };
+
+  const handleDeleteFile = (indexToDelete) => {
+    setFiles(prevFiles => prevFiles.filter((_, index) => index !== indexToDelete));
+    if (status === 'error' || status === 'complete') {
+      setStatus(null);
+    }
   };
 
   const handleSubmit = async () => {
@@ -62,8 +106,8 @@ const CourseExtractor = () => {
   };
 
   return (
-    <Box sx={{ maxWidth: 'lg', mx: 'auto' }}>
-      <Typography variant="h3" component="h1" align="center" gutterBottom>
+    <Box sx={{ maxWidth: 'lg', mx: 'auto', p: 3 }}>
+      <Typography variant="h3" component="h1" sx={{ textAlign: 'center', mb: 3 }}>
         Course Data Extractor
       </Typography>
 
@@ -77,50 +121,75 @@ const CourseExtractor = () => {
           borderRadius: 2,
           p: 4,
           mb: 3,
-          textAlign: 'center'
+          textAlign: 'center',
+          bgcolor: 'background.paper'
         }}
         onDragOver={(e) => e.preventDefault()}
         onDrop={handleDrop}
       >
-        <UploadIcon style={{ width: 64, height: 64, margin: '0 auto 16px', color: '#9e9e9e' }} />
+        <UploadIcon sx={{ width: 64, height: 64, mb: 2, color: 'text.secondary' }} />
         <Typography variant="h6" gutterBottom>
-          Drag and drop your PDF files here
+          Drag and drop PDF files here
         </Typography>
         <Typography variant="body2" color="text.secondary" gutterBottom>
           or
         </Typography>
         <input
           type="file"
-          accept=".pdf"
+          accept=".pdf,application/pdf"
           multiple
           onChange={handleFileSelect}
           style={{ display: 'none' }}
           id="file-upload"
         />
-        <label htmlFor="file-upload">
-          <Button
-            variant="contained"
-            component="span"
-            sx={{ mt: 2 }}
-          >
-            Choose Files
-          </Button>
-        </label>
+        <Button
+          variant="contained"
+          component="label"
+          htmlFor="file-upload"
+          sx={{ mt: 2 }}
+        >
+          Choose Files
+        </Button>
       </Paper>
 
       {/* File list */}
       {files.length > 0 && (
         <Box sx={{ mb: 3 }}>
           <Typography variant="h5" gutterBottom>
-            Selected Files
+            Selected Files ({files.length})
           </Typography>
           <List>
             {files.map((file, index) => (
-              <ListItem key={index} sx={{ bgcolor: 'grey.50', borderRadius: 1, mb: 1 }}>
+              <ListItem
+                key={index}
+                sx={{
+                  bgcolor: 'grey.50',
+                  borderRadius: 1,
+                  mb: 1
+                }}
+              >
                 <ListItemIcon>
-                  <FileTextIcon style={{ color: '#1976d2' }} />
+                  <FileTextIcon sx={{ color: 'primary.main' }} />
                 </ListItemIcon>
-                <ListItemText primary={file.name} />
+                <ListItemText
+                  primary={file.name}
+                  secondary={`${(file.size / (1024 * 1024)).toFixed(2)} MB`}
+                />
+                <ListItemSecondaryAction>
+                  <IconButton
+                    edge="end"
+                    onClick={() => handleDeleteFile(index)}
+                    disabled={processing}
+                    sx={{
+                      color: 'error.main',
+                      '&:hover': {
+                        color: 'error.dark'
+                      }
+                    }}
+                  >
+                    <TrashIcon />
+                  </IconButton>
+                </ListItemSecondaryAction>
               </ListItem>
             ))}
           </List>
@@ -173,6 +242,22 @@ const CourseExtractor = () => {
           An error occurred while processing your files. Please try again.
         </Alert>
       )}
+
+      <Snackbar
+        open={!!errorMessage}
+        autoHideDuration={6000}
+        onClose={handleCloseError}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert
+          onClose={handleCloseError}
+          severity="error"
+          icon={<XCircleIcon />}
+          sx={{ width: '100%' }}
+        >
+          {errorMessage}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };
