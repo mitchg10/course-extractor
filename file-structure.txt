@@ -1,0 +1,50 @@
+course-extractor/
+│
+├── .env                          # Environment variables
+├── Dockerfile                    # Main application container definition
+├── docker-compose.yml           # Container orchestration config
+├── requirements.txt             # Python dependencies
+│
+├── setup/
+│   ├── setup_ollama.sh         # Ollama initialization script
+│   ├── entrypoint.sh           # Container entrypoint script
+│   ├── start_extractor.bat     # Windows launcher
+│   ├── stop_extractor.bat      # Windows shutdown script
+│   ├── start_extractor.sh      # Linux/Mac launcher
+│   └── stop_extractor.sh       # Linux/Mac shutdown script
+│
+├── frontend/
+│   ├── package.json            # Node.js dependencies
+│   ├── public/                 # Static assets
+│   └── src/
+│       ├── components/         # React components
+│       │   └── CourseExtractor.jsx  # Main UI component
+│       ├── App.jsx            # Root React component
+│       └── index.jsx          # Entry point
+│
+├── backend/
+│   ├── __init__.py
+│   ├── app.py                 # Main application logic
+│   ├── extraction/
+│   │   ├── __init__.py
+│   │   ├── pdf_processor.py   # PDF handling logic
+│   │   └── data_extractor.py  # LLM extraction logic
+│   ├── monitoring/
+│   │   ├── __init__.py
+│   │   └── monitoring.py      # System monitoring code
+│   └── utils/
+│       ├── __init__.py
+│       └── error_handler.py   # Error handling utilities
+│
+├── config/
+│   ├── logging_config.json    # Logging configuration
+│   └── app_config.json        # Application settings
+│
+├── data/
+│   ├── individual/            # Individual course CSVs
+│   └── combined/             # Combined course CSVs
+│
+├── logs/
+│   └── .gitkeep              # Placeholder for log directory
+│
+└── README.md                  # Project documentation

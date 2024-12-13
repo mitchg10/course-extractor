@@ -1,0 +1,54 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    volumes:
+      - ollama_data:/root/.ollama
+    ports:
+      - "11434:11434"
+    networks:
+      - course-extractor-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "pgrep", "ollama"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s  
+
+  course-extractor:
+    build: . # Build the Dockerfile in the current directory
+    container_name: course-extractor
+    depends_on:
+      ollama:
+        condition: service_healthy
+    ports:
+      - "8000:8000"  # FastAPI backend
+      - "3000:3000"  # React frontend
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./backend:/app/backend  # For development hot-reload
+      - ./frontend:/app/frontend  # For development hot-reload
+    environment:
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+      - PORT=8000
+      - ENVIRONMENT=development # or production
+      - OLLAMA_HOST=ollama
+      - OLLAMA_MODEL=qwen2.5:3b-instruct
+    networks:
+      - course-extractor-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+networks:
+  course-extractor-network:
+    driver: bridge
+
+volumes:
+  ollama_data:
