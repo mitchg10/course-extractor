@@ -1,0 +1,14 @@
+Extract all course listings from the following timetable text and return them as a JSON array. Follow these specific rules:
+
+1. For ARR (arranged) courses:
+   - Set schedule.days to empty array
+   - Set times to null
+   - Set location to \"ARR\"
+2. Split combined days into array (e.g., \"MWF\" → [\"M\", \"W\", \"F\"])
+3. Convert times to 24-hour format (e.g., \"9:05AM\" → \"09:05\")
+4. Include comments field only if comments exist
+5. Set cross_listed true if course appears in multiple departments
+
+BEGIN TEXT:
+{text}
+END TEXT"

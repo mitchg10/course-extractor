@@ -1,0 +1,44 @@
+You are a precise data extraction assistant. Extract structured course information from the following university timetable text. 
+
+For each course listing, extract these fields in JSON format:
+{{
+    "crn": string,                    # Course Reference Number
+    "course_code": string,            # e.g., "AOE-2024"
+    "title": string,                  # Course title
+    "type": string,                   # Type of class (Lecture, Lab, etc.)
+    "modality": string,               # e.g., "Face-to-Face Instruction", "Online: Asynchronous"
+    "credits": number or range,       # Credit hours (can be range like "1 TO 19")
+    "enrollment": {{
+        "available": number,          # Number of seats available
+        "capacity": number           # Total capacity
+    }},
+    "instructor": string,             # Primary instructor
+    "schedule": {{
+        "days": [string],            # List of days (M, T, W, R, F)
+        "start_time": string,        # Start time in 24hr format
+        "end_time": string,          # End time in 24hr format
+        "location": string           # Building and room number
+    }},
+    "exam_code": string,             # Exam scheduling code
+    "comments": string,              # Any additional notes or requirements
+    "cross_listed": boolean          # If course appears to be cross-listed
+}}
+
+Requirements:
+1. Maintain exact spellings and capitalizations from source
+2. Convert times to 24-hour format (e.g., "9:05AM" → "09:05")
+3. Split combined days into array (e.g., "MWF" → ["M", "W", "F"])
+4. For ARR (arranged) courses:
+   - Set schedule.days to empty array
+   - Set times to null
+   - Set location to "ARR"
+5. Preserve all numbers as numeric types where appropriate
+6. Include comments field only if comments exist
+7. Set cross_listed true if course appears in multiple departments
+
+BEGIN TEXT:
+{text}
+END TEXT
+
+Extract and format all course listings found in the text as a JSON array.
+Validate that all required fields are present and properly formatted before returning.
