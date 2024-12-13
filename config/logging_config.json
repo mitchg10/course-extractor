@@ -1,0 +1,62 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "json": {
+            "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+            "class": "pythonjsonlogger.jsonlogger.JsonFormatter",
+            "datefmt": "%Y-%m-%d %H:%M:%S"
+        },
+        "standard": {
+            "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        }
+    },
+    "handlers": {
+        "app_file": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "level": "INFO",
+            "formatter": "json",
+            "filename": "app.log",
+            "maxBytes": 10485760,
+            "backupCount": 5
+        },
+        "error_file": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "level": "ERROR",
+            "formatter": "json",
+            "filename": "error.log",
+            "maxBytes": 10485760,
+            "backupCount": 5
+        },
+        "metrics_file": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "level": "INFO",
+            "formatter": "json",
+            "filename": "metrics.log",
+            "maxBytes": 10485760,
+            "backupCount": 5
+        },
+        "console": {
+            "class": "logging.StreamHandler",
+            "level": "INFO",
+            "formatter": "standard",
+            "stream": "ext://sys.stdout"
+        }
+    },
+    "loggers": {
+        "": {
+            "handlers": ["console", "app_file"],
+            "level": "INFO"
+        },
+        "monitoring": {
+            "handlers": ["metrics_file"],
+            "level": "INFO",
+            "propagate": false
+        },
+        "extraction": {
+            "handlers": ["app_file", "error_file"],
+            "level": "INFO",
+            "propagate": false
+        }
+    }
+}

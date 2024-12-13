@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Typography,
@@ -12,23 +12,61 @@ import {
   CircularProgress,
   IconButton,
   ListItemSecondaryAction,
-  Snackbar
+  Snackbar,
+  LinearProgress
 } from '@mui/material';
 import {
-  Upload as UploadIcon,
-  FileText as FileTextIcon,
-  Database as DatabaseIcon,
-  AlertCircle as AlertCircleIcon,
-  CheckCircle as CheckCircleIcon,
-  Trash2 as TrashIcon,
-  XCircle as XCircleIcon
+  Upload,
+  FileText,
+  Database,
+  CheckCircle,
+  Trash2,
+  XCircle,
+  RefreshCcw
 } from 'lucide-react';
 
 const CourseExtractor = () => {
   const [files, setFiles] = useState([]);
   const [processing, setProcessing] = useState(false);
-  const [status, setStatus] = useState(null);
+  const [taskId, setTaskId] = useState(null);
+  const [processingStatus, setProcessingStatus] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Status polling
+  useEffect(() => {
+    let pollInterval;
+
+    const pollStatus = async () => {
+      if (!taskId) return;
+
+      try {
+        const response = await fetch(`http://localhost:8000/status/${taskId}`);
+        if (!response.ok) throw new Error('Failed to fetch status');
+
+        const statusData = await response.json();
+        setProcessingStatus(statusData);
+
+        // Stop polling if processing is complete
+        if (statusData.status === 'completed') {
+          setProcessing(false);
+          clearInterval(pollInterval);
+        }
+      } catch (error) {
+        console.error('Status polling failed:', error);
+        setErrorMessage('Failed to get processing status');
+        setProcessing(false);
+        clearInterval(pollInterval);
+      }
+    };
+
+    if (processing && taskId) {
+      pollInterval = setInterval(pollStatus, 2000); // Poll every 2 seconds
+    }
+
+    return () => {
+      if (pollInterval) clearInterval(pollInterval);
+    };
+  }, [taskId, processing]);
 
   const validateFiles = (newFiles) => {
     const invalidFiles = newFiles.filter(file =>
@@ -53,10 +91,6 @@ const CourseExtractor = () => {
 
   const handleDrop = (e) => {
     e.preventDefault();
-    // const droppedFiles = Array.from(e.dataTransfer.files).filter(
-    //   file => file.type === 'application/pdf'
-    // );
-    // setFiles(prevFiles => [...prevFiles, ...droppedFiles]);
     const droppedFiles = Array.from(e.dataTransfer.files);
     const validFiles = validateFiles(droppedFiles);
     if (validFiles.length > 0) {
@@ -65,8 +99,6 @@ const CourseExtractor = () => {
   };
 
   const handleFileSelect = (e) => {
-    // const selectedFiles = Array.from(e.target.files);
-    // setFiles(prevFiles => [...prevFiles, ...selectedFiles]);
     const selectedFiles = Array.from(e.target.files);
     const validFiles = validateFiles(selectedFiles);
     if (validFiles.length > 0) {
@@ -76,14 +108,16 @@ const CourseExtractor = () => {
 
   const handleDeleteFile = (indexToDelete) => {
     setFiles(prevFiles => prevFiles.filter((_, index) => index !== indexToDelete));
-    if (status === 'error' || status === 'complete') {
-      setStatus(null);
+    if (processingStatus) {
+      setProcessingStatus(null);
+      setTaskId(null);
     }
   };
 
   const handleSubmit = async () => {
     setProcessing(true);
-    setStatus('processing');
+    setProcessingStatus(null);
+    setTaskId(null);
 
     const formData = new FormData();
     files.forEach(file => formData.append('files', file));
@@ -97,12 +131,17 @@ const CourseExtractor = () => {
       if (!response.ok) throw new Error('Processing failed');
 
       const result = await response.json();
-      setStatus('complete');
+      setTaskId(result.task_id);
     } catch (error) {
-      setStatus('error');
-    } finally {
+      setErrorMessage('Failed to start processing');
       setProcessing(false);
     }
+  };
+
+  const getProgressPercentage = () => {
+    if (!processingStatus) return 0;
+    const { total, processed, failed } = processingStatus;
+    return ((processed + failed) / total) * 100;
   };
 
   return (
@@ -127,7 +166,7 @@ const CourseExtractor = () => {
         onDragOver={(e) => e.preventDefault()}
         onDrop={handleDrop}
       >
-        <UploadIcon sx={{ width: 64, height: 64, mb: 2, color: 'text.secondary' }} />
+        <Upload className="w-16 h-16 mb-2 text-gray-500" />
         <Typography variant="h6" gutterBottom>
           Drag and drop PDF files here
         </Typography>
@@ -169,7 +208,7 @@ const CourseExtractor = () => {
                 }}
               >
                 <ListItemIcon>
-                  <FileTextIcon sx={{ color: 'primary.main' }} />
+                  <FileText className="text-blue-500" />
                 </ListItemIcon>
                 <ListItemText
                   primary={file.name}
@@ -180,19 +219,29 @@ const CourseExtractor = () => {
                     edge="end"
                     onClick={() => handleDeleteFile(index)}
                     disabled={processing}
-                    sx={{
-                      color: 'error.main',
-                      '&:hover': {
-                        color: 'error.dark'
-                      }
-                    }}
+                    className="text-red-500 hover:text-red-700"
                   >
-                    <TrashIcon />
+                    <Trash2 />
                   </IconButton>
                 </ListItemSecondaryAction>
               </ListItem>
             ))}
           </List>
+        </Box>
+      )}
+
+      {/* Progress indicator */}
+      {processing && processingStatus && (
+        <Box sx={{ mb: 3 }}>
+          <LinearProgress
+            variant="determinate"
+            value={getProgressPercentage()}
+            sx={{ mb: 1 }}
+          />
+          <Typography variant="body2" color="text.secondary" align="center">
+            Processed: {processingStatus.processed} / {processingStatus.total} files
+            {processingStatus.failed > 0 && ` (${processingStatus.failed} failed)`}
+          </Typography>
         </Box>
       )}
 
@@ -204,7 +253,7 @@ const CourseExtractor = () => {
             color="success"
             disabled={processing}
             onClick={handleSubmit}
-            startIcon={processing ? <CircularProgress size={20} /> : <DatabaseIcon />}
+            startIcon={processing ? <CircularProgress size={20} /> : <Database />}
             sx={{ px: 4, py: 1.5 }}
           >
             {processing ? 'Processing...' : 'Extract Course Data'}
@@ -213,36 +262,36 @@ const CourseExtractor = () => {
       )}
 
       {/* Status messages */}
-      {status === 'processing' && (
+      {processingStatus?.status === 'processing' && (
         <Alert
           severity="info"
-          icon={<AlertCircleIcon />}
+          icon={<RefreshCcw className="animate-spin" />}
           sx={{ mt: 3 }}
         >
           Processing your files. This may take a few minutes...
         </Alert>
       )}
 
-      {status === 'complete' && (
+      {processingStatus?.status === 'completed' && (
         <Alert
           severity="success"
-          icon={<CheckCircleIcon />}
+          icon={<CheckCircle />}
           sx={{ mt: 3 }}
         >
-          Processing complete! You can find your CSV files in the data folder.
+          {processingStatus.failed === 0 ? (
+            'Processing complete! You can find your CSV files in the data folder.'
+          ) : (
+            `Processing complete with ${processingStatus.failed} errors. Check the logs for details.`
+          )}
+          {processingStatus.combined_output && (
+            <Typography variant="body2" sx={{ mt: 1 }}>
+              Combined CSV: {processingStatus.combined_output}
+            </Typography>
+          )}
         </Alert>
       )}
 
-      {status === 'error' && (
-        <Alert
-          severity="error"
-          icon={<AlertCircleIcon />}
-          sx={{ mt: 3 }}
-        >
-          An error occurred while processing your files. Please try again.
-        </Alert>
-      )}
-
+      {/* Error messages */}
       <Snackbar
         open={!!errorMessage}
         autoHideDuration={6000}
@@ -252,7 +301,7 @@ const CourseExtractor = () => {
         <Alert
           onClose={handleCloseError}
           severity="error"
-          icon={<XCircleIcon />}
+          icon={<XCircle />}
           sx={{ width: '100%' }}
         >
           {errorMessage}
