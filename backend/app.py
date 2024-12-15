@@ -1,7 +1,8 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from .extraction.pdf_processor import PDFProcessor
+# from .extraction.pdf_processor import PDFProcessor
+from .extraction.pdf_processor_v1 import PDFProcessor
 from .extraction.data_extractor import DataExtractor
 from .utils.error_handler import handle_extraction_error
 from .monitoring.monitoring import SystemStatus, MonitoringService

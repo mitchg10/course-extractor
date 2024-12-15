@@ -155,31 +155,6 @@ class PDFProcessor:
             )
             return ""
 
-    # def _extract_with_ocr(self, pdf_path: Path) -> str:
-    #     """Extract text using OCR when PyPDF2 fails."""
-    #     try:
-    #         text = []
-    #         # Convert PDF to images
-    #         images = pdf2image.convert_from_path(pdf_path)
-
-    #         for i, image in enumerate(images):
-    #             self.logger.info(f"Processing page {i+1} with OCR")
-
-    #             # Enhance image for better OCR
-    #             image = self._preprocess_image(image)
-
-    #             # Perform OCR
-    #             page_text = pytesseract.image_to_string(
-    #                 image,
-    #                 config='--oem 3 --psm 6'
-    #             )
-    #             text.append(page_text)
-
-    #         return '\n'.join(text)
-    #     except Exception as e:
-    #         self.logger.error(f"OCR extraction failed: {str(e)}")
-    #         return ""
-
     def _extract_with_ocr(self, pdf_path: Path) -> str:
         """Extract text using OCR when PyPDF2 fails."""
         start_time = datetime.now()
