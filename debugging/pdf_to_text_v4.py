@@ -1,13 +1,10 @@
 import pymupdf
 import statistics
-from markitdown import MarkItDown
 import logging
 from datetime import datetime
 
-# Adjust these to fit your PDF
-expected_headers = ["CRN", "Course", "Title", "Schedule Type", "Modality", "Cr Hrs", "Seats", "Capacity", "Instructor", "Days", "Begin", "End", "Location", "on"]
+EXPECTED_HEADERS = ["CRN", "Course", "Title", "Schedule Type", "Modality", "Cr Hrs", "Seats", "Capacity", "Instructor", "Days", "Begin", "End", "Location", "on"]
 ROW_GAP_THRESHOLD = 10.0   # Vertical gap threshold between rows. Adjust as needed.
-# COLUMN_TOLERANCE = 5.0   # Horizontal tolerance for assigning words to columns.
 COLUMN_TOLERANCES = {
     "CRN": 5.0,
     "Course": 5.0,
@@ -26,34 +23,81 @@ COLUMN_TOLERANCES = {
 }
 
 
-def setup_logger(name):
-    """Set up logger with file and console handlers."""
-    # Create logs directory if it doesn't exist
-    import os
-    if not os.path.exists('logs'):
-        os.makedirs('logs')
+def process_pdf(pdf_path):
+    """
+    Process all pages in the PDF and extract course information.
+    Headers are only on the first page, so we'll use those column boundaries for all pages.
 
-    # Create logger with name
-    logger = logging.getLogger(name)
-    logger.setLevel(logging.DEBUG)
+    Args:
+        pdf_path (str): Path to the PDF file
 
-    # Remove existing handlers if any
-    if logger.hasHandlers():
-        logger.handlers.clear()
+    Returns:
+        list: List of validated course dictionaries
+    """
+    # Open PDF file
+    doc = pymupdf.open(pdf_path)
+    all_courses = []
 
-    # Create file handler
-    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    fh = logging.FileHandler(f'logs/course_extraction_{timestamp}.log')
-    fh.setLevel(logging.DEBUG)
+    # Get headers from first page only
+    first_page = doc[0]
+    first_page_words = first_page.get_text("words")
 
-    # Create formatter
-    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-    fh.setFormatter(formatter)
+    if not first_page_words:
+        return []
 
-    # Add handlers to logger
-    logger.addHandler(fh)
+    # Find header line and get column boundaries
+    header_words = find_header_lines(first_page_words, EXPECTED_HEADERS)
+    if not header_words:
+        return []
 
-    return logger
+    header_y_bottom = max(hw['y1'] for hw in header_words)
+    column_boundaries = get_column_boundaries(header_words)
+
+    # Process each page using the column boundaries from first page
+    for page_num in range(len(doc)):
+        print(f"Processing page {page_num + 1} of {len(doc)}")
+        page = doc[page_num]
+        words = page.get_text("words")
+
+        # Skip empty pages
+        if not words:
+            continue
+
+        # For first page, use the header_y_bottom we found
+        # For other pages, we can start from top of page (or use a small offset)
+        page_start_y = header_y_bottom if page_num == 0 else 0
+
+        words_in_columns = assign_words_to_columns(words, column_boundaries, page_start_y)
+        rows = cluster_words_into_rows(words_in_columns)
+
+        # Extract course info from this page
+        page_courses = extract_course_info(rows)
+        print(f"Found {len(page_courses)} courses on page {page_num + 1}")
+        all_courses.extend(page_courses)
+
+    doc.close()
+
+    # Validate all courses
+    print("=== Validation Phase ===")
+    print(f"Total courses before validation: {len(all_courses)}")
+
+    validated_courses = []
+    for course in all_courses:
+        # Remove temporary tracking fields
+        if 'row_y0' in course:
+            del course['row_y0']
+        page_num = course.pop('page', None)
+
+        print(f"Validating course from page {page_num}: {course}")
+        if all(key in course for key in ['crn', 'seats', 'capacity']):
+            if course['capacity'] >= 0:
+                if 0 <= course['seats'] <= course['capacity']:
+                    validated_courses.append(course)
+               
+
+    print(f"Final validated courses: {len(validated_courses)}")
+
+    return validated_courses
 
 
 def find_header_lines(words, expected_headers):
@@ -102,7 +146,7 @@ def get_column_boundaries(header_words):
     # A simple approach: find each header from expected_headers in header_words by textual match.
     found_columns = []
     used_indices = set()
-    for expected in expected_headers:
+    for expected in EXPECTED_HEADERS:
         # Find best match in header_words
         candidates = [(i, hw) for i, hw in enumerate(header_words) if expected.lower() in hw['text'].lower() and i not in used_indices]
         if candidates:
@@ -119,8 +163,6 @@ def get_column_boundaries(header_words):
     # Sort by x0
     found_columns = [fc for fc in found_columns if fc[1] is not None]
     found_columns.sort(key=lambda c: c[1])
-
-    print("Found columns:", found_columns)
 
     # Determine boundaries between columns:
     # If we have N columns, we have at most N boundaries (left edge of first col to right edge of last col).
@@ -215,6 +257,7 @@ def cluster_words_into_rows(words_in_columns):
 
     return rows
 
+
 def extract_course_info(rows):
     """
     Extract and validate CRN, Seats, and Capacity information from rows data.
@@ -225,36 +268,21 @@ def extract_course_info(rows):
     Returns:
         list: List of dictionaries containing validated CRN, Seats, and Capacity
     """
-    # logger = setup_logger('course_extraction')
-
-    # logger.info("=== Starting Data Extraction ===")
-    # logger.info(f"Number of rows to process: {len(rows)}")
-
     course_info = []
     current_info = {}
 
-    # Debug first few rows
-    # logger.debug("\nFirst few rows structure:")
-    # for row in rows[:3]:
-        # logger.debug(f"Row content: {row}")
-
     for row in rows:
-        # Log the current row being processed
-        # logger.debug(f"Processing row: {row}")
-
         for word_info in row:
             text = word_info['text']
             column = word_info['col']
             y0 = word_info['y0']  # Use y0 to group related information
-            
+
             # Extract CRN
             if column == 'CRN' and text.strip().isdigit() and len(text.strip()) == 5:
                 if current_info.get('crn'):
-                    # logger.debug(f"Saving previous course info: {current_info}")
                     course_info.append(current_info.copy())
                 current_info = {'crn': text.strip(), 'row_y0': y0}
-                # logger.debug(f"Started new course with CRN: {current_info['crn']}")
-            
+
             # Extract Seats - only process if within same vertical position (y0) as CRN
             elif column == 'Seats' and current_info.get('row_y0'):
                 # Allow small tolerance in y0 comparison (e.g., ±2 points)
@@ -262,54 +290,33 @@ def extract_course_info(rows):
                     seats_val = text.strip()
                     if seats_val.isdigit():
                         current_info['seats'] = int(seats_val)
-                        # logger.debug(f"Added seats: {current_info['seats']}")
-            
+
             # Extract Capacity - only process if within same vertical position as CRN
             elif column == 'Capacity' and current_info.get('row_y0'):
                 if abs(y0 - current_info['row_y0']) < 2:
                     capacity_val = text.strip()
                     if capacity_val.isdigit():
                         current_info['capacity'] = int(capacity_val)
-                        # logger.debug(f"Added capacity: {current_info['capacity']}")
 
     # Add the last course if exists
     if current_info.get('crn'):
-        # logger.debug(f"Adding final course info: {current_info}")
         course_info.append(current_info.copy())
-    
+
     # Remove temporary y0 tracking
     for course in course_info:
         if 'row_y0' in course:
             del course['row_y0']
 
-    # logger.info("=== Validation Phase ===")
-    # logger.info(f"Courses before validation: {len(course_info)}")
-
     # Validate the extracted data
     validated_courses = []
     for course in course_info:
-        # logger.debug(f"Validating course: {course}")
         # Check if we have all required fields
         if all(key in course for key in ['crn', 'seats', 'capacity']):
-            # logger.debug("All required fields present")
             # Verify capacity is not zero or negative
             if course['capacity'] >= 0:
-                # logger.debug("Capacity is valid")
                 # Verify seats don't exceed capacity
                 if 0 <= course['seats'] <= course['capacity']:
-                    # logger.debug("Seats within valid range")
                     validated_courses.append(course)
-                    # logger.debug("Course validated and added")
-                # else:
-                    # logger.warning(f"Invalid seats/capacity relationship: seats={course['seats']}, capacity={course['capacity']}")
-            # else:
-                # logger.warning(f"Invalid capacity: {course['capacity']}")
-        # else:
-            # logger.warning(f"Missing required fields. Present fields: {course.keys()}")
-
-    # logger.info(f"Final validated courses: {len(validated_courses)}")
-    # for course in validated_courses:
-        # logger.info(f"Validated course - CRN: {course['crn']}, Seats: {course['seats']}, Capacity: {course['capacity']}")
 
     return validated_courses
 
@@ -322,7 +329,7 @@ def extract_table_from_pdf(pdf_path, page_number=0):
         return []
 
     # 1. Find header line
-    header_words = find_header_lines(words, expected_headers)
+    header_words = find_header_lines(words, EXPECTED_HEADERS)
     if not header_words:
         print("Header line not found. Check your expected_headers or PDF layout.")
         return []
@@ -339,16 +346,8 @@ def extract_table_from_pdf(pdf_path, page_number=0):
     # 4. Cluster words into rows
     rows = cluster_words_into_rows(words_in_columns)
 
-    logger = logging.getLogger('course_extraction')
-    logger.info("=== Initial Rows Data ===")
-    logger.info(f"Type of rows_data: {type(rows)}")
-    logger.info(f"Length of rows_data: {len(rows)}")
-
     # 5. Get necessary information from rows
     course_data = extract_course_info(rows)
-
-    logger.info("=== Final Results ===")
-    logger.info(f"Number of valid courses extracted: {len(course_data)}")
 
     # 5. Construct row dictionaries
     # row_dicts = construct_row_dicts(rows, column_boundaries)
@@ -380,10 +379,15 @@ def extract_table_from_pdf(pdf_path, page_number=0):
 if __name__ == "__main__":
     pdf_file = "/Users/mitchellgerhardt/Desktop/Spring2025_COE.pdf"
 
-    # Setup logger
-    setup_logger('course_extraction')
+    # data = extract_table_from_pdf(pdf_file, page_number=0)
 
-    data = extract_table_from_pdf(pdf_file, page_number=0)
+    course_data = process_pdf(pdf_file)
+
+    # Write to a CSV file
+    with open("course_data.csv", "w", encoding="utf-8") as f:
+        f.write("CRN,Seats,Capacity\n")
+        for course in course_data:
+            f.write(f"{course['crn']},{course['seats']},{course['capacity']}\n")
 
     # Print or save to CSV/JSON
     # import json

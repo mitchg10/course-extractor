@@ -1,0 +1,2160 @@
+[
+  {
+    "Instructor": "12/13/24, 2:57 PM"
+  },
+  {
+    "CRN": "12244 CEE-",
+    "Cr Hrs": 212,
+    "Instructor": "Introduction to",
+    "Schedule Type": "L",
+    "Begin": [
+      "3:30PM"
+    ],
+    "Exam": "15T"
+  },
+  {
+    "CRN": "12245 CEE-",
+    "Cr Hrs": 300,
+    "Instructor": "Geomatics",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Exam": "11M",
+    "Begin": [
+      "2:30PM"
+    ],
+    "Location": "5:15PM PAT 215"
+  },
+  {
+    "CRN": "12246 CEE-",
+    "Cr Hrs": 300,
+    "Instructor": "Geomatics",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Exam": "11M",
+    "Begin": [
+      "2:00PM"
+    ],
+    "Location": "4:45PM PAT 215"
+  },
+  {
+    "CRN": "12247 CEE-",
+    "Cr Hrs": 300,
+    "Instructor": "Geomatics",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Exam": "11M",
+    "Begin": [
+      "8:00AM"
+    ],
+    "Location": "10:45AM PAT 316"
+  },
+  {
+    "CRN": "12248 CEE-",
+    "Cr Hrs": 300,
+    "Instructor": "Geomatics",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Exam": "11M",
+    "Begin": [
+      "2:30PM"
+    ],
+    "Location": "5:15PM PAT 316"
+  },
+  {
+    "CRN": "12249 CEE-",
+    "Cr Hrs": 300,
+    "Instructor": "Geomatics",
+    "Schedule Type": "R",
+    "Modality": "Instruction",
+    "Exam": "11M",
+    "Begin": [
+      "2:00PM"
+    ],
+    "Location": "4:45PM PAT 316"
+  },
+  {
+    "CRN": "12250 CEE-",
+    "Cr Hrs": 90,
+    "Instructor": "CE Drawings &",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:30AM"
+    ],
+    "Exam": "09T"
+  },
+  {
+    "CRN": "12251 CEE-",
+    "Cr Hrs": 0,
+    "Instructor": "Independent",
+    "Schedule Type": "I",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12252 CEE-",
+    "Cr Hrs": 2994,
+    "Instructor": "Undergraduate"
+  },
+  {
+    "CRN": "12253 CEE-",
+    "Cr Hrs": 2994,
+    "Instructor": "Undergraduate"
+  },
+  {
+    "CRN": "12254 CEE-",
+    "Cr Hrs": 35,
+    "Instructor": "Construction",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "12:30PM 1:45PM WLH 340",
+    "Exam": "12T"
+  },
+  {
+    "CRN": "12255 CEE-",
+    "Cr Hrs": 35,
+    "Instructor": "Construction",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "4:00PM"
+    ],
+    "Location": "5:15PM WLH 335",
+    "Exam": "16M"
+  },
+  {
+    "CRN": "20727 CEE-",
+    "Cr Hrs": 35,
+    "Instructor": "Construction",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12256 CEE-",
+    "Cr Hrs": 40,
+    "Instructor": "Intro Environ",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "2:30PM"
+    ],
+    "Location": "3:45PM PAT 316",
+    "Exam": "14M"
+  },
+  {
+    "CRN": "12258 CEE-",
+    "Cr Hrs": 65,
+    "Instructor": "Intro Environ",
+    "Schedule Type": "L",
+    "Begin": [
+      "2:00PM"
+    ],
+    "Location": "3:15PM SURGE",
+    "Exam": "14T"
+  },
+  {
+    "CRN": "12259 CEE-",
+    "Cr Hrs": 72,
+    "Instructor": "Intro Land",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "2:30PM"
+    ],
+    "Exam": "14M"
+  },
+  {
+    "CRN": "22093 CEE-",
+    "Cr Hrs": 334,
+    "Instructor": "Intro Land",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "3:30PM"
+    ],
+    "Exam": "15T"
+  },
+  {
+    "CRN": "12260 CEE-",
+    "Cr Hrs": 27,
+    "Instructor": "Fluid Mech for",
+    "Schedule Type": "B",
+    "Modality": "Instruction",
+    "Begin": [
+      "4:00PM"
+    ],
+    "Location": "5:50PM PAT 12",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12261 CEE-",
+    "Cr Hrs": 27,
+    "Instructor": "Fluid Mech for",
+    "Schedule Type": "R",
+    "Modality": "Instruction",
+    "Begin": [
+      "4:00PM"
+    ],
+    "Location": "5:50PM PAT 12",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12262 CEE-",
+    "Cr Hrs": 27,
+    "Instructor": "Fluid Mech for",
+    "Schedule Type": "B",
+    "Modality": "Instruction",
+    "Begin": [
+      "4:30PM"
+    ],
+    "Location": "6:20PM PAT 12",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12263 CEE-",
+    "Cr Hrs": 135,
+    "Instructor": "Fluid Mech for",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Exam": "12M"
+  },
+  {
+    "CRN": "12264 CEE-",
+    "Cr Hrs": 27,
+    "Instructor": "Fluid Mech for",
+    "Schedule Type": "B",
+    "Modality": "Instruction",
+    "Begin": [
+      "4:30PM"
+    ],
+    "Location": "6:20PM PAT 12",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12265 CEE-",
+    "Cr Hrs": 64,
+    "Instructor": "Fluid Mech for",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "10:10AM 11:00AM SURGE",
+    "Exam": "10M"
+  },
+  {
+    "CRN": "12266 CEE-",
+    "Cr Hrs": 27,
+    "Instructor": "Fluid Mech for",
+    "Schedule Type": "B",
+    "Modality": "Instruction",
+    "Begin": [
+      "6:00PM"
+    ],
+    "Location": "7:50PM PAT 12",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12268 CEE-",
+    "Cr Hrs": 20,
+    "Instructor": "Water Resources",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:05AM"
+    ],
+    "Location": "4:20PM PAT 12",
+    "Exam": "09M",
+    "End": [
+      "2:30PM"
+    ]
+  },
+  {
+    "CRN": "12269 CEE-",
+    "Cr Hrs": 20,
+    "Instructor": "Water Resources",
+    "Schedule Type": "R",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:05AM"
+    ],
+    "Location": "3:50PM PAT 12",
+    "Exam": "09M",
+    "End": [
+      "2:00PM"
+    ]
+  },
+  {
+    "CRN": "12270 CEE-",
+    "Cr Hrs": 20,
+    "Instructor": "Water Resources",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:05AM"
+    ],
+    "Location": "3:50PM PAT 12",
+    "Exam": "09M",
+    "End": [
+      "2:00PM"
+    ]
+  },
+  {
+    "CRN": "12271 CEE-",
+    "Cr Hrs": 72,
+    "Instructor": "Intro Structural",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "8:00AM"
+    ],
+    "Location": "9:15AM WLH 350",
+    "Exam": "08T"
+  },
+  {
+    "CRN": "12272 CEE-",
+    "Cr Hrs": 72,
+    "Instructor": "Intro Structural",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Exam": "12M"
+  },
+  {
+    "CRN": "12273 CEE-",
+    "Cr Hrs": 72,
+    "Instructor": "Reinf Concr",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:05AM"
+    ],
+    "Location": "9:55AM SURGE",
+    "Exam": "09M"
+  },
+  {
+    "CRN": "12274 CEE-",
+    "Cr Hrs": 234,
+    "Instructor": "Design of Steel",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "2:30PM"
+    ],
+    "Exam": "14M",
+    "End": [
+      "2:00PM"
+    ],
+    "Location": "3:40PM PAT 316"
+  },
+  {
+    "CRN": "12275 CEE-",
+    "Cr Hrs": 25,
+    "Instructor": "Intro to",
+    "Schedule Type": "B",
+    "Modality": "Instruction",
+    "Begin": [
+      "2:30PM"
+    ],
+    "Location": "4:15PM PAT 24",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12276 CEE-",
+    "Cr Hrs": 30,
+    "Instructor": "Intro to",
+    "Schedule Type": "B",
+    "Modality": "Instruction",
+    "Begin": [
+      "2:30PM"
+    ],
+    "Location": "4:15PM PAT 24",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12277 CEE-",
+    "Cr Hrs": 1020,
+    "Instructor": "Intro to",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:30AM"
+    ],
+    "Exam": "09T"
+  },
+  {
+    "CRN": "12278 CEE-",
+    "Cr Hrs": 75,
+    "Instructor": "Intro to",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:05AM"
+    ],
+    "Exam": "09M"
+  },
+  {
+    "CRN": "12279 CEE-",
+    "Cr Hrs": 29,
+    "Instructor": "Comments for",
+    "Schedule Type": "B",
+    "Modality": "Instruction",
+    "Begin": [
+      "3:30PM"
+    ],
+    "Location": "5:15PM PAT 24",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12280 CEE-",
+    "Cr Hrs": 30,
+    "Instructor": "Intro to",
+    "Schedule Type": "R",
+    "Modality": "Instruction",
+    "Begin": [
+      "3:30PM"
+    ],
+    "Location": "5:15PM PAT 24",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12282 CEE-",
+    "Cr Hrs": 48,
+    "Instructor": "Intro Transport",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "4:00PM"
+    ],
+    "Location": "5:15PM WLH 345",
+    "Exam": "16M"
+  },
+  {
+    "CRN": "12283 CEE-",
+    "Cr Hrs": 60,
+    "Instructor": "Intro Transport",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "12:20PM 1:10PM SURGE",
+    "Exam": "12M"
+  },
+  {
+    "CRN": "20708 CEE-",
+    "Cr Hrs": 60,
+    "Instructor": "Intro Transport",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "1:25PM"
+    ],
+    "Location": "2:15PM SURGE",
+    "Exam": "13M"
+  },
+  {
+    "CRN": "12284 CEE-",
+    "Cr Hrs": 15,
+    "Instructor": "Civil Engineering",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "10:10AM 11:00AM SURGE",
+    "Exam": "10M",
+    "Begin": [
+      "2:00PM"
+    ]
+  },
+  {
+    "CRN": "12285 CEE-",
+    "Cr Hrs": 15,
+    "Instructor": "Civil Engineering",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "10:10AM 11:00AM SURGE",
+    "Exam": "10M",
+    "Begin": [
+      "8:00AM"
+    ]
+  },
+  {
+    "CRN": "12286 CEE-",
+    "Cr Hrs": 15,
+    "Instructor": "Civil Engineering",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "10:10AM 11:00AM SURGE",
+    "Exam": "10M",
+    "Begin": [
+      "4:45PM"
+    ]
+  },
+  {
+    "CRN": "12287 CEE-",
+    "Cr Hrs": 15,
+    "Instructor": "Civil Engineering",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "10:10AM 11:00AM SURGE",
+    "Exam": "10M",
+    "Begin": [
+      "2:30PM"
+    ]
+  },
+  {
+    "CRN": "12288 CEE-",
+    "Cr Hrs": 15,
+    "Instructor": "Civil Engineering",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "10:10AM 11:00AM SURGE",
+    "Exam": "10M",
+    "Begin": [
+      "4:15PM"
+    ]
+  },
+  {
+    "CRN": "12289 CEE-",
+    "Cr Hrs": 15,
+    "Instructor": "Civil Engineering",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "10:10AM 11:00AM SURGE",
+    "Exam": "10M",
+    "Begin": [
+      "2:30PM"
+    ]
+  },
+  {
+    "CRN": "12290 CEE-",
+    "Cr Hrs": 15,
+    "Instructor": "Civil Engineering",
+    "Schedule Type": "R",
+    "Modality": "Instruction",
+    "Location": "10:10AM 11:00AM SURGE",
+    "Exam": "10M",
+    "Begin": [
+      "4:15PM"
+    ]
+  },
+  {
+    "CRN": "12291 CEE-",
+    "Cr Hrs": 15,
+    "Instructor": "Civil Engineering",
+    "Schedule Type": "R",
+    "Modality": "Instruction",
+    "Location": "10:10AM 11:00AM SURGE",
+    "Exam": "10M",
+    "Begin": [
+      "2:00PM"
+    ]
+  },
+  {
+    "CRN": "12292 CEE-",
+    "Cr Hrs": 62,
+    "Instructor": "Computer",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Exam": "11T"
+  },
+  {
+    "CRN": "12293 CEE-",
+    "Cr Hrs": 1010,
+    "Instructor": "Computer",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Exam": "12T"
+  },
+  {
+    "CRN": "12294 CEE-",
+    "Cr Hrs": 60,
+    "Instructor": "Comments for",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "2:30PM"
+    ],
+    "Location": "3:45PM SURGE",
+    "Exam": "14M"
+  },
+  {
+    "CRN": "12295 CEE-",
+    "Cr Hrs": 60,
+    "Instructor": "Analytics in CEE",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "11:00AM 12:15PM SURGE",
+    "Exam": "11T"
+  },
+  {
+    "CRN": "20718 CEE-",
+    "Cr Hrs": 0,
+    "Instructor": "Comments for",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "3:30PM"
+    ],
+    "Exam": "15T"
+  },
+  {
+    "CRN": "12297 CEE-",
+    "Cr Hrs": 40,
+    "Instructor": "Est, Prod & Cost",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:30AM"
+    ],
+    "Location": "10:45AM PAT 316",
+    "Exam": "09T"
+  },
+  {
+    "CRN": "12298 CEE-",
+    "Cr Hrs": 60,
+    "Instructor": "Const Means &",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:05AM"
+    ],
+    "Exam": "09M"
+  },
+  {
+    "CRN": "12299 CEE-",
+    "Cr Hrs": 48,
+    "Instructor": "Fund Pub Health",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "11:00AM 12:15PM PAT 215",
+    "Exam": "11T"
+  },
+  {
+    "CRN": "12300 CEE-",
+    "Cr Hrs": 65,
+    "Instructor": "Sustainable",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:05AM"
+    ],
+    "Location": "9:55AM WLH 340",
+    "Exam": "09M"
+  },
+  {
+    "CRN": "12301 CEE-",
+    "Cr Hrs": 50,
+    "Instructor": "Sustainable Land",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "2:00PM"
+    ],
+    "Exam": "14T"
+  },
+  {
+    "CRN": "12303 CEE-",
+    "Cr Hrs": 36,
+    "Instructor": "Land",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "12:30PM 1:45PM PAT 215",
+    "Exam": "12T"
+  },
+  {
+    "CRN": "12304 CEE-",
+    "Cr Hrs": 20,
+    "Instructor": "Adv Land",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "7:00PM"
+    ],
+    "Location": "12:00PM PAT 316",
+    "Exam": "19F",
+    "End": [
+      "9:00AM"
+    ]
+  },
+  {
+    "CRN": "20719 CEE-",
+    "Cr Hrs": 40,
+    "Instructor": "Hydraulic",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "4:00PM"
+    ],
+    "Exam": "16M"
+  },
+  {
+    "CRN": "12305 CEE-",
+    "Cr Hrs": 48,
+    "Instructor": "Water Resources",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "3:30PM"
+    ],
+    "Location": "4:45PM WLH 335",
+    "Exam": "15T"
+  },
+  {
+    "CRN": "12306 CEE-",
+    "Cr Hrs": 48,
+    "Instructor": "Coastal",
+    "Schedule Type": "L",
+    "Location": "11:00AM 12:15PM PAT 207",
+    "Exam": "11T"
+  },
+  {
+    "CRN": "12307 CEE-",
+    "Cr Hrs": 1050,
+    "Instructor": "Urban Water",
+    "Schedule Type": "L",
+    "Exam": "12T"
+  },
+  {
+    "CRN": "22119 CEE-",
+    "Cr Hrs": 12,
+    "Instructor": "Urban Water",
+    "Exam": "12T"
+  },
+  {
+    "CRN": "12308 CEE-",
+    "Cr Hrs": 40,
+    "Instructor": "Intermediate",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "11:15AM 12:05PM PAT 316",
+    "Exam": "11M"
+  },
+  {
+    "CRN": "12309 CEE-",
+    "Cr Hrs": 40,
+    "Instructor": "Earth Pres Fdn",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Exam": "12T"
+  },
+  {
+    "CRN": "12310 CEE-",
+    "Cr Hrs": 40,
+    "Instructor": "Design of Earth",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "12:20PM 1:10PM PAT 207",
+    "Exam": "12M"
+  },
+  {
+    "CRN": "12311 CEE-",
+    "Cr Hrs": 72,
+    "Instructor": "Natural Disasters",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "4:00PM"
+    ],
+    "Exam": "16M"
+  },
+  {
+    "CRN": "20720 CEE-",
+    "Cr Hrs": 125,
+    "Instructor": "Concrete",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "3:30PM"
+    ],
+    "Exam": "15T"
+  },
+  {
+    "CRN": "21178 CEE-",
+    "Cr Hrs": 84,
+    "Instructor": "Pl Transportation",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Exam": "11M"
+  },
+  {
+    "CRN": "20721 CEE-",
+    "Cr Hrs": 75,
+    "Instructor": "Infrastr Con",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:30AM"
+    ],
+    "Exam": "09T"
+  },
+  {
+    "CRN": "12313 CEE-",
+    "Cr Hrs": 40,
+    "Instructor": "Geometric Design",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "2:30PM"
+    ],
+    "Location": "3:45PM WLH 335",
+    "Exam": "14M"
+  },
+  {
+    "CRN": "12314 CEE-",
+    "Cr Hrs": 67,
+    "Instructor": "Prof & Legal",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "3:30PM"
+    ],
+    "Exam": "15T"
+  },
+  {
+    "CRN": "20722 CEE-",
+    "Cr Hrs": 67,
+    "Instructor": "Prof & Legal",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "1:25PM"
+    ],
+    "Exam": "13M"
+  },
+  {
+    "CRN": "12315 CEE-",
+    "Cr Hrs": 52,
+    "Instructor": "Intro to Forensic",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:30AM"
+    ],
+    "Exam": "09T"
+  },
+  {
+    "CRN": "12316 CEE-",
+    "Cr Hrs": 40,
+    "Instructor": "BIM and",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "4:00PM"
+    ],
+    "Location": "5:15PM PAT 316",
+    "Exam": "16M"
+  },
+  {
+    "CRN": "12317 CEE-",
+    "Cr Hrs": 4974,
+    "Instructor": "Independent"
+  },
+  {
+    "CRN": "12318 CEE-",
+    "Cr Hrs": 4974,
+    "Instructor": "Independent"
+  },
+  {
+    "CRN": "12319 CEE-",
+    "Cr Hrs": 4974,
+    "Instructor": "Independent"
+  },
+  {
+    "CRN": "12320 CEE-",
+    "Cr Hrs": 4974,
+    "Instructor": "Independent"
+  },
+  {
+    "CRN": "12321 CEE-",
+    "Cr Hrs": 4974,
+    "Instructor": "Independent"
+  },
+  {
+    "CRN": "12322 CEE-",
+    "Cr Hrs": 0,
+    "Instructor": "Undergraduate",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12323 CEE-",
+    "Cr Hrs": 0,
+    "Instructor": "Undergraduate",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12324 CEE-",
+    "Cr Hrs": 19,
+    "Instructor": "Undergraduate",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12325 CEE-",
+    "Cr Hrs": 0,
+    "Instructor": "Undergraduate",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12326 CEE-",
+    "Cr Hrs": 0,
+    "Instructor": "Undergraduate",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12327 CEE-",
+    "Cr Hrs": 0,
+    "Instructor": "Undergraduate",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12328 CEE-",
+    "Cr Hrs": 0,
+    "Instructor": "Undergraduate",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12329 CEE-",
+    "Cr Hrs": 0,
+    "Instructor": "Undergraduate",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12330 CEE-",
+    "Cr Hrs": 19,
+    "Instructor": "Undergraduate",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12331 CEE-",
+    "Cr Hrs": 19,
+    "Instructor": "Undergraduate",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12332 CEE-",
+    "Cr Hrs": 0,
+    "Instructor": "Undergraduate",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12333 CEE-",
+    "Cr Hrs": 0,
+    "Instructor": "Undergraduate",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12334 CEE-",
+    "Cr Hrs": 0,
+    "Instructor": "Undergraduate",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12335 CEE-",
+    "Instructor": "4994H",
+    "Schedule Type": "R",
+    "Cr Hrs": 0,
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12336 CEE-",
+    "Cr Hrs": 40,
+    "Instructor": "Adaptive Reuse",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "2:30PM"
+    ],
+    "Exam": "14M"
+  },
+  {
+    "CRN": "12337 CEE-",
+    "Cr Hrs": 30,
+    "Instructor": "Infrastructure",
+    "Begin": [
+      "9:30AM"
+    ],
+    "Exam": "09T"
+  },
+  {
+    "CRN": "20836 CEE-",
+    "Cr Hrs": 40,
+    "Instructor": "Project Control of",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "11:00AM 12:15PM PAT 316",
+    "Exam": "11T"
+  },
+  {
+    "CRN": "12339 CEE-",
+    "Cr Hrs": 40,
+    "Instructor": "Infrastructure",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "3:30PM"
+    ],
+    "Exam": "15T"
+  },
+  {
+    "CRN": "12340 CEE-",
+    "Cr Hrs": 10,
+    "Instructor": "Adv Sustainable",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:05AM"
+    ],
+    "Location": "9:55AM WLH 340",
+    "Exam": "09M"
+  },
+  {
+    "CRN": "12341 CEE-",
+    "Cr Hrs": 30,
+    "Instructor": "Environ Engr",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:30AM"
+    ],
+    "Location": "10:45AM PAT 12",
+    "Exam": "09T"
+  },
+  {
+    "CRN": "12344 CEE-",
+    "Cr Hrs": 389,
+    "Instructor": "Unit Ops & Proc",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "2:00PM"
+    ],
+    "Exam": "14T"
+  },
+  {
+    "CRN": "20723 CEE-",
+    "Cr Hrs": 10,
+    "Instructor": "Atmospheric",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Exam": "11T"
+  },
+  {
+    "CRN": "12347 CEE-",
+    "Cr Hrs": 4,
+    "Instructor": "Sustainable Land",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "2:00PM"
+    ],
+    "Exam": "14T"
+  },
+  {
+    "CRN": "12348 CEE-",
+    "Cr Hrs": 4,
+    "Instructor": "Land Dev Design",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "12:30PM 1:45PM PAT 215",
+    "Exam": "12T"
+  },
+  {
+    "CRN": "12350 CEE-",
+    "Cr Hrs": 48,
+    "Instructor": "Environmental",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:30AM"
+    ],
+    "Location": "10:45AM PAT 207",
+    "Exam": "09T"
+  },
+  {
+    "CRN": "22050 CEE-",
+    "Cr Hrs": 0,
+    "Instructor": "Environmental",
+    "Begin": [
+      "9:30AM"
+    ],
+    "Exam": "09T"
+  },
+  {
+    "CRN": "12351 CEE-",
+    "Cr Hrs": 2,
+    "Instructor": "Adv Urban Water",
+    "Exam": "12T"
+  },
+  {
+    "CRN": "12352 CEE-",
+    "Cr Hrs": 28,
+    "Instructor": "Adv Urban Water",
+    "Exam": "12T"
+  },
+  {
+    "CRN": "12354 CEE-",
+    "Cr Hrs": 48,
+    "Instructor": "FE Analysis of",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "11:15AM 12:05PM PAT 207",
+    "Exam": "11M"
+  },
+  {
+    "CRN": "12355 CEE-",
+    "Cr Hrs": 20,
+    "Instructor": "Forensic Struct",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:30AM"
+    ],
+    "Exam": "09T"
+  },
+  {
+    "CRN": "12356 CEE-",
+    "Cr Hrs": 48,
+    "Instructor": "Struc Dyn & Eq",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "11:00AM 12:15PM WLH 335",
+    "Exam": "11T"
+  },
+  {
+    "CRN": "12358 CEE-",
+    "Cr Hrs": 30,
+    "Instructor": "Foundation",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "11:00AM 12:15PM PAT 12",
+    "Exam": "11T"
+  },
+  {
+    "CRN": "12359 CEE-",
+    "Cr Hrs": 30,
+    "Instructor": "Soil and Site",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:30AM"
+    ],
+    "Exam": "09T"
+  },
+  {
+    "CRN": "12360 CEE-",
+    "Cr Hrs": 30,
+    "Instructor": "Seepage and",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "2:00PM"
+    ],
+    "Exam": "14T"
+  },
+  {
+    "CRN": "21703 CEE-",
+    "Cr Hrs": 16,
+    "Instructor": "Traf\ufb01c Char &",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "2:00PM"
+    ],
+    "Exam": "14T"
+  },
+  {
+    "CRN": "21730 CEE-",
+    "Cr Hrs": 0,
+    "Instructor": "Traf\ufb01c Char &",
+    "Begin": [
+      "2:00PM"
+    ],
+    "Exam": "14T"
+  },
+  {
+    "CRN": "20728 CEE-",
+    "Cr Hrs": 5640,
+    "Instructor": "Comments for"
+  },
+  {
+    "CRN": "20724 CEE-",
+    "Cr Hrs": 125,
+    "Instructor": "Only those students who cannot ad this class on their own should submit a force add request at www.cee.vt.edu/forceadd",
+    "Begin": [
+      "5:30PM"
+    ],
+    "Exam": "15T",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "End": [
+      "3:30PM"
+    ]
+  },
+  {
+    "CRN": "12367 CEE-",
+    "Cr Hrs": 277,
+    "Instructor": "Topics in Struct",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Exam": "12M"
+  },
+  {
+    "CRN": "20725 CEE-",
+    "Cr Hrs": 30,
+    "Instructor": "Sustainable",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Exam": "11T"
+  },
+  {
+    "CRN": "12369 CEE-",
+    "Instructor": "5854G",
+    "Schedule Type": "L",
+    "Cr Hrs": 13,
+    "Location": "11:00AM 12:15PM PAT 207",
+    "Exam": "11T"
+  },
+  {
+    "CRN": "12370 CEE-",
+    "Instructor": "5854G",
+    "Cr Hrs": 0,
+    "Exam": "11T"
+  },
+  {
+    "CRN": "20947 CEE-",
+    "Cr Hrs": 30,
+    "Instructor": "Coastal and",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Location": "10:10AM 11:00AM PAT 12",
+    "Exam": "10M"
+  },
+  {
+    "CRN": "12371 CEE-",
+    "Cr Hrs": 0,
+    "Instructor": "Final",
+    "Schedule Type": "L",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12373 CEE-",
+    "Cr Hrs": 99,
+    "Instructor": "Project and",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12374 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12375 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12376 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12377 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12378 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12379 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12380 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12381 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12382 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12383 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12384 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12385 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12386 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12387 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12388 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12389 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12390 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12391 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12392 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12393 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12394 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12395 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12396 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12397 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12398 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12399 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12400 CEE-",
+    "Cr Hrs": 19,
+    "Instructor": "Project and",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12401 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12402 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12403 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12404 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12405 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12406 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12407 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12408 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12409 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12410 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12411 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12412 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12413 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and"
+  },
+  {
+    "CRN": "12414 CEE-",
+    "Cr Hrs": 5904,
+    "Instructor": "Project and",
+    "Schedule Type": "R"
+  },
+  {
+    "CRN": "12415 CEE-",
+    "Cr Hrs": 19,
+    "Instructor": "Project and",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12416 CEE-",
+    "Cr Hrs": 99,
+    "Instructor": "Project and",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12425 CEE-",
+    "Cr Hrs": 30,
+    "Instructor": "Seminar",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "1:25PM"
+    ],
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12426 CEE-",
+    "Cr Hrs": 145,
+    "Instructor": "Seminar",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "1:25PM"
+    ],
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12427 CEE-",
+    "Cr Hrs": 261,
+    "Instructor": "Seminar",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "2:30PM"
+    ],
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12428 CEE-",
+    "Cr Hrs": 30,
+    "Instructor": "Seminar",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "20925 CEE-",
+    "Cr Hrs": 8,
+    "Instructor": "Seminar",
+    "Begin": [
+      "2:30PM"
+    ],
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12430 CEE-",
+    "Cr Hrs": 5974,
+    "Instructor": "Independent"
+  },
+  {
+    "CRN": "12431 CEE-",
+    "Cr Hrs": 5974,
+    "Instructor": "Independent"
+  },
+  {
+    "CRN": "12432 CEE-",
+    "Cr Hrs": 5974,
+    "Instructor": "Independent"
+  },
+  {
+    "CRN": "12433 CEE-",
+    "Cr Hrs": 5974,
+    "Instructor": "Independent"
+  },
+  {
+    "CRN": "12434 CEE-",
+    "Cr Hrs": 5974,
+    "Instructor": "Independent"
+  },
+  {
+    "CRN": "12435 CEE-",
+    "Cr Hrs": 5974,
+    "Instructor": "Independent"
+  },
+  {
+    "CRN": "12436 CEE-",
+    "Cr Hrs": 5974,
+    "Instructor": "Independent"
+  },
+  {
+    "CRN": "12437 CEE-",
+    "Cr Hrs": 5974,
+    "Instructor": "Independent"
+  },
+  {
+    "CRN": "12438 CEE-",
+    "Cr Hrs": 5974,
+    "Instructor": "Independent",
+    "Schedule Type": "I"
+  },
+  {
+    "CRN": "21995 CEE-",
+    "Cr Hrs": 5984,
+    "Instructor": "replaces old one 11954"
+  },
+  {
+    "CRN": "12456 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12457 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12458 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12459 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12460 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12461 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12462 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12463 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12464 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12465 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12466 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12467 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12468 CEE-",
+    "Cr Hrs": 19,
+    "Instructor": "Research and",
+    "Schedule Type": "R",
+    "Begin": [
+      "3:30PM"
+    ],
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12469 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12470 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12471 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12472 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12473 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12474 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12475 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12476 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12477 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12478 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12479 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12480 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12481 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12482 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12483 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12484 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12485 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12486 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12487 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12488 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12489 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12490 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12491 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12492 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12493 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12494 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12495 CEE-",
+    "Cr Hrs": 19,
+    "Instructor": "Research and",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12496 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12497 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12498 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12499 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12500 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12501 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12502 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12503 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12504 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12505 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12506 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12507 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12508 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12509 CEE-",
+    "Cr Hrs": 5994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "21658 CEE-",
+    "Cr Hrs": 15,
+    "Instructor": "Adv",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "8:00AM"
+    ],
+    "Exam": "08T"
+  },
+  {
+    "CRN": "20726 CEE-",
+    "Cr Hrs": 15,
+    "Instructor": "Advanced Steel",
+    "Schedule Type": "L",
+    "Modality": "Instruction",
+    "Begin": [
+      "9:05AM"
+    ],
+    "Exam": "09M"
+  },
+  {
+    "CRN": "12533 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12534 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12535 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12536 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12537 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12538 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12539 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12540 CEE-",
+    "Cr Hrs": 19,
+    "Instructor": "Research and",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12541 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12542 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12543 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12544 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12545 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12546 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12547 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12548 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12549 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12550 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12551 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12552 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12553 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12554 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12555 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12556 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12557 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12558 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12559 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12560 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12561 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12562 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12563 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12564 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12565 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12566 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12567 CEE-",
+    "Cr Hrs": 19,
+    "Instructor": "Research and",
+    "Schedule Type": "R",
+    "Exam": "00X"
+  },
+  {
+    "CRN": "12568 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12569 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12570 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12571 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12572 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12573 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12574 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12575 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12576 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12577 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12578 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12579 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12580 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12581 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12582 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12583 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12584 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12585 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12586 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and",
+    "Schedule Type": "R"
+  },
+  {
+    "CRN": "12587 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12588 CEE-",
+    "Cr Hrs": 7994,
+    "Instructor": "Research and"
+  },
+  {
+    "CRN": "12589 CEE-",
+    "Cr Hrs": 19,
+    "Instructor": "Research and",
+    "Exam": "00X"
+  }
+]
