@@ -1,8 +1,0 @@
-CRN: 12244, Seats: 0, Capacity: 30
-CRN: 12245, Seats: 1, Capacity: 38
-CRN: 12246, Seats: 0, Capacity: 39
-CRN: 12247, Seats: 15, Capacity: 37
-CRN: 12248, Seats: 26, Capacity: 37
-CRN: 12249, Seats: 6, Capacity: 38
-CRN: 12250, Seats: 20, Capacity: 90
-CRN: 12251, Seats: 0, Capacity: 0

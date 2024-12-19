@@ -2,6 +2,17 @@ import pymupdf
 import statistics
 import logging
 from datetime import datetime
+# from pyvt import Timetable
+
+import sys
+from pathlib import Path
+
+# Add the project root directory to Python path
+project_root = str(Path(__file__).parent.parent)
+sys.path.append(project_root)
+
+from pyvt import Timetable
+from CourseDataMerger import CourseDataMerger
 
 EXPECTED_HEADERS = ["CRN", "Course", "Title", "Schedule Type", "Modality", "Cr Hrs", "Seats", "Capacity", "Instructor", "Days", "Begin", "End", "Location", "on"]
 ROW_GAP_THRESHOLD = 10.0   # Vertical gap threshold between rows. Adjust as needed.
@@ -22,6 +33,18 @@ COLUMN_TOLERANCES = {
     "on": 5.0,
 }
 
+def fetch_from_timetable(subject_code, term_year=None):
+    # Create a timetable object
+    timetable = Timetable()
+
+    # Print all possible subjects
+    subjects = timetable.subject_lookup(subject_code=subject_code, term_year=term_year, open_only=False)
+
+    # Print the first 5 sections in the subjects
+    # for i in range(5):
+    #     subjects[i].print_info()
+
+    return subjects
 
 def process_pdf(pdf_path):
     """
@@ -88,7 +111,6 @@ def process_pdf(pdf_path):
             del course['row_y0']
         page_num = course.pop('page', None)
 
-        print(f"Validating course from page {page_num}: {course}")
         if all(key in course for key in ['crn', 'seats', 'capacity']):
             if course['capacity'] >= 0:
                 if 0 <= course['seats'] <= course['capacity']:
@@ -288,8 +310,14 @@ def extract_course_info(rows):
                 # Allow small tolerance in y0 comparison (e.g., ±2 points)
                 if abs(y0 - current_info['row_y0']) < 2:
                     seats_val = text.strip()
+                    current_info['seats_val'] = seats_val
                     if seats_val.isdigit():
                         current_info['seats'] = int(seats_val)
+                    # else if "Full #", extract the number
+                    elif seats_val.startswith("Full "):
+                        full_num = seats_val[5:]
+                        if full_num.isdigit():
+                            current_info['seats'] = int(full_num)
 
             # Extract Capacity - only process if within same vertical position as CRN
             elif column == 'Capacity' and current_info.get('row_y0'):
@@ -311,7 +339,7 @@ def extract_course_info(rows):
     validated_courses = []
     for course in course_info:
         # Check if we have all required fields
-        if all(key in course for key in ['crn', 'seats', 'capacity']):
+        if all(key in course for key in ['crn', 'seats', 'seats_val', 'capacity']):
             # Verify capacity is not zero or negative
             if course['capacity'] >= 0:
                 # Verify seats don't exceed capacity
@@ -320,84 +348,37 @@ def extract_course_info(rows):
 
     return validated_courses
 
-
-def extract_table_from_pdf(pdf_path, page_number=0):
-    doc = pymupdf.open(pdf_path)  # ! Make this all pages
-    page = doc[page_number]
-    words = page.get_text("words")
-    if not words:
-        return []
-
-    # 1. Find header line
-    header_words = find_header_lines(words, EXPECTED_HEADERS)
-    if not header_words:
-        print("Header line not found. Check your expected_headers or PDF layout.")
-        return []
-
-    # Determine the bottom y of the header line to separate data rows from headers
-    header_y_bottom = max(hw['y1'] for hw in header_words)
-
-    # 2. Get column boundaries
-    column_boundaries = get_column_boundaries(header_words)
-
-    # 3. Assign words to columns
-    words_in_columns = assign_words_to_columns(words, column_boundaries, header_y_bottom)
-
-    # 4. Cluster words into rows
-    rows = cluster_words_into_rows(words_in_columns)
-
-    # 5. Get necessary information from rows
-    course_data = extract_course_info(rows)
-
-    # 5. Construct row dictionaries
-    # row_dicts = construct_row_dicts(rows, column_boundaries)
-
-    # return row_dicts
-
-    # Write the header line to a file and the column boundaries
-
-    with open("words_in_columns.txt", "w", encoding="utf-8") as f:
-        for w in words_in_columns:
-            f.write(f"{w['text']} ({w['col']})\n")
-
-    with open("rows.txt", "w", encoding="utf-8") as f:
-        for r in rows:
-            for w in r:
-                f.write(f"{w['text']} ({w['col']})\n")
-            f.write("\n")
-
-    with open("course_info.txt", "w", encoding="utf-8") as f:
-        for course in course_data:
-            f.write(f"CRN: {course['crn']}, Seats: {course['seats']}, Capacity: {course['capacity']}\n")
-
-    doc.close()
-
-    # return row_dicts
-    return []
-
-
 if __name__ == "__main__":
     pdf_file = "/Users/mitchellgerhardt/Desktop/Spring2025_COE.pdf"
 
     # data = extract_table_from_pdf(pdf_file, page_number=0)
 
+    # Timetable data
+    timetable_data = fetch_from_timetable("CEE", term_year="202501") # [1, 6, 7, 9] <- Spring, Summer I, Summer II, Fall
+
     course_data = process_pdf(pdf_file)
 
     # Write to a CSV file
     with open("course_data.csv", "w", encoding="utf-8") as f:
-        f.write("CRN,Seats,Capacity\n")
+        f.write("CRN,Seats,Seats_Val,Capacity\n")
         for course in course_data:
-            f.write(f"{course['crn']},{course['seats']},{course['capacity']}\n")
+            f.write(f"{course['crn']},{course['seats']},{course['seats_val']},{course['capacity']}\n")
 
-    # Print or save to CSV/JSON
-    # import json
-    # print(json.dumps(data, indent=2))
-
-    # To save as CSV if needed:
-    # import csv
-    # if data:
-    #     fieldnames = data[0].keys()
-    #     with open("output.csv", "w", newline="", encoding="utf-8") as csvfile:
-    #         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-    #         writer.writeheader()
-    #         writer.writerows(data)
+    # Create merger instance
+    merger = CourseDataMerger()
+    
+    # Load both datasets
+    merger.load_pdf_data(course_data)
+    merger.load_timetable_data(timetable_data)
+    
+    # Merge the data
+    merged_courses = merger.merge_course_data()
+    
+    # Save to CSV
+    merger.save_to_csv("merged_course_data.csv")
+    
+    # Print statistics
+    stats = merger.get_statistics()
+    print("\nMerging Statistics:")
+    for key, value in stats.items():
+        print(f"{key}: {value}")
