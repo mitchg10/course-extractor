@@ -1,3 +1,5 @@
+from CourseDataMerger import CourseDataMerger
+# from pyvt import Timetable
 import pymupdf
 import statistics
 import logging
@@ -12,7 +14,7 @@ project_root = str(Path(__file__).parent.parent)
 sys.path.append(project_root)
 
 from pyvt import Timetable
-from CourseDataMerger import CourseDataMerger
+
 
 EXPECTED_HEADERS = ["CRN", "Course", "Title", "Schedule Type", "Modality", "Cr Hrs", "Seats", "Capacity", "Instructor", "Days", "Begin", "End", "Location", "on"]
 ROW_GAP_THRESHOLD = 10.0   # Vertical gap threshold between rows. Adjust as needed.
@@ -33,6 +35,37 @@ COLUMN_TOLERANCES = {
     "on": 5.0,
 }
 
+
+def setup_logger(name):
+    """Set up logger with file and console handlers."""
+    import os
+    if not os.path.exists('logs'):
+        os.makedirs('logs')
+
+    logger = logging.getLogger(name)
+    logger.setLevel(logging.DEBUG)
+
+    if logger.hasHandlers():
+        logger.handlers.clear()
+
+    timestamp = datetime.now().strftime('%H_%M_%S')
+    fh = logging.FileHandler(f'logs/{timestamp}_course_extraction.log')
+    fh.setLevel(logging.DEBUG)
+
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    fh.setFormatter(formatter)
+
+    logger.addHandler(fh)
+
+    # Add console handler for debugging
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.DEBUG)
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
+
+    return logger
+
+
 def fetch_from_timetable(subject_code, term_year=None):
     # Create a timetable object
     timetable = Timetable()
@@ -45,6 +78,7 @@ def fetch_from_timetable(subject_code, term_year=None):
     #     subjects[i].print_info()
 
     return subjects
+
 
 def process_pdf(pdf_path):
     """
@@ -93,8 +127,17 @@ def process_pdf(pdf_path):
         words_in_columns = assign_words_to_columns(words, column_boundaries, page_start_y)
         rows = cluster_words_into_rows(words_in_columns)
 
+        # if page == 1, write the words in columns and rows to a file
+        if page_num == 1:
+            with open('words_in_columns.txt', 'w') as f:
+                for word in words_in_columns:
+                    f.write(f'{word}\n')
+            with open('rows.txt', 'w') as f:
+                for row in rows:
+                    f.write(f'{row}\n')
+
         # Extract course info from this page
-        page_courses = extract_course_info(rows)
+        page_courses = extract_course_info(rows, page_num)
         print(f"Found {len(page_courses)} courses on page {page_num + 1}")
         all_courses.extend(page_courses)
 
@@ -115,7 +158,6 @@ def process_pdf(pdf_path):
             if course['capacity'] >= 0:
                 if 0 <= course['seats'] <= course['capacity']:
                     validated_courses.append(course)
-               
 
     print(f"Final validated courses: {len(validated_courses)}")
 
@@ -280,103 +322,83 @@ def cluster_words_into_rows(words_in_columns):
     return rows
 
 
-def extract_course_info(rows):
+def extract_course_info(rows, page_num):
     """
     Extract and validate CRN, Seats, and Capacity information from rows data.
 
     Args:
         rows (list): List of row data from PDF extraction
+        page_num (int): Page number for logging
 
     Returns:
         list: List of dictionaries containing validated CRN, Seats, and Capacity
     """
-    course_info = []
+    courses = []
     current_info = {}
 
+    logger = logging.getLogger('course_extraction')
+
+    logger.info(f"=== Processing Pages ===")
+    logger.info(f"Number of rows to process: {len(rows)} from page {page_num + 1}")
+
     for row in rows:
+        current_info = {}
         for word_info in row:
-            text = word_info['text']
+            text = word_info['text'].strip()
             column = word_info['col']
-            y0 = word_info['y0']  # Use y0 to group related information
 
-            # Extract CRN
-            if column == 'CRN' and text.strip().isdigit() and len(text.strip()) == 5:
-                if current_info.get('crn'):
-                    course_info.append(current_info.copy())
-                current_info = {'crn': text.strip(), 'row_y0': y0}
+            if column == 'Seats' and current_info.get('seats') is None:
+                if text.isdigit() or "Full" in text:
+                    current_info['seats'] = 0 if text == "Full" else int(text)
+                    logger.debug(f"Adding seats: {current_info['seats']}")
 
-            # Extract Seats - only process if within same vertical position (y0) as CRN
-            elif column == 'Seats' and current_info.get('row_y0'):
-                # Allow small tolerance in y0 comparison (e.g., ±2 points)
-                if abs(y0 - current_info['row_y0']) < 2:
-                    seats_val = text.strip()
-                    current_info['seats_val'] = seats_val
-                    if seats_val.isdigit():
-                        current_info['seats'] = int(seats_val)
-                    # else if "Full #", extract the number
-                    elif seats_val.startswith("Full "):
-                        full_num = seats_val[5:]
-                        if full_num.isdigit():
-                            current_info['seats'] = int(full_num)
+            elif column == 'Capacity' and current_info.get('capacity') is None and text.isdigit():
+                current_info['capacity'] = int(text)
+                logger.debug(f"Adding capacity: {current_info['capacity']}")
 
-            # Extract Capacity - only process if within same vertical position as CRN
-            elif column == 'Capacity' and current_info.get('row_y0'):
-                if abs(y0 - current_info['row_y0']) < 2:
-                    capacity_val = text.strip()
-                    if capacity_val.isdigit():
-                        current_info['capacity'] = int(capacity_val)
+            elif column == 'CRN' and text.isdigit() and len(text) == 5:
+                current_info['crn'] = text
+                logger.debug(f"Adding CRN: {current_info['crn']}")
 
-    # Add the last course if exists
-    if current_info.get('crn'):
-        course_info.append(current_info.copy())
+            # If we have all required fields, add the course
+            if 'crn' in current_info and 'seats' in current_info and 'capacity' in current_info:
+                courses.append(current_info.copy())
+                logger.debug(f"Adding course info: {current_info}")
+                current_info = {}
 
-    # Remove temporary y0 tracking
-    for course in course_info:
-        if 'row_y0' in course:
-            del course['row_y0']
+    return courses
 
-    # Validate the extracted data
-    validated_courses = []
-    for course in course_info:
-        # Check if we have all required fields
-        if all(key in course for key in ['crn', 'seats', 'seats_val', 'capacity']):
-            # Verify capacity is not zero or negative
-            if course['capacity'] >= 0:
-                # Verify seats don't exceed capacity
-                if 0 <= course['seats'] <= course['capacity']:
-                    validated_courses.append(course)
-
-    return validated_courses
 
 if __name__ == "__main__":
-    pdf_file = "/Users/mitchellgerhardt/Desktop/Spring2025_COE.pdf"
+    pdf_file = "/Users/mitchellgerhardt/Desktop/Fall2024_AOE.pdf"
 
-    # data = extract_table_from_pdf(pdf_file, page_number=0)
+    # Setup logger
+    logger = setup_logger('course_extraction')
 
     # Timetable data
-    timetable_data = fetch_from_timetable("CEE", term_year="202501") # [1, 6, 7, 9] <- Spring, Summer I, Summer II, Fall
+    timetable_data = fetch_from_timetable("AOE", term_year="202409")  # [1, 6, 7, 9] <- Spring, Summer I, Summer II, Fall
 
     course_data = process_pdf(pdf_file)
 
     # Write to a CSV file
-    with open("course_data.csv", "w", encoding="utf-8") as f:
-        f.write("CRN,Seats,Seats_Val,Capacity\n")
-        for course in course_data:
-            f.write(f"{course['crn']},{course['seats']},{course['seats_val']},{course['capacity']}\n")
+    # with open("course_data.csv", "w", encoding="utf-8") as f:
+    #     f.write("CRN,Seats,Capacity\n")
+    #     for course in course_data:
+    #         f.write(f"{course['crn']},{course['seats']},{course['capacity']}\n")
 
     # Create merger instance
     merger = CourseDataMerger()
-    
+
     # Load both datasets
     merger.load_pdf_data(course_data)
     merger.load_timetable_data(timetable_data)
-    
+
     # Merge the data
     merged_courses = merger.merge_course_data()
-    
+
     # Save to CSV
-    merger.save_to_csv("merged_course_data.csv")
-    
+    merger.save_to_csv("merged_course_data_aoe.csv")
+
     # Print statistics
     stats = merger.get_statistics()
     print("\nMerging Statistics:")
