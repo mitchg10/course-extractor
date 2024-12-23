@@ -33,6 +33,10 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Install pyvt
+COPY pyvt pyvt
+RUN pip install pyvt/
+
 # Copy backend code
 COPY backend/ backend/
 COPY config/ config/

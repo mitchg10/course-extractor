@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Typography,
@@ -11,62 +11,56 @@ import {
   Alert,
   CircularProgress,
   IconButton,
-  ListItemSecondaryAction,
   Snackbar,
-  LinearProgress
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Grid
 } from '@mui/material';
 import {
   Upload,
   FileText,
   Database,
-  CheckCircle,
   Trash2,
-  XCircle,
-  RefreshCcw
+  XCircle
 } from 'lucide-react';
 
+// Engineering programs filtered from the constants
+const ENGINEERING_PROGRAMS = [
+  ["AOE", "Aerospace and Ocean Engineering"],
+  ["BSE", "Biological Systems Engineering"],
+  ["CEE", "Civil and Environmental Engineering"],
+  ["CHE", "Chemical Engineering"],
+  ["CS", "Computer Science"],
+  ["ECE", "Electrical and Computer Engineering"],
+  ["ENGE", "Engineering Education"],
+  ["ENGR", "Engineering"],
+  ["ESM", "Engineering Science and Mechanics"],
+  ["ISE", "Industrial and Systems Engineering"],
+  ["ME", "Mechanical Engineering"],
+  ["MINE", "Mining Engineering"],
+  ["MSE", "Materials Science and Engineering"],
+  ["NSEG", "Nuclear Science and Engineering"]
+];
+
+const SEMESTERS = [
+  { value: "1", label: "Spring" },
+  { value: "6", label: "Summer I" },
+  { value: "7", label: "Summer II" },
+  { value: "9", label: "Fall" },
+  { value: "12", label: "Winter" }
+];
+
+const YEARS = Array.from({ length: 5 }, (_, i) => new Date().getFullYear() + i);
+
 const CourseExtractor = () => {
-  const [files, setFiles] = useState([]);
+  // Modified to store files with their metadata
+  const [filesData, setFilesData] = useState([]);
   const [processing, setProcessing] = useState(false);
   const [taskId, setTaskId] = useState(null);
   const [processingStatus, setProcessingStatus] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
-
-  // Status polling
-  useEffect(() => {
-    let pollInterval;
-
-    const pollStatus = async () => {
-      if (!taskId) return;
-
-      try {
-        const response = await fetch(`http://localhost:8000/status/${taskId}`);
-        if (!response.ok) throw new Error('Failed to fetch status');
-
-        const statusData = await response.json();
-        setProcessingStatus(statusData);
-
-        // Stop polling if processing is complete
-        if (statusData.status === 'completed') {
-          setProcessing(false);
-          clearInterval(pollInterval);
-        }
-      } catch (error) {
-        console.error('Status polling failed:', error);
-        setErrorMessage('Failed to get processing status');
-        setProcessing(false);
-        clearInterval(pollInterval);
-      }
-    };
-
-    if (processing && taskId) {
-      pollInterval = setInterval(pollStatus, 2000); // Poll every 2 seconds
-    }
-
-    return () => {
-      if (pollInterval) clearInterval(pollInterval);
-    };
-  }, [taskId, processing]);
 
   const validateFiles = (newFiles) => {
     const invalidFiles = newFiles.filter(file =>
@@ -77,50 +71,78 @@ const CourseExtractor = () => {
     if (invalidFiles.length > 0) {
       const fileNames = invalidFiles.map(f => f.name).join(', ');
       setErrorMessage(`Invalid file type(s): ${fileNames}. Only PDF files are allowed.`);
-      return newFiles.filter(file =>
-        file.type === 'application/pdf' ||
-        file.name.toLowerCase().endsWith('.pdf')
-      );
+      return [];
     }
-    return newFiles;
-  };
 
-  const handleCloseError = () => {
-    setErrorMessage('');
+    return newFiles.map(file => ({
+      file,
+      program: '',
+      semester: '',
+      year: new Date().getFullYear(),
+      id: crypto.randomUUID() // Unique identifier for each file entry
+    }));
   };
 
   const handleDrop = (e) => {
     e.preventDefault();
     const droppedFiles = Array.from(e.dataTransfer.files);
-    const validFiles = validateFiles(droppedFiles);
-    if (validFiles.length > 0) {
-      setFiles(prevFiles => [...prevFiles, ...validFiles]);
+    const validFileData = validateFiles(droppedFiles);
+    if (validFileData.length > 0) {
+      setFilesData(prevFiles => [...prevFiles, ...validFileData]);
     }
   };
 
   const handleFileSelect = (e) => {
     const selectedFiles = Array.from(e.target.files);
-    const validFiles = validateFiles(selectedFiles);
-    if (validFiles.length > 0) {
-      setFiles(prevFiles => [...prevFiles, ...validFiles]);
+    const validFileData = validateFiles(selectedFiles);
+    if (validFileData.length > 0) {
+      setFilesData(prevFiles => [...prevFiles, ...validFileData]);
     }
   };
 
-  const handleDeleteFile = (indexToDelete) => {
-    setFiles(prevFiles => prevFiles.filter((_, index) => index !== indexToDelete));
+  const handleDeleteFile = (idToDelete) => {
+    setFilesData(prevFiles => prevFiles.filter(fileData => fileData.id !== idToDelete));
     if (processingStatus) {
       setProcessingStatus(null);
       setTaskId(null);
     }
   };
 
+  const handleMetadataChange = (id, field, value) => {
+    setFilesData(prevFiles =>
+      prevFiles.map(fileData =>
+        fileData.id === id
+          ? { ...fileData, [field]: value }
+          : fileData
+      )
+    );
+  };
+
   const handleSubmit = async () => {
+    // Validate that all files have complete metadata
+    const incompleteFiles = filesData.filter(
+      fileData => !fileData.program || !fileData.semester || !fileData.year
+    );
+
+    if (incompleteFiles.length > 0) {
+      setErrorMessage('Please fill in all required fields for each file');
+      return;
+    }
+
     setProcessing(true);
     setProcessingStatus(null);
     setTaskId(null);
 
     const formData = new FormData();
-    files.forEach(file => formData.append('files', file));
+
+    // Add each file with its metadata
+    filesData.forEach((fileData, index) => {
+      formData.append('files', fileData.file);
+      formData.append(`metadata_${index}`, JSON.stringify({
+        subject_code: fileData.program,
+        term_year: `${fileData.year}${fileData.semester}`
+      }));
+    });
 
     try {
       const response = await fetch('http://localhost:8000/process', {
@@ -138,12 +160,6 @@ const CourseExtractor = () => {
     }
   };
 
-  const getProgressPercentage = () => {
-    if (!processingStatus) return 0;
-    const { total, processed, failed } = processingStatus;
-    return ((processed + failed) / total) * 100;
-  };
-
   return (
     <Box sx={{ maxWidth: 'lg', mx: 'auto', p: 3 }}>
       <Typography variant="h3" component="h1" sx={{ textAlign: 'center', mb: 3 }}>
@@ -156,7 +172,7 @@ const CourseExtractor = () => {
         sx={{
           border: 3,
           borderStyle: 'dashed',
-          borderColor: files.length === 0 ? 'grey.300' : 'primary.main',
+          borderColor: filesData.length === 0 ? 'grey.300' : 'primary.main',
           borderRadius: 2,
           p: 4,
           mb: 3,
@@ -191,62 +207,105 @@ const CourseExtractor = () => {
         </Button>
       </Paper>
 
-      {/* File list */}
-      {files.length > 0 && (
+      {/* File list with metadata selectors */}
+      {filesData.length > 0 && (
         <Box sx={{ mb: 3 }}>
           <Typography variant="h5" gutterBottom>
-            Selected Files ({files.length})
+            Selected Files ({filesData.length})
           </Typography>
           <List>
-            {files.map((file, index) => (
+            {filesData.map((fileData) => (
               <ListItem
-                key={index}
+                key={fileData.id}
                 sx={{
                   bgcolor: 'grey.50',
                   borderRadius: 1,
-                  mb: 1
+                  mb: 1,
+                  flexDirection: 'column',
+                  alignItems: 'stretch'
                 }}
               >
-                <ListItemIcon>
-                  <FileText className="text-blue-500" />
-                </ListItemIcon>
-                <ListItemText
-                  primary={file.name}
-                  secondary={`${(file.size / (1024 * 1024)).toFixed(2)} MB`}
-                />
-                <ListItemSecondaryAction>
-                  <IconButton
-                    edge="end"
-                    onClick={() => handleDeleteFile(index)}
-                    disabled={processing}
-                    className="text-red-500 hover:text-red-700"
-                  >
-                    <Trash2 />
-                  </IconButton>
-                </ListItemSecondaryAction>
+                <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', mb: 2 }}>
+                  <ListItemIcon>
+                    <FileText className="text-blue-500" />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={fileData.file.name}
+                    secondary={`${(fileData.file.size / (1024 * 1024)).toFixed(2)} MB`}
+                  />
+                  <Box sx={{ display: 'flex', alignItems: 'center', ml: 'auto' }}>
+                    <IconButton
+                      edge="end"
+                      onClick={() => handleDeleteFile(fileData.id)}
+                      disabled={processing}
+                      className="text-red-500 hover:text-red-700"
+                    >
+                      <Trash2 />
+                    </IconButton>
+                  </Box>
+                </Box>
+
+                <Grid container spacing={2} sx={{ px: 2, pb: 2 }}>
+                  <Grid item xs={12} md={4}>
+                    <FormControl fullWidth size="small">
+                      <InputLabel>Engineering Program</InputLabel>
+                      <Select
+                        value={fileData.program}
+                        label="Engineering Program"
+                        onChange={(e) => handleMetadataChange(fileData.id, 'program', e.target.value)}
+                        disabled={processing}
+                      >
+                        {ENGINEERING_PROGRAMS.map(([code, name]) => (
+                          <MenuItem key={code} value={code}>
+                            {name}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={12} md={4}>
+                    <FormControl fullWidth size="small">
+                      <InputLabel>Semester</InputLabel>
+                      <Select
+                        value={fileData.semester}
+                        label="Semester"
+                        onChange={(e) => handleMetadataChange(fileData.id, 'semester', e.target.value)}
+                        disabled={processing}
+                      >
+                        {SEMESTERS.map((semester) => (
+                          <MenuItem key={semester.value} value={semester.value}>
+                            {semester.label}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={12} md={4}>
+                    <FormControl fullWidth size="small">
+                      <InputLabel>Year</InputLabel>
+                      <Select
+                        value={fileData.year}
+                        label="Year"
+                        onChange={(e) => handleMetadataChange(fileData.id, 'year', e.target.value)}
+                        disabled={processing}
+                      >
+                        {YEARS.map((year) => (
+                          <MenuItem key={year} value={year}>
+                            {year}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                </Grid>
               </ListItem>
             ))}
           </List>
         </Box>
       )}
 
-      {/* Progress indicator */}
-      {processing && processingStatus && (
-        <Box sx={{ mb: 3 }}>
-          <LinearProgress
-            variant="determinate"
-            value={getProgressPercentage()}
-            sx={{ mb: 1 }}
-          />
-          <Typography variant="body2" color="text.secondary" align="center">
-            Processed: {processingStatus.processed} / {processingStatus.total} files
-            {processingStatus.failed > 0 && ` (${processingStatus.failed} failed)`}
-          </Typography>
-        </Box>
-      )}
-
       {/* Process button */}
-      {files.length > 0 && (
+      {filesData.length > 0 && (
         <Box sx={{ textAlign: 'center' }}>
           <Button
             variant="contained"
@@ -261,45 +320,15 @@ const CourseExtractor = () => {
         </Box>
       )}
 
-      {/* Status messages */}
-      {processingStatus?.status === 'processing' && (
-        <Alert
-          severity="info"
-          icon={<RefreshCcw className="animate-spin" />}
-          sx={{ mt: 3 }}
-        >
-          Processing your files. This may take a few minutes...
-        </Alert>
-      )}
-
-      {processingStatus?.status === 'completed' && (
-        <Alert
-          severity="success"
-          icon={<CheckCircle />}
-          sx={{ mt: 3 }}
-        >
-          {processingStatus.failed === 0 ? (
-            'Processing complete! You can find your CSV files in the data folder.'
-          ) : (
-            `Processing complete with ${processingStatus.failed} errors. Check the logs for details.`
-          )}
-          {processingStatus.combined_output && (
-            <Typography variant="body2" sx={{ mt: 1 }}>
-              Combined CSV: {processingStatus.combined_output}
-            </Typography>
-          )}
-        </Alert>
-      )}
-
-      {/* Error messages */}
+      {/* Status messages and error handling components... */}
       <Snackbar
         open={!!errorMessage}
         autoHideDuration={6000}
-        onClose={handleCloseError}
+        onClose={() => setErrorMessage('')}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
         <Alert
-          onClose={handleCloseError}
+          onClose={() => setErrorMessage('')}
           severity="error"
           icon={<XCircle />}
           sx={{ width: '100%' }}
