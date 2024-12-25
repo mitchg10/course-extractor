@@ -62,7 +62,8 @@ class CourseDataMerger:
                     'end_time': course_info.get('end_time'),
                     'location': course_info.get('location'),
                     'exam_type': course_info.get('exam_type'),
-                    'seats': pdf_course.get('seats'),
+                    'seats': pdf_course.get('capacity') - pdf_course.get('seats'), # Changed to calculate taken seats
+                    # 'seats': pdf_course.get('seats'),
                     'capacity': pdf_course.get('capacity')
                 }
                 merged_courses.append(merged_course)
@@ -102,6 +103,7 @@ class CourseDataMerger:
             'total_pdf_courses': len(self.pdf_data),
             'total_timetable_courses': len(self.timetable_data),
             'total_merged_courses': len(self.merged_data),
-            'match_rate': len(self.merged_data) / len(self.timetable_data) if self.timetable_data else 0,
+            'match_rate': len(self.merged_data) / len(self.pdf_data) if self.pdf_data else 0,
+            # 'match_rate': len(self.merged_data) / len(self.timetable_data) if self.timetable_data else 0,
         }
         return stats

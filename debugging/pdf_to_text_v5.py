@@ -1,5 +1,3 @@
-# from pyvt import Timetable
-# from pyvt import Timetable
 from CourseDataMerger import CourseDataMerger
 # from pyvt import Timetable
 import pymupdf
@@ -9,7 +7,6 @@ from datetime import datetime
 import csv
 import re
 import pandas as pd
-# from pyvt import Timetable
 
 import sys
 from pathlib import Path
@@ -17,9 +14,10 @@ from pathlib import Path
 # Add the project root directory to Python path
 project_root = str(Path(__file__).parent.parent)
 sys.path.append(project_root)
-
 from pyvt import Timetable
 
+
+ENGINEERING_CODES = ["AOE", "BC", "BSE", "CEE", "CHE", "CS", "ECE", "ENGE", "ENGR", "ESM", "ISE", "ME", "MINE", "MSE", "NSEG"]
 
 EXPECTED_HEADERS = ["CRN", "Course", "Title", "Schedule Type", "Modality", "Cr Hrs", "Seats", "Capacity", "Instructor", "Days", "Begin", "End", "Location", "on"]
 ROW_GAP_THRESHOLD = 10.0   # Vertical gap threshold between rows. Adjust as needed.
@@ -42,7 +40,7 @@ COLUMN_TOLERANCES = {
 
 
 def setup_logger(name):
-    """Set up logger with file and console handlers."""
+    """Set up logger with file handler."""
     import os
     if not os.path.exists('logs'):
         os.makedirs('logs')
@@ -62,12 +60,6 @@ def setup_logger(name):
 
     logger.addHandler(fh)
 
-    # Add console handler for debugging
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.DEBUG)
-    ch.setFormatter(formatter)
-    logger.addHandler(ch)
-
     return logger
 
 
@@ -81,11 +73,10 @@ def fetch_from_timetable(subject_code, term_year=None):
     # Print the first 5 sections in the subjects
     # for i in range(5):
     #     subjects[i].print_info()
-
     return subjects
 
 
-def process_pdf(pdf_path):
+def process_pdf(logger, pdf_path):
     """
     Process all pages in the PDF and extract course information.
     Headers are only on the first page, so we'll use those column boundaries for all pages.
@@ -142,7 +133,7 @@ def process_pdf(pdf_path):
                     f.write(f'{row}\n')
 
         # Extract course info from this page
-        page_courses = extract_course_info(rows, page_num)
+        page_courses = extract_course_info(logger, rows, page_num)
         logger.info(f"Found {len(page_courses)} courses on page {page_num + 1}")
         all_courses.extend(page_courses)
 
@@ -327,7 +318,7 @@ def cluster_words_into_rows(words_in_columns):
     return rows
 
 
-def extract_course_info(rows, page_num):
+def extract_course_info(logger, rows, page_num):
     """
     Extract and validate CRN, Seats, and Capacity information from rows data.
 
@@ -340,8 +331,6 @@ def extract_course_info(rows, page_num):
     """
     courses = []
     current_info = {}
-
-    logger = logging.getLogger('course_extraction')
 
     logger.info(f"=== Processing Pages ===")
     logger.info(f"Number of rows to process: {len(rows)} from page {page_num + 1}")
@@ -368,7 +357,7 @@ def extract_course_info(rows, page_num):
             # If we have all required fields, add the course
             if 'crn' in current_info and 'seats' in current_info and 'capacity' in current_info:
                 courses.append(current_info.copy())
-                logger.info(f"Adding course info: {current_info}")
+                # logger.info(f"Adding course info: {current_info}")
                 current_info = {}
 
     return courses
@@ -385,68 +374,103 @@ def filter_graduate_courses(merged_courses):
     return graduate_courses
 
 
-def save_graduate_courses_to_csv(graduate_courses, filename="graduate_courses.csv"):
+def save_graduate_courses_to_csv(logger, graduate_courses, filename="graduate_courses.csv"):
     output_path = Path(__file__).parent / filename
     df = pd.DataFrame(graduate_courses)
     df.to_csv(output_path, index=False)
     logger.info(f"Saved merged data to {output_path}")
 
 
-def find_underenrolled_classes(graduate_courses):
-    underenrolled_courses = []
-    ignore_courses = ['Research and Dissertation', 'Project and Report', 'Independent Study', 'Research and Thesis']
+def find_underenrolled_classes(logger, graduate_courses):
+    ignore_courses = ['Research and Dissertation', 'Project and Report', 'Independent Study',
+                      'Research and Thesis', 'Final Examination', 'Seminar', 'Capstone Project']
 
-    combined_courses = []
-    i = 0
-    while i < len(graduate_courses):
-        current_course = graduate_courses[i]
-        combined_course = current_course.copy()
-        combined_course['seats'] = current_course['seats']
+    # Group courses by code and name to handle cross-listings
+    course_groups = {}
+    for course in graduate_courses:
+        if course['name'] in ignore_courses:
+            continue
 
-        # Combine cross-listed courses
-        j = i + 1
-        while j < len(graduate_courses):
-            if graduate_courses[j]['code'] == current_course['code'] and graduate_courses[j]['name'] == current_course['name']:
-                combined_course['seats'] += graduate_courses[j]['seats']
-                combined_course['capacity'] += graduate_courses[j]['capacity']
-            j += 1
+        key = (course['code'], course['name'])
+        if key not in course_groups:
+            course_groups[key] = {
+                'courses': [],
+                'total_seats': 0,
+                'total_capacity': 0
+            }
 
-        combined_courses.append(combined_course)
-        i = j
+        group = course_groups[key]
+        group['courses'].append(course)
+        group['total_seats'] += course['seats']
+        group['total_capacity'] += course['capacity']
 
-    for course in combined_courses:
-        if course['seats'] < 6 and course['name'] not in ignore_courses:
-            underenrolled_courses.append(course)
-            logger.info(f"Underenrolled course: {course['code']}, {course['crn']} - Seats: {course['seats']}")
+    # Find underenrolled courses/groups
+    underenrolled = []
+    for (code, name), group in course_groups.items():
+        if group['total_seats'] < 6:
+            # Use the first course as base and update with combined totals
+            base_course = group['courses'][0].copy()
+            base_course['seats'] = group['total_seats']
+            base_course['capacity'] = group['total_capacity']
+            base_course['cross_listed'] = len(group['courses']) > 1
 
-    if underenrolled_courses:
-        print(f"\n\n\nFound {len(underenrolled_courses)} underenrolled courses")
+            underenrolled.append(base_course)
+            logger.info(f"Underenrolled {'combined ' if base_course['cross_listed'] else ''}"
+                        f"course: {code}, {base_course['crn']} - Seats: {base_course['seats']}")
+
+    print(f"\n\n\nFound {len(underenrolled)} underenrolled courses")
+    return underenrolled
+
+
+def main():
+    pdf_file = input("Enter the path to the PDF file: ")
+    subject = input("Enter the subject code: ")
+    term = input("Enter the term (Spring, Summer I, Summer II, Fall, Winter): ")
+    year = input("Enter the year: ")
+
+    # Verify a valid year string
+    if not year.isdigit() or len(year) != 4:
+        print("Invalid year. Exiting...")
+        return
+
+    # Get the term
+    term_code = ""
+    if term.lower() == "spring":
+        term_code = "01"
+    elif term.lower() == "summer i":
+        term_code = "06"
+    elif term.lower() == "summer ii":
+        term_code = "07"
+    elif term.lower() == "fall":
+        term_code = "09"
+    elif term.lower() == "winter":  # Not sure if this is true
+        term_code = "12"
     else:
-        print("\n\n\nNo underenrolled courses found")
+        print("Invalid term. Exiting...")
+        return
 
-    return underenrolled_courses
+    # Create the term string
+    term_year = f"{year}{term_code}"
 
+    # Make sure the PDF file exists
+    pdf_file = pdf_file.strip('"').strip("'")
+    pdf_path = Path(pdf_file)
+    if not pdf_path.exists():
+        print("PDF file not found. Exiting...")
+        return
 
-if __name__ == "__main__":
-    # pdf_file = "/Users/mitchellgerhardt/Desktop/Fall2024_AOE.pdf"
-    pdf_file = "/Users/mitchellgerhardt/Desktop/Spring2025_COE.pdf"
-
-    term = "202501"  # [1, 6, 7, 9] <- Spring, Summer I, Summer II, Fall
-    subject = "CEE"
+    # Verify a valid subject code
+    if not any(code in subject for code in ENGINEERING_CODES):
+        print("Invalid subject code. Exiting...")
+        return
 
     # Setup logger
     logger = setup_logger('course_extraction')
 
     # Timetable data
-    timetable_data = fetch_from_timetable(subject, term_year=term) 
+    timetable_data = fetch_from_timetable(subject, term_year=term_year)
 
-    course_data = process_pdf(pdf_file)
-
-    # Write to a CSV file
-    # with open("course_data.csv", "w", encoding="utf-8") as f:
-    #     f.write("CRN,Seats,Capacity\n")
-    #     for course in course_data:
-    #         f.write(f"{course['crn']},{course['seats']},{course['capacity']}\n")
+    course_data = process_pdf(logger, pdf_file)
 
     # Create merger instance
     merger = CourseDataMerger()
@@ -458,9 +482,6 @@ if __name__ == "__main__":
     # Merge the data
     merged_courses = merger.merge_course_data()
 
-    # Save to CSV
-    # merger.save_to_csv("merged_course_data_aoe.csv")
-
     # Print statistics
     stats = merger.get_statistics()
     print("\nMerging Statistics:")
@@ -468,9 +489,13 @@ if __name__ == "__main__":
         print(f"{key}: {value}")
     print("\n")
 
-    # New code to filter and save graduate courses
+    # Filter and save graduate courses
     graduate_courses = filter_graduate_courses(merged_courses)
-    save_graduate_courses_to_csv(graduate_courses, filename=f"graduate_courses_{subject}_{term}.csv")
+    save_graduate_courses_to_csv(logger, graduate_courses, filename=f"graduate_courses_{subject}_{term_year}.csv")
 
     # Find underenrolled courses
-    underenrolled_courses = find_underenrolled_classes(graduate_courses)
+    underenrolled_courses = find_underenrolled_classes(logger, graduate_courses)
+
+
+if __name__ == "__main__":
+    main()
