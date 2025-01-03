@@ -1,50 +1,42 @@
-course-extractor/
+course_extractor/
+│
+├── frontend/                      # React frontend
+│   ├── package.json
+│   ├── vite.config.js            # Using Vite for faster development
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── CourseExtractor.jsx
+│   │   │   └── StatusDisplay.jsx
+│   │   ├── services/
+│   │   │   └── api.js           # API interaction logic
+│   │   └── utils/
+│   │       └── logger.js        # Frontend logging setup
+│   └── public/
+│
+├── backend/                       # FastAPI backend
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── main.py              # FastAPI application
+│   │   ├── config.py            # Configuration settings
+│   │   ├── api/
+│   │   │   ├── __init__.py
+│   │   │   ├── routes.py        # API endpoints
+│   │   │   └── models.py        # Pydantic models
+│   │   ├── core/
+│   │   │   ├── __init__.py
+│   │   │   ├── pdf_processor.py # PDF processing logic
+│   │   │   └── merger.py        # Data merging logic
+│   │   └── utils/
+│   │       ├── __init__.py
+│   │       └── logger.py        # Logging configuration
+│   └── tests/                    # Backend tests
+│       └── __init__.py
+│
+├── logs/                         # Application logs
+│   ├── backend/
+│   └── frontend/
 │
 ├── .env                          # Environment variables
-├── Dockerfile                    # Main application container definition
-├── docker-compose.yml           # Container orchestration config
-├── requirements.txt             # Python dependencies
-│
-├── setup/
-│   ├── setup_ollama.sh         # Ollama initialization script
-│   ├── entrypoint.sh           # Container entrypoint script
-│   ├── start_extractor.bat     # Windows launcher
-│   ├── stop_extractor.bat      # Windows shutdown script
-│   ├── start_extractor.sh      # Linux/Mac launcher
-│   └── stop_extractor.sh       # Linux/Mac shutdown script
-│
-├── frontend/
-│   ├── package.json            # Node.js dependencies
-│   ├── public/                 # Static assets
-│   └── src/
-│       ├── components/         # React components
-│       │   └── CourseExtractor.jsx  # Main UI component
-│       ├── App.jsx            # Root React component
-│       └── index.jsx          # Entry point
-│
-├── backend/
-│   ├── __init__.py
-│   ├── app.py                 # Main application logic
-│   ├── extraction/
-│   │   ├── __init__.py
-│   │   ├── pdf_processor.py   # PDF handling logic
-│   │   └── data_extractor.py  # LLM extraction logic
-│   ├── monitoring/
-│   │   ├── __init__.py
-│   │   └── monitoring.py      # System monitoring code
-│   └── utils/
-│       ├── __init__.py
-│       └── error_handler.py   # Error handling utilities
-│
-├── config/
-│   ├── logging_config.json    # Logging configuration
-│   └── app_config.json        # Application settings
-│
-├── data/
-│   ├── individual/            # Individual course CSVs
-│   └── combined/             # Combined course CSVs
-│
-├── logs/
-│   └── .gitkeep              # Placeholder for log directory
-│
-└── README.md                  # Project documentation
+├── docker-compose.yml            # Docker composition
+├── README.md                     # Project documentation
+└── requirements.txt              # Python dependencies

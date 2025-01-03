@@ -1,0 +1,190 @@
+crn,code,name,lecture_type,modality,credits,instructor,days,start_time,end_time,location,exam_type,seats,capacity
+18122,MINE 5904,Project and Report,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,18123,0,0
+18123,MINE 5904,Project and Report,R,,1 TO 19,RE Bishop,(ARR),(ARR),TBA,00X,18124,0,9999
+18124,MINE 5944,Seminar,L,Face to Face Instruction,1,EA Sarver,F,1:00PM,2:00PM,HOLD 211,00X,10,25
+18125,MINE 5974,Independent Study,I,,1 TO 19,RE Bishop,(ARR),(ARR),TBA,00X,22066,0,9999
+22066,MINE 5984,SS: Mining Finance,L,Face to Face Instruction,3,RE Bishop,W,2:00PM,5:00PM,HOLD 211,14W,3,10
+22067,MINE 5984,SS: Programming for Resources,L01,Face to Face Instruction,3,B Nojabaei,T R,12:30PM,1:45PM,HOLD 221,12T,5,30
+18126,MINE 5994,Research and Thesis,R,,1 TO 19,EC Westman,(ARR),(ARR),TBA,00X,18127,0,30
+18127,MINE 5994,Research and Thesis,R,,1 TO 19,R Pandey,(ARR),(ARR),TBA,00X,18128,1,9999
+18128,MINE 5994,Research and Thesis,R,,1 TO 19,RE Bishop,(ARR),(ARR),TBA,00X,18129,0,9999
+18129,MINE 5994,Research and Thesis,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,18130,0,9999
+18130,MINE 5994,Research and Thesis,R,,1 TO 19,EA Sarver,(ARR),(ARR),TBA,00X,18131,0,9999
+18131,MINE 5994,Research and Thesis,R,,1 TO 19,NS Ripepi,(ARR),(ARR),TBA,00X,18132,1,9999
+18132,MINE 5994,Research and Thesis,R,,1 TO 19,R Pollyea,(ARR),(ARR),TBA,00X,18133,0,10
+18133,MINE 5994,Research and Thesis,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,18134,0,9999
+18134,MINE 5994,Research and Thesis,R,,1 TO 19,W Zhang,(ARR),(ARR),TBA,00X,18135,1,9999
+18135,MINE 5994,Research and Thesis,R,,1 TO 19,CA Noble,(ARR),(ARR),TBA,00X,18136,0,9999
+18136,MINE 5994,Research and Thesis,R,,1 TO 19,B Nojabaei,(ARR),(ARR),TBA,00X,18137,0,9999
+18137,MINE 5994,Research and Thesis,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,18138,0,0
+18138,MINE 5994,Research and Thesis,R,,1 TO 19,RH Yoon,(ARR),(ARR),TBA,00X,18139,0,9999
+18139,MINE 7994,Research and Dissertation,R,,1 TO 19,NS Ripepi,(ARR),(ARR),TBA,00X,18140,0,9999
+18140,MINE 7994,Research and Dissertation,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,18141,0,9999
+18141,MINE 7994,Research and Dissertation,R,,1 TO 19,R Pollyea,(ARR),(ARR),TBA,00X,18142,0,10
+18142,MINE 7994,Research and Dissertation,R,,1 TO 19,B Nojabaei,(ARR),(ARR),TBA,00X,18143,3,9999
+18143,MINE 7994,Research and Dissertation,R,,1 TO 19,RH Yoon,(ARR),(ARR),TBA,00X,18144,0,9999
+18144,MINE 7994,Research and Dissertation,R,,1 TO 19,EA Sarver,(ARR),(ARR),TBA,00X,18145,0,9999
+18145,MINE 7994,Research and Dissertation,R,,1 TO 19,CA Noble,(ARR),(ARR),TBA,00X,18146,3,9999
+18146,MINE 7994,Research and Dissertation,R,,1 TO 19,EC Westman,(ARR),(ARR),TBA,00X,18147,1,9999
+18147,MINE 7994,Research and Dissertation,R,,1 TO 19,RE Bishop,(ARR),(ARR),TBA,00X,18148,0,9999
+18148,MINE 7994,Research and Dissertation,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,18149,0,9999
+18149,MINE 7994,Research and Dissertation,R,,1 TO 19,R Pandey,(ARR),(ARR),TBA,00X,18150,2,9999
+18150,MINE 7994,Research and Dissertation,R,,1 TO 19,W Zhang,(ARR),(ARR),TBA,00X,,1,9999
+14930,ENGE 5304,Grad Stud Succ Multicult Envir,L,Face to Face Instruction,1,SL Rodriguez,(ARR),(ARR),TBA,00X,14931,54,80
+14931,ENGE 5304,Grad Stud Succ Multicult Envir,L,Face to Face Instruction,1,SL Rodriguez,W,3:35PM,5:35PM,GOODW 190,00X,21,120
+14932,ENGE 5304,Grad Stud Succ Multicult Envir,ONLINE COURSE   VL,Online with Synchronous Mtgs.,1,SL Rodriguez,T,6:00PM,8:00PM,ONLINE,00X,45,160
+14933,ENGE 5514,App Dsgn/Assess of Eng Ed Exp,L,Face to Face Instruction,3,N Pitterson,W,9:20AM,12:05PM,GOODW 244,09W,7,20
+14934,ENGE 5704,EngE Graduate Seminar,L,Face to Face Instruction,1,C Wallwey,F,10:10AM,11:00AM,GOODW 145,00X,14,70
+14935,ENGE 5974,Independent Study,I,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,14936,0,0
+14936,ENGE 5974,Independent Study,I,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,14937,0,0
+14937,ENGE 5974,Independent Study,I,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,14938,0,0
+14938,ENGE 5974,Independent Study,I,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,14939,0,0
+14939,ENGE 5994,Research and Thesis,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,14940,0,0
+14940,ENGE 6614,Quant Data Analysis in Engr Ed,L,Face to Face Instruction,3,D Kim,T,9:30AM,12:15PM,GOODW 244,09T,7,28
+14941,ENGE 6624,Qual Data Analysis in Engr Edu,L,Face to Face Instruction,3,Q Zhu,R,9:30AM,12:15PM,GOODW 244,09R,10,28
+21425,ENGE 6714,TS:Issues in STEM Grad Edu,L,Face to Face Instruction,3,VK Lohani,M,9:20AM,12:05PM,GOODW 244,09M,5,20
+14942,ENGE 6974,Independent Study,I,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,14943,0,0
+14943,ENGE 6974,Independent Study,I,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,14944,0,0
+14944,ENGE 7994,Research and Dissertation,R,,1 TO 19,SL Rodriguez,(ARR),(ARR),TBA,00X,14945,2,10
+14945,ENGE 7994,Research and Dissertation,R,,1 TO 19,D Kim,(ARR),(ARR),TBA,00X,14946,3,10
+14946,ENGE 7994,Research and Dissertation,R,,1 TO 19,WC Lee,(ARR),(ARR),TBA,00X,14947,1,10
+14947,ENGE 7994,Research and Dissertation,R,,1 TO 19,MV Huerta,(ARR),(ARR),TBA,00X,14948,2,10
+14948,ENGE 7994,Research and Dissertation,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,14949,0,0
+14949,ENGE 7994,Research and Dissertation,R,,1 TO 19,H Matusovich,(ARR),(ARR),TBA,00X,14950,0,10
+14950,ENGE 7994,Research and Dissertation,R,,1 TO 19,ED McNair,(ARR),(ARR),TBA,00X,14951,0,10
+14951,ENGE 7994,Research and Dissertation,R,,1 TO 19,VK Lohani,(ARR),(ARR),TBA,00X,14952,0,10
+14952,ENGE 7994,Research and Dissertation,R,,1 TO 19,JR Grohs,(ARR),(ARR),TBA,00X,14953,1,10
+14953,ENGE 7994,Research and Dissertation,R,,1 TO 19,DB Knight,(ARR),(ARR),TBA,00X,14954,2,10
+14954,ENGE 7994,Research and Dissertation,R,,1 TO 19,AS Katz,(ARR),(ARR),TBA,00X,14955,2,10
+14955,ENGE 7994,Research and Dissertation,R,,1 TO 19,JM Case,(ARR),(ARR),TBA,00X,14956,0,10
+14956,ENGE 7994,Research and Dissertation,R,,1 TO 19,N Pitterson,(ARR),(ARR),TBA,00X,14957,0,10
+14957,ENGE 7994,Research and Dissertation,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,14958,0,0
+14958,ENGE 7994,Research and Dissertation,R,,1 TO 19,MC Paretti,(ARR),(ARR),TBA,00X,14959,2,10
+14959,ENGE 7994,Research and Dissertation,R,,1 TO 19,Q Zhu,(ARR),(ARR),TBA,00X,14960,2,10
+14960,ENGE 7994,Research and Dissertation,R,,1 TO 19,S Sajadi,(ARR),(ARR),TBA,00X,14961,0,10
+14961,ENGE 7994,Research and Dissertation,R,,1 TO 19,D Bairaktarova,(ARR),(ARR),TBA,00X,,3,10
+16861,ISE 5016,Mgt Organizational Systems,L,Televised Course,3,JR Godfrey,R,7:00PM,9:45PM,TORG 1050,19R,16,25
+16862,ISE 5016,Mgt Organizational Systems,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,JR Godfrey,R,7:00PM,9:45PM,ONLINE,19R,10,10
+16864,ISE 5054,Engineering Discourse,ONLINE COURSE   VL,Online: Asynchronous,3,KE Carper,(ARR),(ARR),ONLINE,00X,21356,9,40
+21356,ISE 5114,Ind Engr Case Studies,L,Televised Course,3,JR Godfrey,W,7:00PM,9:45PM,WHIT 281,19W,4,20
+21358,ISE 5114,Ind Engr Case Studies,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,JR Godfrey,W,7:00PM,9:45PM,ONLINE,19W,3,10
+16865,ISE 5134,Enterprise Information Systems,L,Televised Course,3,JP Geraghty,R,4:00PM,6:45PM,TORG 1030,16R,12,20
+16866,ISE 5134,Enterprise Information Systems,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,JP Geraghty,R,4:00PM,6:45PM,ONLINE,16R,6,20
+21352,ISE 5174,Engr Program Project Mgt,L,Televised Course,3,JR Godfrey,M,4:00PM,6:45PM,TORG 1050,16M,15,15
+16867,ISE 5174,Engr Program Project Mgt,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,JR Godfrey,M,4:00PM,6:45PM,ONLINE,16M,14,14
+16869,ISE 5406,Optimization,L,Face to Face Instruction,3,R Kannan,T R,8:00AM,9:15AM,DURHM 261,08T,17,30
+16870,ISE 5414,Random Process,L,Face to Face Instruction,3,H Zhong,T R,2:00PM,3:15PM,DURHM 261,14T,13,30
+16871,ISE 5454,Prod Plan and Cont,L,Face to Face Instruction,3,SC Sarin,T R,12:30PM,1:45PM,WHIT 257,12T,8,20
+16872,ISE 5624,Human Factors Research Design,L,Face to Face Instruction,4,MA Nussbaum,M W,9:05AM,10:45AM,WHIT 518,09M,11,30
+21359,ISE 5644,Auditory Display Des,L,Face to Face Instruction,3,R Patrick,M W,12:30PM,1:45PM,WHIT 518,12M,20,30
+21360,ISE 5674,System Safety Analysis,L,Face to Face Instruction,3,SG Klauer,T R,3:30PM,4:45PM,DURHM 261,15T,11,30
+16873,ISE 5714,Usability Engineering,L,Face to Face Instruction,3,D Gracanin,M W,2:30PM,3:45PM,GYM 332,14M,20,20
+16875,ISE 5734,Occup Health Safety Practicum,L,,3,MA Nussbaum,(ARR),(ARR),TBA,00X,16877,0,5
+16877,ISE 5834,Decision Analysis for Engr,L,Face to Face Instruction,3,TG Topcu,T,5:00PM,7:45PM,WHIT 281,17T,14,15
+16878,ISE 5834,Decision Analysis for Engr,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,TG Topcu,T,5:00PM,7:45PM,ONLINE,17T,10,10
+21361,ISE 5844,Healthcare Sys Engr & Modeling,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,N Hosseinichimeh,W,4:00PM,6:45PM,ONLINE,16W,19,30
+16880,ISE 5874,Digital Engineering,L,Face to Face Instruction,3,P Wach,W,4:00PM,6:45PM,MCB 328,16W,4,20
+16881,ISE 5874,Digital Engineering,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,P Wach,W,4:00PM,6:45PM,ONLINE,16W,13,20
+16883,ISE 5904,Project and Report,R,,1 TO 19,TG Topcu,(ARR),(ARR),TBA,00X,16884,1,1
+16884,ISE 5904,Project and Report,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,16885,0,0
+16885,ISE 5904,Project and Report,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,16886,0,0
+16886,ISE 5904,Project and Report,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,16887,0,0
+16887,ISE 5974,Independent Study,I,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,16888,0,0
+16888,ISE 5974,Independent Study,I,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,16889,0,0
+16889,ISE 5974,Independent Study,I,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,16890,0,0
+16890,ISE 5974,Independent Study,I,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,16891,0,0
+16891,ISE 5974,Independent Study,I,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,16892,0,0
+16892,ISE 5974,Independent Study,I,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,21955,0,0
+21955,ISE 5984,SS: Game Theory & OR Appls,L01,Face to Face Instruction,3,S Tunc,M W,4:00PM,5:15PM,GOODW 244,16M,4,15
+22006,ISE 5984,SS: Industr Internet Smart Mfg,L,Face to Face Instruction,3,R Jin,T R,9:30AM,10:45AM,WHIT 518,09T,4,15
+22063,ISE 5984,SS: Metal Additive Mfg.,L02,Face to Face Instruction,3,PK Rao,M W,2:30PM,3:45PM,WHIT 518,14M,13,15
+22100,ISE 5984,SS:Reinforcement Lrng for ISEs,L03,Face to Face Instruction,3,S Khodadadian,M W F,11:15AM,12:05PM,WHIT 518,11M,10,15
+16897,ISE 5994,Research and Thesis,R,,1 TO 19,M Bansal,(ARR),(ARR),TBA,00X,16898,0,99
+16898,ISE 5994,Research and Thesis,R,,1 TO 19,PA Beling,(ARR),(ARR),TBA,00X,16899,0,99
+16899,ISE 5994,Research and Thesis,R,,1 TO 19,E Buyuktahtakin Toy,(ARR),(ARR),TBA,00X,16900,0,99
+16900,ISE 5994,Research and Thesis,R,,1 TO 19,JG Casali,(ARR),(ARR),TBA,00X,16901,1,99
+16901,ISE 5994,Research and Thesis,R,,1 TO 19,X Chen,(ARR),(ARR),TBA,00X,16902,0,99
+16902,ISE 5994,Research and Thesis,R,,1 TO 19,DE Dickerson,(ARR),(ARR),TBA,00X,16903,0,99
+16903,ISE 5994,Research and Thesis,R,,1 TO 19,KP Ellis,(ARR),(ARR),TBA,00X,16904,0,99
+16904,ISE 5994,Research and Thesis,R,,1 TO 19,JL Gabbard,(ARR),(ARR),TBA,00X,16905,0,99
+16905,ISE 5994,Research and Thesis,R,,1 TO 19,N Ghaffarzadegan,(ARR),(ARR),TBA,00X,16906,0,99
+16906,ISE 5994,Research and Thesis,R,,1 TO 19,R Hildebrand,(ARR),(ARR),TBA,00X,16907,0,99
+16907,ISE 5994,Research and Thesis,R,,1 TO 19,N Hosseinichimeh,(ARR),(ARR),TBA,00X,16908,0,99
+16908,ISE 5994,Research and Thesis,R,,1 TO 19,M Jeon,(ARR),(ARR),TBA,00X,16909,0,99
+16909,ISE 5994,Research and Thesis,R,,1 TO 19,R Jin,(ARR),(ARR),TBA,00X,16910,1,99
+16910,ISE 5994,Research and Thesis,R,,1 TO 19,B Johnson,(ARR),(ARR),TBA,00X,16911,0,99
+16911,ISE 5994,Research and Thesis,R,,1 TO 19,R Kannan,(ARR),(ARR),TBA,00X,16912,3,99
+16912,ISE 5994,Research and Thesis,R,,1 TO 19,S Khodadadian,(ARR),(ARR),TBA,00X,16913,0,99
+16913,ISE 5994,Research and Thesis,R,,1 TO 19,SG Klauer,(ARR),(ARR),TBA,00X,16914,0,99
+16914,ISE 5994,Research and Thesis,R,,1 TO 19,BM Kleiner,(ARR),(ARR),TBA,00X,16915,0,99
+16915,ISE 5994,Research and Thesis,R,,1 TO 19,Z Kong,(ARR),(ARR),TBA,00X,16916,1,99
+16916,ISE 5994,Research and Thesis,R,,1 TO 19,A L'Afflitto,(ARR),(ARR),TBA,00X,16917,0,99
+16917,ISE 5994,Research and Thesis,R,,1 TO 19,NK Lau,(ARR),(ARR),TBA,00X,16918,0,99
+16918,ISE 5994,Research and Thesis,R,,1 TO 19,SI Lim,(ARR),(ARR),TBA,00X,16919,0,99
+16919,ISE 5994,Research and Thesis,R,,1 TO 19,ML Madigan,(ARR),(ARR),TBA,00X,16920,0,99
+16920,ISE 5994,Research and Thesis,R,,1 TO 19,JD Moreland,(ARR),(ARR),TBA,00X,16921,0,99
+16921,ISE 5994,Research and Thesis,R,,1 TO 19,MA Nussbaum,(ARR),(ARR),TBA,00X,16922,0,99
+16922,ISE 5994,Research and Thesis,R,,1 TO 19,HS Parks,(ARR),(ARR),TBA,00X,16923,3,99
+16923,ISE 5994,Research and Thesis,R,,1 TO 19,R Patrick,(ARR),(ARR),TBA,00X,16924,2,99
+16924,ISE 5994,Research and Thesis,R,,1 TO 19,MA Perez,(ARR),(ARR),TBA,00X,16925,0,99
+16925,ISE 5994,Research and Thesis,R,,1 TO 19,PK Rao,(ARR),(ARR),TBA,00X,16926,1,99
+16926,ISE 5994,Research and Thesis,R,,1 TO 19,SC Sarin,(ARR),(ARR),TBA,00X,16927,0,99
+16927,ISE 5994,Research and Thesis,R,,1 TO 19,JP Shewchuk,(ARR),(ARR),TBA,00X,16928,0,99
+16928,ISE 5994,Research and Thesis,R,,1 TO 19,B Song,(ARR),(ARR),TBA,00X,16929,0,99
+16929,ISE 5994,Research and Thesis,R,,1 TO 19,GD Taylor,(ARR),(ARR),TBA,00X,16930,0,99
+16930,ISE 5994,Research and Thesis,R,,1 TO 19,TG Topcu,(ARR),(ARR),TBA,00X,16931,2,99
+16931,ISE 5994,Research and Thesis,R,,1 TO 19,KP Triantis,(ARR),(ARR),TBA,00X,16932,0,99
+16932,ISE 5994,Research and Thesis,R,,1 TO 19,K Tsui,(ARR),(ARR),TBA,00X,16933,1,99
+16933,ISE 5994,Research and Thesis,R,,1 TO 19,S Tunc,(ARR),(ARR),TBA,00X,16934,0,99
+16934,ISE 5994,Research and Thesis,R,,1 TO 19,EM Van Aken,(ARR),(ARR),TBA,00X,16935,0,99
+16935,ISE 5994,Research and Thesis,R,,1 TO 19,H Zhong,(ARR),(ARR),TBA,00X,16936,1,99
+16936,ISE 5994,Research and Thesis,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,16937,0,99
+16937,ISE 5994,Research and Thesis,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,16938,0,99
+16938,ISE 5994,Research and Thesis,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,21363,0,99
+21363,ISE 6024,Adv Topics in Mgt Systems Engr,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,KP Triantis,W,4:00PM,6:45PM,ONLINE,16W,4,20
+21364,ISE 6454,Stochastic & Robust Optimiz,L,Face to Face Instruction,3,M Bansal,T R,9:30AM,10:45AM,DURHM 261,09T,10,30
+16948,ISE 6574,Adaptive Control Systems,L,Face to Face Instruction,3,A L'Afflitto,T R,2:00PM,3:15PM,PAT 207,14T,18,20
+16949,ISE 6574,Adaptive Control Systems,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,A L'Afflitto,T R,2:00PM,3:15PM,ONLINE,14T,3,10
+21365,ISE 6614,Human Computer Systems,L,Face to Face Instruction,3,NK Lau,T R,12:30PM,1:45PM,WHIT 518,12T,11,30
+16952,ISE 7994,Research and Dissertation,R,,1 TO 19,M Bansal,(ARR),(ARR),TBA,00X,16953,2,99
+16953,ISE 7994,Research and Dissertation,R,,1 TO 19,PA Beling,(ARR),(ARR),TBA,00X,16954,0,99
+16954,ISE 7994,Research and Dissertation,R,,1 TO 19,E Buyuktahtakin Toy,(ARR),(ARR),TBA,00X,16955,2,99
+16955,ISE 7994,Research and Dissertation,R,,1 TO 19,JG Casali,(ARR),(ARR),TBA,00X,16956,0,99
+16956,ISE 7994,Research and Dissertation,R,,1 TO 19,X Chen,(ARR),(ARR),TBA,00X,16957,0,99
+16957,ISE 7994,Research and Dissertation,R,,1 TO 19,DE Dickerson,(ARR),(ARR),TBA,00X,16958,1,99
+16958,ISE 7994,Research and Dissertation,R,,1 TO 19,KP Ellis,(ARR),(ARR),TBA,00X,16959,0,99
+16959,ISE 7994,Research and Dissertation,R,,1 TO 19,JL Gabbard,(ARR),(ARR),TBA,00X,16960,4,99
+16960,ISE 7994,Research and Dissertation,R,,1 TO 19,N Ghaffarzadegan,(ARR),(ARR),TBA,00X,16961,0,99
+16961,ISE 7994,Research and Dissertation,R,,1 TO 19,R Hildebrand,(ARR),(ARR),TBA,00X,16962,1,99
+16962,ISE 7994,Research and Dissertation,R,,1 TO 19,N Hosseinichimeh,(ARR),(ARR),TBA,00X,16963,0,99
+16963,ISE 7994,Research and Dissertation,R,,1 TO 19,M Jeon,(ARR),(ARR),TBA,00X,16964,0,99
+16964,ISE 7994,Research and Dissertation,R,,1 TO 19,R Jin,(ARR),(ARR),TBA,00X,16965,0,99
+16965,ISE 7994,Research and Dissertation,R,,1 TO 19,B Johnson,(ARR),(ARR),TBA,00X,16966,0,99
+16966,ISE 7994,Research and Dissertation,R,,1 TO 19,R Kannan,(ARR),(ARR),TBA,00X,16967,2,99
+16967,ISE 7994,Research and Dissertation,R,,1 TO 19,S Khodadadian,(ARR),(ARR),TBA,00X,16968,1,99
+16968,ISE 7994,Research and Dissertation,R,,1 TO 19,SG Klauer,(ARR),(ARR),TBA,00X,16969,1,99
+16969,ISE 7994,Research and Dissertation,R,,1 TO 19,BM Kleiner,(ARR),(ARR),TBA,00X,16970,0,99
+16970,ISE 7994,Research and Dissertation,R,,1 TO 19,Z Kong,(ARR),(ARR),TBA,00X,16971,1,99
+16971,ISE 7994,Research and Dissertation,R,,1 TO 19,A L'Afflitto,(ARR),(ARR),TBA,00X,16972,0,99
+16972,ISE 7994,Research and Dissertation,R,,1 TO 19,NK Lau,(ARR),(ARR),TBA,00X,16973,1,99
+16973,ISE 7994,Research and Dissertation,R,,1 TO 19,SI Lim,(ARR),(ARR),TBA,00X,16974,3,99
+16974,ISE 7994,Research and Dissertation,R,,1 TO 19,ML Madigan,(ARR),(ARR),TBA,00X,16975,2,99
+16975,ISE 7994,Research and Dissertation,R,,1 TO 19,JD Moreland,(ARR),(ARR),TBA,00X,16976,0,99
+16976,ISE 7994,Research and Dissertation,R,,1 TO 19,MA Nussbaum,(ARR),(ARR),TBA,00X,16977,0,99
+16977,ISE 7994,Research and Dissertation,R,,1 TO 19,HS Parks,(ARR),(ARR),TBA,00X,16978,0,99
+16978,ISE 7994,Research and Dissertation,R,,1 TO 19,R Patrick,(ARR),(ARR),TBA,00X,16979,0,99
+16979,ISE 7994,Research and Dissertation,R,,1 TO 19,MA Perez,(ARR),(ARR),TBA,00X,16980,0,99
+16980,ISE 7994,Research and Dissertation,R,,1 TO 19,PK Rao,(ARR),(ARR),TBA,00X,16981,0,99
+16981,ISE 7994,Research and Dissertation,R,,1 TO 19,SC Sarin,(ARR),(ARR),TBA,00X,16982,0,99
+16982,ISE 7994,Research and Dissertation,R,,1 TO 19,JP Shewchuk,(ARR),(ARR),TBA,00X,16983,0,99
+16983,ISE 7994,Research and Dissertation,R,,1 TO 19,B Song,(ARR),(ARR),TBA,00X,16984,0,99
+16984,ISE 7994,Research and Dissertation,R,,1 TO 19,GD Taylor,(ARR),(ARR),TBA,00X,16985,0,99
+16985,ISE 7994,Research and Dissertation,R,,1 TO 19,TG Topcu,(ARR),(ARR),TBA,00X,16986,3,99
+16986,ISE 7994,Research and Dissertation,R,,1 TO 19,KP Triantis,(ARR),(ARR),TBA,00X,16987,1,99
+16987,ISE 7994,Research and Dissertation,R,,1 TO 19,K Tsui,(ARR),(ARR),TBA,00X,16988,2,99
+16988,ISE 7994,Research and Dissertation,R,,1 TO 19,S Tunc,(ARR),(ARR),TBA,00X,16989,2,99
+16989,ISE 7994,Research and Dissertation,R,,1 TO 19,EM Van Aken,(ARR),(ARR),TBA,00X,16990,0,99
+16990,ISE 7994,Research and Dissertation,R,,1 TO 19,H Zhong,(ARR),(ARR),TBA,00X,16991,1,99
+16991,ISE 7994,Research and Dissertation,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,16992,0,99
+16992,ISE 7994,Research and Dissertation,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,16993,0,99
+16993,ISE 7994,Research and Dissertation,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,,0,99

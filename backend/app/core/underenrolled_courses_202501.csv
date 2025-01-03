@@ -1,0 +1,8 @@
+crn,code,name,lecture_type,modality,credits,instructor,days,start_time,end_time,location,exam_type,seats,capacity,cross_listed
+22066,MINE 5984,SS: Mining Finance,L,Face to Face Instruction,3,RE Bishop,W,2:00PM,5:00PM,HOLD 211,14W,3,10,False
+22067,MINE 5984,SS: Programming for Resources,L01,Face to Face Instruction,3,B Nojabaei,T R,12:30PM,1:45PM,HOLD 221,12T,5,30,False
+21425,ENGE 6714,TS:Issues in STEM Grad Edu,L,Face to Face Instruction,3,VK Lohani,M,9:20AM,12:05PM,GOODW 244,09M,5,20,False
+16875,ISE 5734,Occup Health Safety Practicum,L,,3,MA Nussbaum,(ARR),(ARR),TBA,00X,16877,0,5,False
+21955,ISE 5984,SS: Game Theory & OR Appls,L01,Face to Face Instruction,3,S Tunc,M W,4:00PM,5:15PM,GOODW 244,16M,4,15,False
+22006,ISE 5984,SS: Industr Internet Smart Mfg,L,Face to Face Instruction,3,R Jin,T R,9:30AM,10:45AM,WHIT 518,09T,4,15,False
+21363,ISE 6024,Adv Topics in Mgt Systems Engr,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,KP Triantis,W,4:00PM,6:45PM,ONLINE,16W,4,20,False

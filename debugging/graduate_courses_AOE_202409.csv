@@ -1,0 +1,217 @@
+crn,code,name,lecture_type,modality,credits,instructor,days,start_time,end_time,location,exam_type,seats,capacity
+80540,AOE 5024,Vehicle Structures,L,Face to Face Instruction,3,RK Kapania,M W,2:30PM,3:45PM,NCB 250,14M,41,75
+91944,AOE 5024,Vehicle Structures,ONLINE COURSE   VL,Online: Asynchronous,3,RK Kapania,(ARR),(ARR),ONLINE,00X,92116,4,4
+92116,AOE 5064,Structural Optimization,L,Face to Face Instruction,3,RA Canfield,M W F,9:05AM,9:55AM,WHIT 349,09M,7,20
+92435,AOE 5064,Structural Optimization,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,RA Canfield,M W F,9:05AM,9:55AM,ONLINE,09M,0,20
+91143,AOE 5074,Adv Ship Structural Analysis,L,,3,CM Gilbert,M W,2:30PM,3:45PM,MCB 316,14M,4,10
+91197,AOE 5074,Adv Ship Structural Analysis,ONLINE COURSE   VL,Online: Asynchronous,3,CM Gilbert,(ARR),(ARR),ONLINE,00X,80544,1,30
+80544,AOE 5104,Adv Aero Hydrody,L,Face to Face Instruction,3,WJ Devenport,T R,2:00PM,3:15PM,SURGE 108A,14T,54,75
+80545,AOE 5104,Adv Aero Hydrody,ONLINE COURSE   VL,Online: Asynchronous,3,WJ Devenport,(ARR),(ARR),ONLINE,00X,80548,22,40
+80548,AOE 5154,Data Analysis in Fluid Dyn,L,Face to Face Instruction,3,KT Lowe,T R,3:30PM,4:45PM,MCB 230,15T,27,30
+80549,AOE 5154,Data Analysis in Fluid Dyn,ONLINE COURSE   VL,Online: Asynchronous,3,KT Lowe,(ARR),(ARR),ONLINE,00X,91144,5,20
+91144,AOE 5164,Fluid Structure Interaction,L,,3,KG Wang,T R,5:00PM,6:15PM,MCB 233,17T,12,20
+91201,AOE 5164,Fluid Structure Interaction,ONLINE COURSE   VL,,3,KG Wang,(ARR),(ARR),ONLINE,00X,80550,5,20
+80550,AOE 5184,High Speed Propulsion,L,Face to Face Instruction,3,G Young,T R,12:30PM,1:45PM,USLB 310,12T,24,30
+80551,AOE 5184,High Speed Propulsion,ONLINE COURSE   VL,Online: Asynchronous,3,G Young,(ARR),(ARR),ONLINE,00X,80552,8,30
+80552,AOE 5204,Vehicle Dynamics and Control,L,Face to Face Instruction,3,C Sultan,T R,9:30AM,10:45AM,PAM 2003,09T,30,52
+80553,AOE 5204,Vehicle Dynamics and Control,ONLINE COURSE   VL,Online: Asynchronous,3,C Sultan,(ARR),(ARR),ONLINE,00X,91446,10,40
+91446,AOE 5315,Naval Ship Design,L,,3,AJ Brown,T R,3:30PM,4:45PM,MCB 218,15T,1,5
+80557,AOE 5315,Naval Ship Design,ONLINE COURSE   VL,Online: Asynchronous,3,AJ Brown,(ARR),(ARR),ONLINE,00X,80558,1,10
+80558,AOE 5324,Principles of Naval Eng w/App,L,Face to Face Instruction,3,AJ Brown,T R,5:00PM,6:15PM,MCB 307,17T,1,10
+80559,AOE 5324,Principles of Naval Eng w/App,ONLINE COURSE   VL,Online: Asynchronous,3,AJ Brown,(ARR),(ARR),ONLINE,00X,80561,7,10
+80561,AOE 5434G,Adv Intro Comp Fluid Dynamics,L,Face to Face Instruction,3,CJ Roy,M W F,9:05AM,9:55AM,NCB 250,09M,35,40
+80562,AOE 5434G,Adv Intro Comp Fluid Dynamics,ONLINE COURSE   VL,Online: Asynchronous,3,CJ Roy,(ARR),(ARR),ONLINE,00X,80565,10,20
+80565,AOE 5654,Intro to Space Science I,L,Face to Face Instruction,3,JB Baker,T R,9:30AM,10:45AM,MCB 113,09T,24,35
+80566,AOE 5744,Linear Systems Theory,L,Online with Synchronous Mtgs.,3,AM Boker,T R,11:00AM,12:15PM,TORG 1050,11T,30,34
+80567,AOE 5744,Linear Systems Theory,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,AM Boker,T R,11:00AM,12:15PM,ONLINE,11T,5,30
+80569,AOE 5754,Applied Linear Systems,L,Face to Face Instruction,3,SC Southward,T R,11:00AM,12:15PM,GOODW 125,11T,47,55
+80570,AOE 5754,Applied Linear Systems,ONLINE COURSE   VL,Online: Asynchronous,3,SC Southward,(ARR),(ARR),ONLINE,00X,80571,12,12
+80571,AOE 5774,Nonlinear Systems Theory,L,Face to Face Instruction,3,CA Woolsey,T R,2:00PM,3:15PM,USLB 410,14T,20,40
+80572,AOE 5774,Nonlinear Systems Theory,ONLINE COURSE   VL,Online: Asynchronous,3,CA Woolsey,(ARR),(ARR),ONLINE,00X,91176,14,20
+91176,AOE 5784,Estimation and Filtering,L,Face to Face Instruction,4,ML Psiaki,T R,8:00AM,9:15AM,MCB 316,08T,20,25
+91213,AOE 5784,Estimation and Filtering,ONLINE COURSE   VL,Online with Synchronous Mtgs.,4,ML Psiaki,T R,8:00AM,9:15AM,ONLINE,08T,4,25
+80573,AOE 5904,Project and Report,R,,1 TO 19,KK Schroeder,(ARR),(ARR),TBA,00X,80574,0,0
+80574,AOE 5904,Project and Report,R,,1 TO 19,BA Davis,(ARR),(ARR),TBA,00X,80575,0,0
+80575,AOE 5904,Project and Report,R,,1 TO 19,Y Fu,(ARR),(ARR),TBA,00X,80576,0,0
+80576,AOE 5904,Project and Report,R,,1 TO 19,CA Woolsey,(ARR),(ARR),TBA,00X,80577,0,0
+80577,AOE 5904,Project and Report,R,,1 TO 19,JT Black,(ARR),(ARR),TBA,00X,80578,0,0
+80578,AOE 5904,Project and Report,R,,1 TO 19,SP Kenyon,(ARR),(ARR),TBA,00X,80579,0,0
+80579,AOE 5904,Project and Report,R,,1 TO 19,KA Shinpaugh,(ARR),(ARR),TBA,00X,80580,0,0
+80580,AOE 5904,Project and Report,R,,1 TO 19,O Coutier Delgosha,(ARR),(ARR),TBA,00X,80581,0,0
+80581,AOE 5904,Project and Report,R,,1 TO 19,MH Farhood,(ARR),(ARR),TBA,00X,80582,0,0
+80582,AOE 5904,Project and Report,R,,1 TO 19,CJ Roy,(ARR),(ARR),TBA,00X,80583,0,0
+80583,AOE 5904,Project and Report,R,,1 TO 19,C Adams,(ARR),(ARR),TBA,00X,80584,0,0
+80584,AOE 5904,Project and Report,R,,1 TO 19,KG Wang,(ARR),(ARR),TBA,00X,80585,0,0
+80585,AOE 5904,Project and Report,R,,1 TO 19,KT Lowe,(ARR),(ARR),TBA,00X,80586,0,0
+80586,AOE 5904,Project and Report,R,,1 TO 19,M Joerger,(ARR),(ARR),TBA,00X,80587,0,0
+80587,AOE 5904,Project and Report,R,,1 TO 19,SD Ross,(ARR),(ARR),TBA,00X,91771,0,0
+91771,AOE 5904,Project and Report,R,,1 TO 19,S Brizzolara,(ARR),(ARR),TBA,00X,92350,0,0
+92350,AOE 5904,Project and Report,R,,1 TO 19,WN Alexander,(ARR),(ARR),TBA,00X,80588,0,0
+80588,AOE 5904,Project and Report,ONLINE COURSE   VR,,1 TO 19,KA Shinpaugh,(ARR),(ARR),ONLINE,00X,80589,0,0
+80589,AOE 5904,Project and Report,ONLINE COURSE   VR,,1 TO 19,CA Woolsey,(ARR),(ARR),ONLINE,00X,80590,0,0
+80590,AOE 5904,Project and Report,ONLINE COURSE   VR,,1 TO 19,KA Shinpaugh,(ARR),(ARR),ONLINE,00X,80591,0,0
+80591,AOE 5904,Project and Report,ONLINE COURSE   VR,,1 TO 19,AJ Brown,(ARR),(ARR),ONLINE,00X,80592,0,0
+80592,AOE 5904,Project and Report,ONLINE COURSE   VR,,1 TO 19,JT Black,(ARR),(ARR),ONLINE,00X,80593,0,0
+80593,AOE 5904,Project and Report,ONLINE COURSE   VR,,1 TO 19,SS Choi,(ARR),(ARR),ONLINE,00X,80594,0,0
+80594,AOE 5904,Project and Report,ONLINE COURSE   VL,,1 TO 19,MK Philen,(ARR),(ARR),ONLINE,00X,80595,0,0
+80595,AOE 5904,Project and Report,ONLINE COURSE   VL,,1 TO 19,SL England,(ARR),(ARR),ONLINE,00X,80596,0,0
+80596,AOE 5904,Project and Report,ONLINE COURSE   VL,,1 TO 19,G Young,(ARR),(ARR),ONLINE,00X,80597,0,0
+80597,AOE 5904,Project and Report,ONLINE COURSE   VL,,1 TO 19,P Raj,(ARR),(ARR),ONLINE,00X,80598,0,0
+80598,AOE 5904,Project and Report,ONLINE COURSE   VL,,1 TO 19,L Massa,(ARR),(ARR),ONLINE,00X,80599,0,0
+80599,AOE 5904,Project and Report,ONLINE COURSE   VL,,1 TO 19,CM Gilbert,(ARR),(ARR),ONLINE,00X,80600,0,0
+80600,AOE 5944,Seminar,L,Face to Face Instruction,1,MK Philen,M,4:00PM,5:15PM,TORG 2150,00X,99,300
+80601,AOE 5974,Independent Study,I,,1 TO 19,KT Lowe,(ARR),(ARR),TBA,00X,80602,0,0
+80602,AOE 5974,Independent Study,I,,1 TO 19,HP Artis,(ARR),(ARR),TBA,00X,80603,0,0
+80603,AOE 5974,Independent Study,I,,1 TO 19,B Srinivasan,(ARR),(ARR),TBA,00X,80604,0,0
+80604,AOE 5974,Independent Study,I,,1 TO 19,AJ Brown,(ARR),(ARR),TBA,00X,80605,0,0
+80605,AOE 5974,Independent Study,I,,1 TO 19,PA Tarazaga,(ARR),(ARR),TBA,00X,80606,0,0
+80606,AOE 5974,Independent Study,I,,1 TO 19,H Xiao,(ARR),(ARR),TBA,00X,80607,0,0
+80607,AOE 5974,Independent Study,I,,1 TO 19,JT Black,(ARR),(ARR),TBA,00X,80608,0,0
+80608,AOE 5974,Independent Study,I,,1 TO 19,SW Case,(ARR),(ARR),TBA,00X,80609,0,0
+80609,AOE 5974,Independent Study,I,,1 TO 19,C Sultan,(ARR),(ARR),TBA,00X,80610,0,0
+80610,AOE 5974,Independent Study,I,,1 TO 19,SL England,(ARR),(ARR),TBA,00X,80611,0,0
+80611,AOE 5974,Independent Study,I,,1 TO 19,SD Ross,(ARR),(ARR),TBA,00X,80612,0,0
+80612,AOE 5974,Independent Study,I,,1 TO 19,RK Kapania,(ARR),(ARR),TBA,00X,80613,0,0
+80613,AOE 5974,Independent Study,I,,1 TO 19,SM Bailey,(ARR),(ARR),TBA,00X,92421,0,0
+92421,AOE 5974,Independent Study,I,,1 TO 19,O Coutier Delgosha,(ARR),(ARR),TBA,00X,92488,0,0
+92488,AOE 5974,Independent Study,I,,1 TO 19,WJ Devenport,(ARR),(ARR),TBA,00X,80614,0,0
+80614,AOE 5974,Independent Study,ONLINE COURSE   VI,,1 TO 19,KA Shinpaugh,(ARR),(ARR),ONLINE,00X,80615,0,0
+80615,AOE 5974,Independent Study,ONLINE COURSE   VI,,1 TO 19,JT Black,(ARR),(ARR),ONLINE,00X,92490,0,0
+92490,AOE 5974,Independent Study,ONLINE COURSE   VI,,1 TO 19,WJ Devenport,(ARR),(ARR),TBA,00X,80616,0,0
+80616,AOE 5994,Research and Thesis,R,,1 TO 19,WF Ng,(ARR),(ARR),TBA,00X,80617,0,5
+80617,AOE 5994,Research and Thesis,R,,1 TO 19,H Xiao,(ARR),(ARR),TBA,00X,80618,0,5
+80618,AOE 5994,Research and Thesis,R,,1 TO 19,B Srinivasan,(ARR),(ARR),TBA,00X,80619,0,0
+80619,AOE 5994,Research and Thesis,R,,1 TO 19,RK Kapania,(ARR),(ARR),TBA,00X,80620,4,40
+80620,AOE 5994,Research and Thesis,R,,1 TO 19,CJ Roy,(ARR),(ARR),TBA,00X,80621,2,5
+80621,AOE 5994,Research and Thesis,R,,1 TO 19,CA Woolsey,(ARR),(ARR),TBA,00X,80622,2,40
+80622,AOE 5994,Research and Thesis,R,,1 TO 19,JN Gilbert,(ARR),(ARR),TBA,00X,80623,0,0
+80623,AOE 5994,Research and Thesis,R,,1 TO 19,HP Artis,(ARR),(ARR),TBA,00X,80624,0,5
+80624,AOE 5994,Research and Thesis,R,,1 TO 19,A L'Afflitto,(ARR),(ARR),TBA,00X,80625,0,5
+80625,AOE 5994,Research and Thesis,R,,1 TO 19,L Massa,(ARR),(ARR),TBA,00X,80626,1,5
+80626,AOE 5994,Research and Thesis,R,,1 TO 19,AJ Brown,(ARR),(ARR),TBA,00X,80627,1,40
+80627,AOE 5994,Research and Thesis,R,,1 TO 19,RA Canfield,(ARR),(ARR),TBA,00X,80628,5,5
+80628,AOE 5994,Research and Thesis,R,,1 TO 19,EG Paterson,(ARR),(ARR),TBA,00X,80629,1,5
+80629,AOE 5994,Research and Thesis,R,,1 TO 19,MH Farhood,(ARR),(ARR),TBA,00X,80630,0,5
+80630,AOE 5994,Research and Thesis,R,,1 TO 19,O Coutier Delgosha,(ARR),(ARR),TBA,00X,80631,5,5
+80631,AOE 5994,Research and Thesis,R,,1 TO 19,MK Philen,(ARR),(ARR),TBA,00X,80632,2,5
+80632,AOE 5994,Research and Thesis,R,,1 TO 19,SD Ross,(ARR),(ARR),TBA,00X,80633,2,5
+80633,AOE 5994,Research and Thesis,R,,1 TO 19,RL West,(ARR),(ARR),TBA,00X,80634,1,5
+80634,AOE 5994,Research and Thesis,R,,1 TO 19,KB Kochersberger,(ARR),(ARR),TBA,00X,80635,1,3
+80635,AOE 5994,Research and Thesis,R,,1 TO 19,RM Fitzgerald,(ARR),(ARR),TBA,00X,80636,4,10
+80636,AOE 5994,Research and Thesis,R,,1 TO 19,S Brizzolara,(ARR),(ARR),TBA,00X,80637,0,5
+80637,AOE 5994,Research and Thesis,R,,1 TO 19,WJ Devenport,(ARR),(ARR),TBA,00X,80638,1,5
+80638,AOE 5994,Research and Thesis,R,,1 TO 19,S Brizzolara,(ARR),(ARR),TBA,00X,80639,2,10
+80639,AOE 5994,Research and Thesis,R,,1 TO 19,GD Seidel,(ARR),(ARR),TBA,00X,80640,1,40
+80640,AOE 5994,Research and Thesis,R,,1 TO 19,KK Schroeder,(ARR),(ARR),TBA,00X,80641,0,0
+80641,AOE 5994,Research and Thesis,R,,1 TO 19,C Adams,(ARR),(ARR),TBA,00X,80642,0,5
+80642,AOE 5994,Research and Thesis,R,,1 TO 19,SL England,(ARR),(ARR),TBA,00X,80643,0,0
+80643,AOE 5994,Research and Thesis,R,,1 TO 19,KA Shinpaugh,(ARR),(ARR),TBA,00X,80644,0,5
+80644,AOE 5994,Research and Thesis,R,,1 TO 19,JT Black,(ARR),(ARR),TBA,00X,80645,0,40
+80645,AOE 5994,Research and Thesis,R,,1 TO 19,KT Lowe,(ARR),(ARR),TBA,00X,80646,6,20
+80646,AOE 5994,Research and Thesis,R,,1 TO 19,ML Psiaki,(ARR),(ARR),TBA,00X,80647,0,8
+80647,AOE 5994,Research and Thesis,R,,1 TO 19,G Young,(ARR),(ARR),TBA,00X,80648,3,10
+80648,AOE 5994,Research and Thesis,R,,1 TO 19,E Atkins,(ARR),(ARR),TBA,00X,80649,0,5
+80649,AOE 5994,Research and Thesis,R,,1 TO 19,M Joerger,(ARR),(ARR),TBA,00X,80650,3,10
+80650,AOE 5994,Research and Thesis,R,,1 TO 19,CM Gilbert,(ARR),(ARR),TBA,00X,80651,0,10
+80651,AOE 5994,Research and Thesis,R,,1 TO 19,Y Fu,(ARR),(ARR),TBA,00X,80652,1,10
+80652,AOE 5994,Research and Thesis,R,,1 TO 19,KG Wang,(ARR),(ARR),TBA,00X,80653,1,5
+80653,AOE 5994,Research and Thesis,R,,1 TO 19,J Meadows,(ARR),(ARR),TBA,00X,80654,0,40
+80654,AOE 5994,Research and Thesis,R,,1 TO 19,WN Alexander,(ARR),(ARR),TBA,00X,92181,4,5
+92181,AOE 5994,Research and Thesis,R,,1 TO 19,SP Kenyon,(ARR),(ARR),TBA,00X,92265,1,10
+92265,AOE 5994,Research and Thesis,R,,1 TO 19,LA Joseph,(ARR),(ARR),TBA,00X,92369,0,5
+92369,AOE 5994,Research and Thesis,R,,1 TO 19,J Jaworski,(ARR),(ARR),TBA,00X,92505,0,5
+92505,AOE 5994,Research and Thesis,R,,1 TO 19,D Sarojini,(ARR),(ARR),TBA,00X,92506,1,5
+92506,AOE 5994,Research and Thesis,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,92507,0,5
+92507,AOE 5994,Research and Thesis,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,92508,0,5
+92508,AOE 5994,Research and Thesis,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,92509,0,5
+92509,AOE 5994,Research and Thesis,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,80655,0,5
+80655,AOE 5994,Research and Thesis,ONLINE COURSE   VR,Online: Asynchronous,1 TO 19,KK Schroeder,(ARR),(ARR),ONLINE,00X,80656,0,0
+80656,AOE 5994,Research and Thesis,ONLINE COURSE   VR,,1 TO 19,RA Canfield,(ARR),(ARR),ONLINE,00X,80657,0,3
+80657,AOE 5994,Research and Thesis,ONLINE COURSE   VR,,1 TO 19,C Sultan,(ARR),(ARR),ONLINE,00X,80658,0,0
+80658,AOE 5994,Research and Thesis,ONLINE COURSE   VR,,1 TO 19,RM Fitzgerald,(ARR),(ARR),ONLINE,00X,80659,0,10
+80659,AOE 5994,Research and Thesis,ONLINE COURSE   VR,,1 TO 19,ML Psiaki,(ARR),(ARR),ONLINE,00X,80660,0,3
+80660,AOE 5994,Research and Thesis,ONLINE COURSE   VR,,1 TO 19,RK Kapania,(ARR),(ARR),ONLINE,00X,80661,5,10
+80661,AOE 5994,Research and Thesis,ONLINE COURSE   VR,,1 TO 19,MK Philen,(ARR),(ARR),ONLINE,00X,80662,0,0
+80662,AOE 5994,Research and Thesis,ONLINE COURSE   VR,,1 TO 19,L Massa,(ARR),(ARR),ONLINE,00X,80663,0,0
+80663,AOE 5994,Research and Thesis,ONLINE COURSE   VR,,1 TO 19,B Srinivasan,(ARR),(ARR),ONLINE,00X,80664,0,0
+80664,AOE 5994,Research and Thesis,ONLINE COURSE   VR,,1 TO 19,CA Woolsey,(ARR),(ARR),ONLINE,00X,80665,0,10
+80665,AOE 5994,Research and Thesis,ONLINE COURSE   VR,,1 TO 19,G Young,(ARR),(ARR),ONLINE,00X,80666,0,10
+80666,AOE 5994,Research and Thesis,ONLINE COURSE   VR,,1 TO 19,AJ Brown,(ARR),(ARR),ONLINE,00X,80667,0,10
+80667,AOE 5994,Research and Thesis,ONLINE COURSE   VR,,1 TO 19,JT Black,(ARR),(ARR),ONLINE,00X,80668,0,3
+80668,AOE 5994,Research and Thesis,ONLINE COURSE   VR,,1 TO 19,JA Schetz,(ARR),(ARR),ONLINE,00X,80669,0,5
+80669,AOE 5994,Research and Thesis,ONLINE COURSE   VR,,1 TO 19,KT Lowe,(ARR),(ARR),ONLINE,00X,80670,0,0
+80670,AOE 5994,Research and Thesis,ONLINE COURSE   VR,,1 TO 19,MJ Patil,(ARR),(ARR),ONLINE,00X,91896,0,3
+91896,AOE 5994,Research and Thesis,ONLINE COURSE   VR,Online: Asynchronous,1 TO 19,SD Ross,(ARR),(ARR),ONLINE,00X,92394,1,5
+92394,AOE 5994,Research and Thesis,ONLINE COURSE   VR,Online: Asynchronous,1 TO 19,Staff,(ARR),(ARR),TBA,00X,91320,0,0
+91320,AOE 6234,Advanced Orbital Mechanics,L,,3,RM Fitzgerald,M W F,11:15AM,12:05PM,PAT 316,11M,10,30
+91321,AOE 6234,Advanced Orbital Mechanics,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,RM Fitzgerald,M W F,11:15AM,12:05PM,ONLINE,11M,5,30
+90738,AOE 6314,Advanced Dynamics,L,,3,SD Ross,T R,2:00PM,3:15PM,MCB 322,14T,9,20
+91665,AOE 6314,Advanced Dynamics,ONLINE COURSE   VL,Online: Asynchronous,3,SD Ross,(ARR),(ARR),ONLINE,00X,80671,5,5
+80671,AOE 7994,Research and Dissertation,R,,1 TO 19,WN Alexander,(ARR),(ARR),TBA,00X,80672,3,5
+80672,AOE 7994,Research and Dissertation,R,,1 TO 19,E Atkins,(ARR),(ARR),TBA,00X,80673,0,0
+80673,AOE 7994,Research and Dissertation,R,,1 TO 19,CJ Roy,(ARR),(ARR),TBA,00X,80674,3,8
+80674,AOE 7994,Research and Dissertation,R,,1 TO 19,AJ Brown,(ARR),(ARR),TBA,00X,80675,0,40
+80675,AOE 7994,Research and Dissertation,R,,1 TO 19,WJ Devenport,(ARR),(ARR),TBA,00X,80676,6,15
+80676,AOE 7994,Research and Dissertation,R,,1 TO 19,RK Kapania,(ARR),(ARR),TBA,00X,80677,5,40
+80677,AOE 7994,Research and Dissertation,R,,1 TO 19,RA Canfield,(ARR),(ARR),TBA,00X,80678,0,5
+80678,AOE 7994,Research and Dissertation,R,,1 TO 19,JT Black,(ARR),(ARR),TBA,00X,80679,9,40
+80679,AOE 7994,Research and Dissertation,R,,1 TO 19,S Brizzolara,(ARR),(ARR),TBA,00X,80680,7,10
+80680,AOE 7994,Research and Dissertation,R,,1 TO 19,JA Schetz,(ARR),(ARR),TBA,00X,80681,0,5
+80681,AOE 7994,Research and Dissertation,R,,1 TO 19,KG Wang,(ARR),(ARR),TBA,00X,80682,2,5
+80682,AOE 7994,Research and Dissertation,R,,1 TO 19,C Adams,(ARR),(ARR),TBA,00X,80683,2,5
+80683,AOE 7994,Research and Dissertation,R,,1 TO 19,CM Gilbert,(ARR),(ARR),TBA,00X,80684,0,10
+80684,AOE 7994,Research and Dissertation,R,,1 TO 19,GD Seidel,(ARR),(ARR),TBA,00X,80685,5,40
+80685,AOE 7994,Research and Dissertation,R,,1 TO 19,MK Philen,(ARR),(ARR),TBA,00X,80686,0,5
+80686,AOE 7994,Research and Dissertation,R,,1 TO 19,M Joerger,(ARR),(ARR),TBA,00X,80687,5,5
+80687,AOE 7994,Research and Dissertation,R,,1 TO 19,KT Lowe,(ARR),(ARR),TBA,00X,80688,10,20
+80688,AOE 7994,Research and Dissertation,R,,1 TO 19,O Coutier Delgosha,(ARR),(ARR),TBA,00X,80689,4,20
+80689,AOE 7994,Research and Dissertation,R,,1 TO 19,PA Tarazaga,(ARR),(ARR),TBA,00X,80690,0,5
+80690,AOE 7994,Research and Dissertation,R,,1 TO 19,DJ Stilwell,(ARR),(ARR),TBA,00X,80691,0,5
+80691,AOE 7994,Research and Dissertation,R,,1 TO 19,B Srinivasan,(ARR),(ARR),TBA,00X,80692,0,0
+80692,AOE 7994,Research and Dissertation,R,,1 TO 19,MH Farhood,(ARR),(ARR),TBA,00X,80693,3,5
+80693,AOE 7994,Research and Dissertation,R,,1 TO 19,SL England,(ARR),(ARR),TBA,00X,80694,2,10
+80694,AOE 7994,Research and Dissertation,R,,1 TO 19,R Mueller,(ARR),(ARR),TBA,00X,80695,0,5
+80695,AOE 7994,Research and Dissertation,R,,1 TO 19,H Xiao,(ARR),(ARR),TBA,00X,80696,0,5
+80696,AOE 7994,Research and Dissertation,R,,1 TO 19,SM Bailey,(ARR),(ARR),TBA,00X,80697,0,1
+80697,AOE 7994,Research and Dissertation,R,,1 TO 19,C Sultan,(ARR),(ARR),TBA,00X,80698,2,5
+80698,AOE 7994,Research and Dissertation,R,,1 TO 19,JA Schetz,(ARR),(ARR),TBA,00X,80699,0,5
+80699,AOE 7994,Research and Dissertation,R,,1 TO 19,A Borgoltz,(ARR),(ARR),TBA,00X,80700,0,3
+80700,AOE 7994,Research and Dissertation,R,,1 TO 19,SD Ross,(ARR),(ARR),TBA,00X,80701,2,5
+80701,AOE 7994,Research and Dissertation,R,,1 TO 19,ML Psiaki,(ARR),(ARR),TBA,00X,80702,2,5
+80702,AOE 7994,Research and Dissertation,R,,1 TO 19,SS Choi,(ARR),(ARR),TBA,00X,80703,1,5
+80703,AOE 7994,Research and Dissertation,R,,1 TO 19,EG Paterson,(ARR),(ARR),TBA,00X,80704,0,5
+80704,AOE 7994,Research and Dissertation,R,,1 TO 19,L Massa,(ARR),(ARR),TBA,00X,80705,2,5
+80705,AOE 7994,Research and Dissertation,R,,1 TO 19,G Young,(ARR),(ARR),TBA,00X,80706,7,10
+80706,AOE 7994,Research and Dissertation,R,,1 TO 19,P Raj,(ARR),(ARR),TBA,00X,80707,0,5
+80707,AOE 7994,Research and Dissertation,R,,1 TO 19,Y Fu,(ARR),(ARR),TBA,00X,80708,3,10
+80708,AOE 7994,Research and Dissertation,R,,1 TO 19,RM Fitzgerald,(ARR),(ARR),TBA,00X,80709,4,10
+80709,AOE 7994,Research and Dissertation,R,,1 TO 19,MJ Patil,(ARR),(ARR),TBA,00X,80710,0,5
+80710,AOE 7994,Research and Dissertation,R,,1 TO 19,CA Woolsey,(ARR),(ARR),TBA,00X,80711,3,40
+80711,AOE 7994,Research and Dissertation,R,,1 TO 19,EJ Jacques,(ARR),(ARR),TBA,00X,92214,1,5
+92214,AOE 7994,Research and Dissertation,R,,1 TO 19,KK Schroeder,(ARR),(ARR),TBA,00X,92262,0,0
+92262,AOE 7994,Research and Dissertation,R,,1 TO 19,LA Joseph,(ARR),(ARR),TBA,00X,92370,3,5
+92370,AOE 7994,Research and Dissertation,R,,1 TO 19,J Jaworski,(ARR),(ARR),TBA,00X,92398,1,5
+92398,AOE 7994,Research and Dissertation,R,,1 TO 19,R Qiao,(ARR),(ARR),TBA,00X,92510,1,3
+92510,AOE 7994,Research and Dissertation,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,92511,0,5
+92511,AOE 7994,Research and Dissertation,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,92512,0,5
+92512,AOE 7994,Research and Dissertation,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,92513,0,5
+92513,AOE 7994,Research and Dissertation,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,92514,0,5
+92514,AOE 7994,Research and Dissertation,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,80712,0,5
+80712,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,,1 TO 19,SS Choi,(ARR),(ARR),ONLINE,00X,80713,1,10
+80713,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,,1 TO 19,J Pitt,(ARR),(ARR),ONLINE,00X,80714,0,1
+80714,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,,1 TO 19,C Adams,(ARR),(ARR),ONLINE,00X,80715,0,10
+80715,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,,1 TO 19,H Xiao,(ARR),(ARR),ONLINE,00X,80716,0,10
+80716,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,,1 TO 19,EG Paterson,(ARR),(ARR),ONLINE,00X,80717,0,5
+80717,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,,1 TO 19,MJ Patil,(ARR),(ARR),ONLINE,00X,80718,1,1
+80718,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,,1 TO 19,ML Psiaki,(ARR),(ARR),ONLINE,00X,80719,1,5
+80719,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,,1 TO 19,CJ Roy,(ARR),(ARR),ONLINE,00X,80720,0,10
+80720,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,,1 TO 19,RK Kapania,(ARR),(ARR),ONLINE,00X,80721,0,10
+80721,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,,1 TO 19,RM Fitzgerald,(ARR),(ARR),ONLINE,00X,80722,0,10
+80722,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,,1 TO 19,AJ Brown,(ARR),(ARR),ONLINE,00X,80723,0,10
+80723,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,,1 TO 19,SL England,(ARR),(ARR),ONLINE,00X,80724,0,10
+80724,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,,1 TO 19,WJ Devenport,(ARR),(ARR),ONLINE,00X,80725,0,3
+80725,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,,1 TO 19,GD Seidel,(ARR),(ARR),ONLINE,00X,80726,0,3
+80726,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,,1 TO 19,JT Black,(ARR),(ARR),ONLINE,00X,80727,3,10
+80727,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,,1 TO 19,CA Woolsey,(ARR),(ARR),ONLINE,00X,80728,0,10
+80728,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,,1 TO 19,G Young,(ARR),(ARR),ONLINE,00X,92400,0,10
+92400,AOE 7994,Research and Dissertation,ONLINE COURSE   VR,Online: Asynchronous,1 TO 19,KK Schroeder,(ARR),(ARR),ONLINE,00X,,0,0

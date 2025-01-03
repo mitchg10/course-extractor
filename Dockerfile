@@ -11,6 +11,7 @@ COPY frontend/.npmrc ./
 COPY frontend/package*.json ./
 RUN npm install
 COPY frontend/ .
+# Build using vite
 RUN npm run build
 
 # Stage 2: Python backend and final image
@@ -23,7 +24,6 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     nodejs \
     npm \
-    tesseract-ocr \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
@@ -49,19 +49,18 @@ ARG ENVIRONMENT
 ENV ENVIRONMENT=${ENVIRONMENT:-production}
 
 # Copy frontend build
-COPY --from=frontend-builder /app/frontend/build frontend/build
+COPY --from=frontend-builder /app/frontend/dist frontend/dist
 
 # Create frontend directory for development volume mount
 RUN mkdir -p frontend
 
-# Copy setup scripts
-COPY setup/setup_ollama.sh .
+# Copy entrypoint script
 COPY setup/entrypoint.sh .
-RUN chmod +x setup_ollama.sh entrypoint.sh
+RUN chmod +x entrypoint.sh
 
 # Expose ports for FastAPI and React
 EXPOSE 8000
-EXPOSE 3000
+EXPOSE 5173
 
 # Set environment variables
 ENV PYTHONPATH=/app

@@ -1,0 +1,101 @@
+crn,code,name,lecture_type,modality,credits,instructor,days,start_time,end_time,location,exam_type,seats,capacity
+81985,BMES 5004,BME Ethics & Prof Development,L,Face to Face Instruction,1,VM Wang,F,2:30PM,3:45PM,USLB 212,00X,33,40
+92466,BMES 5004,BME Ethics & Prof Development,ONLINE COURSE   VL,Online with Synchronous Mtgs.,1,VM Wang,F,2:30PM,3:45PM,ONLINE,00X,0,0
+81986,BMES 5024,Biomed Eng Human Disease,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,YW Lee,T R,11:00AM,12:15PM,ONLINE,11T,34,40
+81987,BMES 5044,Engineering Mathematics,L,Face to Face Instruction,3,RS Senger,M W F,11:15AM,12:05PM,MCB 302,11M,35,36
+92470,BMES 5044,Engineering Mathematics,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,RS Senger,M W F,11:15AM,12:05PM,ONLINE,11M,0,0
+81988,BMES 5054,Quantitative Cell Physiology,L,Face to Face Instruction,3,A Korneva,T R,9:30AM,10:45AM,TORG 1030,09T,28,40
+92469,BMES 5054,Quantitative Cell Physiology,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,A Korneva,T R,9:30AM,10:45AM,ONLINE,09T,0,0
+81990,BMES 5124,Adv Musculoskeletal Biomech,L,Face to Face Instruction,3,SL Arena,M W F,11:15AM,12:05PM,SURGE 118D,11M,10,20
+81991,BMES 5154G,Adv Commercialization BME Res,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,AR Hyler,T R,9:30AM,10:45AM,ONLINE,09T,13,24
+90686,BMES 5184,Injury Physiology,L,,3,NE Stark,M W,2:30PM,3:45PM,TORG 1000,14M,25,38
+81994,BMES 5214,Human Physical Capabilities,L,Face to Face Instruction,3,SI Lim,T R,9:30AM,10:45AM,WHIT 518,09T,17,30
+92174,BMES 5304,Biological Transport Phenomena,L,Face to Face Instruction,3,AS Goldstein,M W F,9:05AM,9:55AM,TORG 1030,09M,3,20
+92177,BMES 5304,Biological Transport Phenomena,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,AS Goldstein,M W F,9:05AM,9:55AM,ONLINE,09M,0,20
+81996,BMES 5314,Intro. Regenerative Med,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,AR Hall,M W,2:30PM,3:45PM,ONLINE,14M,30,30
+81997,BMES 5525,Stochastic Signals and Systems,L,Face to Face Instruction,3,MY Lanzerotti,T R,12:30PM,1:45PM,TORG 1030,12T,32,38
+81998,BMES 5525,Stochastic Signals and Systems,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,MY Lanzerotti,T R,12:30PM,1:45PM,ONLINE,12T,7,30
+92125,BMES 5554,Imaging Computing Medicine,L,Face to Face Instruction,3,CJ Collins,M W F,12:20PM,1:10PM,USLB 310,12M,15,20
+92328,BMES 5604,Cancer Detection Therapeutics,ONLINE COURSE   VL,Online with Synchronous Mtgs.,3,D Zhao,T R,3:30PM,4:45PM,ONLINE,15T,7,25
+82001,BMES 5904,Project and Report,R,,1 TO 19,CB Arena,(ARR),(ARR),TBA,00X,82002,0,0
+82002,BMES 5904,Project and Report,R,,1 TO 19,YW Lee,(ARR),(ARR),TBA,00X,92412,0,9999
+92412,BMES 5904,Project and Report,ONLINE COURSE   VR,,1 TO 19,YW Lee,(ARR),(ARR),TBA,00X,82003,0,0
+82003,BMES 5944,Seminar,ONLINE COURSE   VL,Online with Synchronous Mtgs.,1,CD Untaroiu,F,9:30AM,10:45AM,ONLINE,00X,67,100
+92472,BMES 5944,Seminar,ONLINE COURSE   VL,Online with Synchronous Mtgs.,1,Staff,F,9:30AM,10:45AM,ONLINE,00X,0,0
+82004,BMES 5974,Independent Study,I,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,92188,0,0
+92188,BMES 5984,SS: Biodesign Innovation Fund,L,Face to Face Instruction,3,CB Arena,F,11:30AM,2:00PM,GYM 332,11F,4,8
+92471,BMES 5984,SS: Art of Grant Writing,L01,Face to Face Instruction,3,RM Queen,T R,11:00AM,12:15PM,NOR 325,11T,10,20
+82005,BMES 5994,Research and Thesis,R,,1 TO 19,S Parker,(ARR),(ARR),TBA,00X,82006,0,9999
+82006,BMES 5994,Research and Thesis,R,,1 TO 19,DL Albert,(ARR),(ARR),TBA,00X,82007,1,9999
+82007,BMES 5994,Research and Thesis,R,,1 TO 19,ML Madigan,(ARR),(ARR),TBA,00X,82008,0,9999
+82008,BMES 5994,Research and Thesis,R,,1 TO 19,SM LaConte,(ARR),(ARR),TBA,00X,82009,0,9999
+82009,BMES 5994,Research and Thesis,R,,1 TO 19,MA Perez,(ARR),(ARR),TBA,00X,82010,0,9999
+82010,BMES 5994,Research and Thesis,R,,1 TO 19,J Socha,(ARR),(ARR),TBA,00X,82011,0,9999
+82011,BMES 5994,Research and Thesis,R,,1 TO 19,S Vijayan,(ARR),(ARR),TBA,00X,82012,1,9999
+82012,BMES 5994,Research and Thesis,R,,1 TO 19,AR Whittington,(ARR),(ARR),TBA,00X,82013,0,9999
+82013,BMES 5994,Research and Thesis,R,,1 TO 19,AS Goldstein,(ARR),(ARR),TBA,00X,82014,0,999
+82014,BMES 5994,Research and Thesis,R,,1 TO 19,N Gurari,(ARR),(ARR),TBA,00X,82015,0,999
+82015,BMES 5994,Research and Thesis,R,,1 TO 19,SL Arena,(ARR),(ARR),TBA,00X,82016,0,999
+82016,BMES 5994,Research and Thesis,R,,1 TO 19,LM Roberts,(ARR),(ARR),TBA,00X,82017,1,9999
+82017,BMES 5994,Research and Thesis,R,,1 TO 19,A Korneva,(ARR),(ARR),TBA,00X,82018,1,9999
+82018,BMES 5994,Research and Thesis,R,,1 TO 19,CJ Collins,(ARR),(ARR),TBA,00X,82019,1,9999
+82019,BMES 5994,Research and Thesis,R,,1 TO 19,B Behkam,(ARR),(ARR),TBA,00X,82020,0,999
+82020,BMES 5994,Research and Thesis,R,,1 TO 19,JC Chappell,(ARR),(ARR),TBA,00X,82021,0,9999
+82021,BMES 5994,Research and Thesis,R,,1 TO 19,VM Wang,(ARR),(ARR),TBA,00X,82022,4,9999
+82022,BMES 5994,Research and Thesis,R,,1 TO 19,E Vlaisavljevich,(ARR),(ARR),TBA,00X,82023,1,9999
+82023,BMES 5994,Research and Thesis,R,,1 TO 19,MA Nussbaum,(ARR),(ARR),TBA,00X,82024,0,9999
+82024,BMES 5994,Research and Thesis,R,,1 TO 19,AF Brantly,(ARR),(ARR),TBA,00X,82025,1,9999
+82025,BMES 5994,Research and Thesis,R,,1 TO 19,SM Duma,(ARR),(ARR),TBA,00X,82026,0,9999
+82026,BMES 5994,Research and Thesis,R,,1 TO 19,S Verbridge,(ARR),(ARR),TBA,00X,82027,0,9999
+82027,BMES 5994,Research and Thesis,R,,1 TO 19,O Kim,(ARR),(ARR),TBA,00X,82028,1,9999
+82028,BMES 5994,Research and Thesis,R,,1 TO 19,AE Staples,(ARR),(ARR),TBA,00X,82029,0,9999
+82029,BMES 5994,Research and Thesis,R,,1 TO 19,R Gourdie,(ARR),(ARR),TBA,00X,82030,0,9999
+82030,BMES 5994,Research and Thesis,R,,1 TO 19,S Poelzing,(ARR),(ARR),TBA,00X,82031,0,9999
+82031,BMES 5994,Research and Thesis,R,,1 TO 19,RM Queen,(ARR),(ARR),TBA,00X,82032,2,9999
+82032,BMES 5994,Research and Thesis,R,,1 TO 19,ZR Doerzaph,(ARR),(ARR),TBA,00X,82033,0,99
+82033,BMES 5994,Research and Thesis,R,,1 TO 19,P VandeVord,(ARR),(ARR),TBA,00X,82034,2,9999
+82034,BMES 5994,Research and Thesis,R,,1 TO 19,CD Untaroiu,(ARR),(ARR),TBA,00X,82035,1,9999
+82035,BMES 5994,Research and Thesis,R,,1 TO 19,A Nain,(ARR),(ARR),TBA,00X,82036,0,999
+82036,BMES 5994,Research and Thesis,R,,1 TO 19,TM Murali,(ARR),(ARR),TBA,00X,82037,1,9999
+82037,BMES 5994,Research and Thesis,R,,1 TO 19,JM Munson,(ARR),(ARR),TBA,00X,82038,0,99
+82038,BMES 5994,Research and Thesis,R,,1 TO 19,MA Stremler,(ARR),(ARR),TBA,00X,82039,0,999
+82039,BMES 5994,Research and Thesis,R,,1 TO 19,S Rowson,(ARR),(ARR),TBA,00X,90687,2,9999
+90687,BMES 6194,Advanced Movement Assessment,L,,3,RM Queen,T R,12:30PM,1:45PM,USLB 210,12T,6,20
+82041,BMES 7994,Research and Dissertation,R,,1 TO 19,E Vlaisavljevich,(ARR),(ARR),TBA,00X,82042,7,9999
+82042,BMES 7994,Research and Dissertation,R,,1 TO 19,S Vijayan,(ARR),(ARR),TBA,00X,82043,2,9999
+82043,BMES 7994,Research and Dissertation,R,,1 TO 19,LM Roberts,(ARR),(ARR),TBA,00X,82044,2,999
+82044,BMES 7994,Research and Dissertation,R,,1 TO 19,VM Wang,(ARR),(ARR),TBA,00X,82045,2,9999
+82045,BMES 7994,Research and Dissertation,R,,1 TO 19,JM Munson,(ARR),(ARR),TBA,00X,82046,4,99
+82046,BMES 7994,Research and Dissertation,R,,1 TO 19,RM Queen,(ARR),(ARR),TBA,00X,82047,3,999
+82047,BMES 7994,Research and Dissertation,R,,1 TO 19,P VandeVord,(ARR),(ARR),TBA,00X,82048,6,9999
+82048,BMES 7994,Research and Dissertation,R,,1 TO 19,ZR Doerzaph,(ARR),(ARR),TBA,00X,82049,1,99
+82049,BMES 7994,Research and Dissertation,R,,1 TO 19,AE Staples,(ARR),(ARR),TBA,00X,82050,1,9999
+82050,BMES 7994,Research and Dissertation,R,,1 TO 19,AR Whittington,(ARR),(ARR),TBA,00X,82051,0,9999
+82051,BMES 7994,Research and Dissertation,R,,1 TO 19,JC Chappell,(ARR),(ARR),TBA,00X,82052,1,9999
+82052,BMES 7994,Research and Dissertation,R,,1 TO 19,S Poelzing,(ARR),(ARR),TBA,00X,82053,0,9999
+82053,BMES 7994,Research and Dissertation,R,,1 TO 19,SM LaConte,(ARR),(ARR),TBA,00X,82054,0,9999
+82054,BMES 7994,Research and Dissertation,R,,1 TO 19,A Han,(ARR),(ARR),TBA,00X,82055,4,9999
+82055,BMES 7994,Research and Dissertation,R,,1 TO 19,R De Vita,(ARR),(ARR),TBA,00X,82056,3,999
+82056,BMES 7994,Research and Dissertation,R,,1 TO 19,R Gourdie,(ARR),(ARR),TBA,00X,82057,0,9999
+82057,BMES 7994,Research and Dissertation,R,,1 TO 19,D Lee,(ARR),(ARR),TBA,00X,82058,1,9999
+82058,BMES 7994,Research and Dissertation,R,,1 TO 19,C Lu,(ARR),(ARR),TBA,00X,82059,1,9999
+82059,BMES 7994,Research and Dissertation,R,,1 TO 19,Z Tian,(ARR),(ARR),TBA,00X,82060,1,9999
+82060,BMES 7994,Research and Dissertation,R,,1 TO 19,J Socha,(ARR),(ARR),TBA,00X,82061,0,9999
+82061,BMES 7994,Research and Dissertation,R,,1 TO 19,SL Arena,(ARR),(ARR),TBA,00X,82062,0,9999
+82062,BMES 7994,Research and Dissertation,R,,1 TO 19,CD Untaroiu,(ARR),(ARR),TBA,00X,82063,1,9999
+82063,BMES 7994,Research and Dissertation,R,,1 TO 19,S Rowson,(ARR),(ARR),TBA,00X,82064,1,9999
+82064,BMES 7994,Research and Dissertation,R,,1 TO 19,O Kim,(ARR),(ARR),TBA,00X,82065,1,9999
+82065,BMES 7994,Research and Dissertation,R,,1 TO 19,DL Albert,(ARR),(ARR),TBA,00X,82066,1,9999
+82066,BMES 7994,Research and Dissertation,R,,1 TO 19,BM Davy,(ARR),(ARR),TBA,00X,82067,1,9999
+82067,BMES 7994,Research and Dissertation,R,,1 TO 19,A Nain,(ARR),(ARR),TBA,00X,82068,0,999
+82068,BMES 7994,Research and Dissertation,R,,1 TO 19,MA Perez,(ARR),(ARR),TBA,00X,82069,1,9999
+82069,BMES 7994,Research and Dissertation,R,,1 TO 19,A Korneva,(ARR),(ARR),TBA,00X,82070,1,9999
+82070,BMES 7994,Research and Dissertation,R,,1 TO 19,CJ Collins,(ARR),(ARR),TBA,00X,82071,3,999
+82071,BMES 7994,Research and Dissertation,R,,1 TO 19,B Behkam,(ARR),(ARR),TBA,00X,82072,0,9999
+82072,BMES 7994,Research and Dissertation,R,,1 TO 19,Staff,(ARR),(ARR),TBA,00X,82073,0,9999
+82073,BMES 7994,Research and Dissertation,R,,1 TO 19,MA Nussbaum,(ARR),(ARR),TBA,00X,82074,0,9999
+82074,BMES 7994,Research and Dissertation,R,,1 TO 19,SM Duma,(ARR),(ARR),TBA,00X,82075,0,9999
+82075,BMES 7994,Research and Dissertation,R,,1 TO 19,T Rikakis,(ARR),(ARR),TBA,00X,82076,0,9999
+82076,BMES 7994,Research and Dissertation,R,,1 TO 19,MA Stremler,(ARR),(ARR),TBA,00X,82077,0,9999
+82077,BMES 7994,Research and Dissertation,R,,1 TO 19,PR Montague,(ARR),(ARR),TBA,00X,92473,1,9999
+92473,BMES 7994,Research and Dissertation,ONLINE COURSE   VR,Online: Asynchronous,1 TO 19,KM Mulvaney,(ARR),(ARR),ONLINE,00X,,0,0

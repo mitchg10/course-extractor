@@ -35,33 +35,25 @@ docker compose up --build -d
 
 # Wait for the application to start
 echo "Waiting for the application to start..."
-sleep 10
+sleep 5
 
 # Check if the application is running
 if docker compose ps | grep -q "course-extractor"; then
     echo "Course Extractor is running!"
     echo "Backend API: http://localhost:8000"
-    echo "Frontend: http://localhost:3000"
-    echo "Ollama API: http://localhost:11434"
+    echo "Frontend: http://localhost:5173"
 else
     echo "Error: Course Extractor failed to start"
     docker-compose logs
     exit 1
 fi
 
-# Check Ollama status
-if curl -s http://localhost:11434/api/tags > /dev/null; then
-    echo "Ollama is running and ready!"
-else
-    echo "Warning: Ollama may not be fully initialized yet"
-fi
-
 # Open the browser (works on macOS)
-open http://localhost:3000
+open http://localhost:5173
 
 echo
 echo "Application is running!"
-echo "You can access it at: http://localhost:3000"
+echo "You can access it at: http://localhost:5173"
 echo
 echo "To stop the application, close this window and run stop_extractor.sh"
 echo

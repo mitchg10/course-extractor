@@ -6,24 +6,6 @@ mkdir -p /app/data/individual
 mkdir -p /app/data/combined
 mkdir -p /app/logs
 
-# Run Ollama setup script
-echo "Setting up Ollama..."
-./setup_ollama.sh
-
-# Wait for Ollama setup to complete
-echo "Waiting for Ollama setup to complete..."
-timeout=120  # 2 minutes timeout
-elapsed=0
-until curl -s http://${OLLAMA_HOST}:11434/api/tags > /dev/null; do
-    if [ $elapsed -ge $timeout ]; then
-        echo "Timeout waiting for Ollama setup"
-        exit 1
-    fi
-    sleep 5
-    elapsed=$((elapsed + 5))
-    echo "Still waiting for Ollama setup... ($elapsed seconds elapsed)"
-done
-
 # Function to handle process cleanup
 cleanup() {
     echo "Shutting down processes..."
@@ -48,9 +30,9 @@ if [ "$ENVIRONMENT" = "development" ]; then
             echo "Installing frontend dependencies..."
             npm install
         fi
-        echo "Starting frontend development server..."
-        npm start &
-        REACT_PID=$!
+        echo "Starting Vite development server..."
+        npm run dev &
+        VITE_PID=$!
     else
         echo "Error: Frontend package.json not found in mounted volume"
         exit 1
@@ -62,12 +44,17 @@ else
     uvicorn backend.app:app --host 0.0.0.0 --port $PORT &
     FASTAPI_PID=$!
     
-    # Serve React build
-    if [ -d "frontend/build" ]; then
-        npx serve -s frontend/build -l 3000 &
-        REACT_PID=$!
+    # Serve Vite build using a static file server
+    if [ -d "frontend/dist" ]; then
+        # Install serve if not already installed
+        if ! command -v serve &> /dev/null; then
+            npm install -g serve
+        fi
+        echo "Starting production server for Vite build..."
+        npx serve -s frontend/dist -l 5173 &
+        VITE_PID=$!
     else
-        echo "Error: Frontend build files not found"
+        echo "Error: Frontend dist files not found"
         exit 1
     fi
 fi
@@ -79,8 +66,8 @@ while true; do
         echo "FastAPI process died"
         cleanup
     fi
-    if ! kill -0 $REACT_PID 2>/dev/null; then
-        echo "React process died"
+    if ! kill -0 $VITE_PID 2>/dev/null; then
+        echo "Vite process died"
         cleanup
     fi
     sleep 1
