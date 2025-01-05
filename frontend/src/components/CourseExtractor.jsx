@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { logger } from '@/lib/utils/logger';
-import { api } from '@/lib/utils/api';
-import { cn } from '@/lib/utils/cn';
-import StatusDisplay from '@/components/StatusDisplay';
-// import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Box, Paper, Button, CircularProgress, FormControl, Grid, IconButton, InputLabel, List, ListItem, ListItemIcon, ListItemText, MenuItem, Select, Typography, Alert } from '@mui/material';
+import { logger } from '@/utils/logger';
+import ProcessingButton from '@/components/ProcessingButton';
+import { Box, Paper, Button, FormControl, Grid, IconButton, InputLabel, List, ListItem, ListItemIcon, ListItemText, MenuItem, Select, Typography, Alert } from '@mui/material';
 import {
     Upload,
     FileText,
-    Database,
     Trash2,
     XCircle
 } from 'lucide-react';
-
-// TODO:
-// 1. Ensure you can't upload a duplicate file
-// 2. Constants file
-// 3. Add a loading spinner when processing
 
 const ENGINEERING_PROGRAMS = [
     ["AOE", "Aerospace and Ocean Engineering"],
@@ -46,7 +37,21 @@ const SEMESTERS = [
 
 const YEARS = Array.from({ length: 5 }, (_, i) => new Date().getFullYear() + i);
 
-// At the top of CourseExtractor.jsx, after imports
+const getNextSemester = () => {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth() + 1;
+
+    if (currentMonth >= 1 && currentMonth <= 4) {
+        return SEMESTERS.find(semester => semester.label === 'Summer I').value;
+    } else if (currentMonth >= 5 && currentMonth <= 6) {
+        return SEMESTERS.find(semester => semester.label === 'Summer II').value;
+    } else if (currentMonth >= 7 && currentMonth <= 8) {
+        return SEMESTERS.find(semester => semester.label === 'Fall').value;
+    } else {
+        return SEMESTERS.find(semester => semester.label === 'Spring').value;
+    }
+};
+
 console.log('Testing logger availability:', logger);
 logger.info('CourseExtractor component loaded');
 
@@ -54,42 +59,7 @@ const CourseExtractor = () => {
     const [filesData, setFilesData] = useState([]);
     const [processing, setProcessing] = useState(false);
     const [taskId, setTaskId] = useState(null);
-    const [processingStatus, setProcessingStatus] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
-    const [progress, setProgress] = useState(0);
-
-    useEffect(() => {
-        let interval;
-        if (taskId && processing) {
-            logger.info(`Starting status polling for task: ${taskId}`);
-            interval = setInterval(checkTaskStatus, 2000);
-        }
-        return () => {
-            if (interval) {
-                clearInterval(interval);
-                logger.info('Cleared status polling interval');
-            }
-        };
-    }, [taskId, processing]);
-
-    const checkTaskStatus = async () => {
-        try {
-            const status = await api.checkStatus(taskId);
-            logger.info(`Task status update: ${status.status}`);
-            setProcessingStatus(status.status);
-            setProgress(status.progress || 0);
-
-            if (['completed', 'failed'].includes(status.status.toLowerCase())) {
-                setProcessing(false);
-                clearInterval(interval);
-                logger.info(`Processing ${status.status}`);
-            }
-        } catch (error) {
-            logger.error('Status check failed:', error);
-            setErrorMessage('Failed to check processing status');
-            setProcessing(false);
-        }
-    };
 
     const validateFiles = (newFiles) => {
         logger.info(`Validating ${newFiles.length} files`);
@@ -141,10 +111,7 @@ const CourseExtractor = () => {
     const handleDeleteFile = (idToDelete) => {
         logger.info(`Deleting file with ID: ${idToDelete}`);
         setFilesData(prevFiles => prevFiles.filter(fileData => fileData.id !== idToDelete));
-        if (processingStatus) {
-            setProcessingStatus(null);
-            setTaskId(null);
-        }
+        setTaskId(null);
     };
 
     const handleMetadataChange = (id, field, value) => {
@@ -170,40 +137,31 @@ const CourseExtractor = () => {
         }
 
         setProcessing(true);
-        setProcessingStatus('processing');
-        setTaskId(null);
-        logger.info('Starting file processing');
+        setErrorMessage('');
 
         try {
             const formData = new FormData();
-            // Add files to form data
-            filesData.forEach((fileData, index) => {
+            filesData.forEach(fileData => {
                 formData.append('files', fileData.file);
             });
-            // Add metadata to form data
+
             const metadata = filesData.map(fileData => ({
                 subject_code: fileData.program,
                 term_year: `${fileData.year}${fileData.semester}`,
                 file_path: fileData.file.name
             }));
-            // Add metadata as a JSON string
+
             formData.append('metadata', JSON.stringify(metadata));
 
-            // ! Remove
-            // Add this before the fetch call
-            logger.info('Metadata being sent:', JSON.stringify(metadata, null, 2));
-            logger.info('Files being sent:', Array.from(formData.getAll('files')).map(f => f.name));
-
-            // Send request to backend
             const response = await fetch('http://localhost:8000/process', {
                 method: 'POST',
                 body: formData
             });
-            // Check if request was successful
+
             if (!response.ok) {
                 throw new Error('Failed to process files');
             }
-            // Parse response
+
             const result = await response.json();
             setTaskId(result.task_id);
             logger.info(`Task created with ID: ${result.task_id}`);
@@ -211,9 +169,20 @@ const CourseExtractor = () => {
             logger.error('Processing submission failed:', error);
             setErrorMessage('Failed to start processing');
             setProcessing(false);
-            setProcessingStatus('failed');
         }
     };
+
+    useEffect(() => {
+        if (filesData.length > 0) {
+            const updatedFilesData = filesData.map(fileData => {
+                if (!fileData.semester) {
+                    return { ...fileData, semester: getNextSemester() };
+                }
+                return fileData;
+            });
+            setFilesData(updatedFilesData);
+        }
+    }, [filesData]);
 
     return (
         <Box sx={{ maxWidth: 'lg', mx: 'auto', p: 3 }}>
@@ -361,36 +330,35 @@ const CourseExtractor = () => {
             {/* Process button */}
             {filesData.length > 0 && (
                 <Box sx={{ textAlign: 'center' }}>
-                    <Button
-                        variant="contained"
-                        color="success"
-                        disabled={processing}
+                    <ProcessingButton
+                        taskId={taskId}
+                        processing={processing}
                         onClick={handleSubmit}
-                        startIcon={processing ? <CircularProgress size={20} /> : <Database />}
-                        sx={{ px: 4, py: 1.5 }}
-                    >
-                        {processing ? 'Processing...' : 'Extract Course Data'}
-                    </Button>
+                        onProcessingComplete={(result) => {
+                            setProcessing(false);
+                            logger.info('Processing completed successfully', result);
+                        }}
+                        onError={(error) => {
+                            setProcessing(false);
+                            setErrorMessage(error);
+                            logger.error('Processing error:', error);
+                        }}
+                        onDownload={() => {
+                            // ! Handle download here
+                            logger.info('Initiating download of results');
+                            // Add your download logic
+                        }}
+                    />
                 </Box>
             )}
 
-            {/* Status display */}
-            <StatusDisplay status={processingStatus} progress={progress} />
-
             {/* Error messages */}
             {errorMessage && (
-                // <Alert variant="destructive" className="mt-4">
-                //     <AlertTitle className="flex items-center gap-2">
-                //         <XCircle className="h-4 w-4" />
-                //         Error
-                //     </AlertTitle>
-                //     <AlertDescription>{errorMessage}</AlertDescription>
-                // </Alert>
                 <Alert
                     onClose={() => setErrorMessage('')}
                     severity="error"
                     icon={<XCircle />}
-                    sx={{ width: '100%' }}
+                    sx={{ width: '100%', mt: 2 }}
                 >
                     {errorMessage}
                 </Alert>
