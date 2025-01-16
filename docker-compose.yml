@@ -6,7 +6,8 @@ services:
       - "8000:8000"  # FastAPI backend
       - "5173:5173"  # Vite frontend
     volumes:
-      - ./data:/app/data
+      - ./downloads:/app/downloads
+      - ./uploads:/app/uploads
       - ./logs:/app/logs
       - ./backend:/app/backend  # For development hot-reload
       - ./frontend:/app/frontend  # For development hot-reload

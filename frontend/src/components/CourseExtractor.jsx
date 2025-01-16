@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { logger } from '@/utils/logger';
 import ProcessingButton from '@/components/ProcessingButton';
-import { Box, Paper, Button, FormControl, Grid, IconButton, InputLabel, List, ListItem, ListItemIcon, ListItemText, MenuItem, Select, Typography, Alert } from '@mui/material';
+import { Box, Paper, Button, FormControl, Grid, IconButton, InputLabel, List, ListItem, ListItemIcon, ListItemText, MenuItem, Select, Typography, Alert, Slide } from '@mui/material';
 import {
     Upload,
     FileText,
@@ -62,6 +62,7 @@ const CourseExtractor = () => {
     const [errorMessage, setErrorMessage] = useState('');
 
     const validateFiles = (newFiles) => {
+        // Validating file types
         logger.info(`Validating ${newFiles.length} files`);
         const invalidFiles = newFiles.filter(file =>
             file.type !== 'application/pdf' &&
@@ -72,6 +73,18 @@ const CourseExtractor = () => {
             const fileNames = invalidFiles.map(f => f.name).join(', ');
             logger.warn(`Invalid file types detected: ${fileNames}`);
             setErrorMessage(`Invalid file type(s): ${fileNames}. Only PDF files are allowed.`);
+            return [];
+        }
+
+        // Check for duplicates
+        const duplicateFiles = newFiles.filter(file =>
+            filesData.some(fileData => fileData.file.name === file.name)
+        );
+
+        if (duplicateFiles.length > 0) {
+            const fileNames = duplicateFiles.map(f => f.name).join(', ');
+            logger.warn(`Duplicate files detected: ${fileNames}`);
+            setErrorMessage(`Duplicate file(s) detected: ${fileNames}`);
             return [];
         }
 
@@ -341,28 +354,23 @@ const CourseExtractor = () => {
                         onError={(error) => {
                             setProcessing(false);
                             setErrorMessage(error);
-                            logger.error('Processing error:', error);
-                        }}
-                        onDownload={() => {
-                            // ! Handle download here
-                            logger.info('Initiating download of results');
-                            // Add your download logic
+                            logger.error('Error occurred:', error);
                         }}
                     />
                 </Box>
             )}
 
             {/* Error messages */}
-            {errorMessage && (
+            <Slide direction="up" in={errorMessage !== ''} mountOnEnter unmountOnExit>
                 <Alert
                     onClose={() => setErrorMessage('')}
                     severity="error"
                     icon={<XCircle />}
-                    sx={{ width: '100%', mt: 2 }}
+                    sx={{ width: '100%', mt: 8 }}
                 >
                     {errorMessage}
                 </Alert>
-            )}
+            </Slide>
         </Box>
     );
 };

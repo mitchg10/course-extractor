@@ -8,6 +8,9 @@ class Settings(BaseSettings):
     
     # Directory for temporary file uploads
     UPLOAD_DIR: Path = BASE_DIR / "uploads"
+
+    # Download directory for generated files
+    DOWNLOAD_DIR: Path = BASE_DIR / "downloads"
     
     # Directory for backend logs
     BACKEND_LOG_DIR: Path = BASE_DIR / "logs" / "backend"

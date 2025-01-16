@@ -36,6 +36,15 @@ course_extractor/
 │   ├── backend/
 │   └── frontend/
 │
+├-- downloads/                   # Downloaded PDFs
+│
+├-- uploads/                    # Uploaded PDFs
+│
+├-- pyvt/
+|   ├── __init__.py              # Main implementation
+|   ├── setup.py                 # PyVT API interaction
+|
+│
 ├── .env                          # Environment variables
 ├── docker-compose.yml            # Docker composition
 ├── README.md                     # Project documentation

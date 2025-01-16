@@ -6,7 +6,10 @@ import pandas as pd
 from ..utils.logger import setup_logger
 from .merger import CourseDataMerger
 from .constants import ENGINEERING_CODES, EXPECTED_HEADERS, IGNORE_COURSES
+from ..config import Settings
 from pyvt import Timetable
+
+settings = Settings()
 
 # TODO: Edit file paths and verify they download to the user's machine
 
@@ -101,13 +104,13 @@ class PdfProcessor:
             # If graduate courses are found
             if self.all_graduate_courses:
                 # Save them
-                output_file = f"all_graduate_courses_{term_year}.csv"  # ! Check!
+                output_file = f"{task_id}_all_graduate_courses.csv"
                 self._save_to_csv(self.all_graduate_courses, output_file)
 
                 # Find underenrolled courses
                 underenrolled = self._find_underenrolled_classes()
                 if underenrolled:
-                    under_file_name = f"underenrolled_courses_{term_year}.csv"
+                    under_file_name = f"{task_id}_underenrolled_courses.csv"
                     self._save_to_csv(underenrolled, under_file_name)
 
             # Update task status with results
@@ -408,7 +411,7 @@ class PdfProcessor:
         return graduate_courses
 
     def _save_to_csv(self, data, filename):
-        output_path = Path(__file__).parent / filename  # ! CHANGE
+        output_path = settings.DOWNLOAD_DIR / filename
         df = pd.DataFrame(data)
         df.to_csv(output_path, index=False)
         self.logger.info(f"Saved data to {output_path}")

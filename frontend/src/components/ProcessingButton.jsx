@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Button, CircularProgress, Typography, Fade } from '@mui/material';
 import { Database, Download, Check } from 'lucide-react';
+import { logger } from '@/utils/logger';
 
 const ProcessingButton = ({
     taskId,
     processing,
     onProcessingComplete,
     onError,
-    onClick,
-    onDownload
+    onClick
 }) => {
     const [progress, setProgress] = useState(0);
     const [isComplete, setIsComplete] = useState(false);
     const [showCheck, setShowCheck] = useState(false);
+    const [downloading, setDownloading] = useState(false);
 
     useEffect(() => {
         let interval;
@@ -53,8 +54,92 @@ const ProcessingButton = ({
         }, 1000);
     };
 
+    const handleDownload = async () => {
+        if (!taskId) return;
+
+        try {
+            setDownloading(true);
+            logger.info('Starting download process...');
+
+            // Get available files
+            const response = await fetch(`http://localhost:8000/available-files/${taskId}`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to fetch available files: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            logger.info(`Found ${data.files?.length || 0} files available for download`);
+
+            if (!data.files?.length) {
+                throw new Error('No files available for download');
+            }
+
+            // Download each file
+            for (const file of data.files) {
+                logger.info(`Attempting to download: ${file.filename}`);
+
+                const downloadResponse = await fetch(
+                    `http://localhost:8000/download/${taskId}/${file.filename}`,
+                    {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'text/csv,application/octet-stream'
+                        }
+                    }
+                );
+
+                if (!downloadResponse.ok) {
+                    throw new Error(`Failed to download ${file.filename}: ${downloadResponse.statusText}`);
+                }
+
+                const blob = await downloadResponse.blob();
+                const url = window.URL.createObjectURL(blob);
+
+                // Create and click download link
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = file.filename;
+                document.body.appendChild(a);
+                a.click();
+
+                // Cleanup
+                setTimeout(() => {
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                }, 100);
+
+                logger.info(`Successfully downloaded file: ${file.filename}`);
+            }
+
+            logger.info('Successfully completed all downloads');
+        } catch (error) {
+            logger.error('Error downloading files:', error);
+            onError?.(error.message || 'Failed to download files');
+        } finally {
+            setDownloading(false);
+        }
+    };
+
     // Button content based on state
     const buttonContent = () => {
+        if (downloading) {
+            return (
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <CircularProgress size={20} color="inherit" />
+                    <Typography variant="button">
+                        Downloading...
+                    </Typography>
+                </Box>
+            );
+        }
+
         if (processing) {
             return (
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -102,8 +187,8 @@ const ProcessingButton = ({
         <Button
             variant="contained"
             color={isComplete ? "success" : "primary"}
-            disabled={processing}
-            onClick={isComplete ? onDownload : onClick}
+            disabled={processing || downloading}
+            onClick={isComplete ? handleDownload : onClick}
             sx={{
                 px: 4,
                 py: 1.5,

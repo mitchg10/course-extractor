@@ -7,6 +7,15 @@
 # Virtual environment
 venv/
 
+# Logs
+logs/
+
+# Upload data
+uploads/
+
+# Download data
+downloads/
+
 # Python
 __pycache__/
 *.py[cod]
@@ -68,15 +77,7 @@ out/
 .settings/
 
 # Project specific
-logs/*
-!logs/.gitkeep
-data/individual/*
-!data/individual/.gitkeep
-data/combined/*
-!data/combined/.gitkeep
-logs/**/*.log
-logs/**/*.log.*
-!logs/**/.gitkeep
+backend/req.html
 
 # Docker
 .docker/
