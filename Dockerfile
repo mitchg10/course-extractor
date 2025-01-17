@@ -4,13 +4,14 @@ FROM node:18-slim AS frontend-builder
 # Set working directory
 WORKDIR /app/frontend
 
-# Copy .npmrc file
-COPY frontend/.npmrc ./
-
 # Copy frontend files
 COPY frontend/package*.json ./
+COPY frontend/.npmrc ./
 RUN npm install
+
+# Copy rest of frontend
 COPY frontend/ .
+
 # Build using vite
 RUN npm run build
 
@@ -21,6 +22,8 @@ FROM python:3.11-slim
 RUN apt-get update && apt-get install -y \
     curl \
     gnupg \
+    net-tools \
+    procps \
     build-essential \
     nodejs \
     npm \
@@ -39,17 +42,16 @@ RUN pip install pyvt/
 
 # Copy backend code
 COPY backend/ backend/
-COPY config/ config/
 
 # Create necessary directories
-RUN mkdir -p data/individual data/combined logs
+RUN mkdir -p uploads downloads logs
 
 # Copy frontend - handle both dev and prod
 ARG ENVIRONMENT
 ENV ENVIRONMENT=${ENVIRONMENT:-production}
 
 # Copy frontend build
-COPY --from=frontend-builder /app/frontend/dist frontend/dist
+COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist
 
 # Create frontend directory for development volume mount
 RUN mkdir -p frontend
@@ -65,7 +67,8 @@ EXPOSE 5173
 # Set environment variables
 ENV PYTHONPATH=/app
 ENV PYTHONUNBUFFERED=1
-ENV PORT=8000
+ENV API_PORT=8000
+ENV FRONTEND_PORT=5173
 
 # Update entrypoint script to run both services
 ENTRYPOINT ["./entrypoint.sh"]

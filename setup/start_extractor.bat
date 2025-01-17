@@ -1,22 +1,32 @@
 @echo off
-SETLOCAL EnableDelayedExpansion
+setlocal enabledelayedexpansion
 
 echo Course Data Extractor Launcher
 echo ============================
 echo.
 
-REM Check if Docker is installed
-docker --version > nul 2>&1
-if errorlevel 1 (
+:: Set default environment if not provided
+if "%1"=="" (
+    set ENVIRONMENT=development
+) else (
+    set ENVIRONMENT=%1
+)
+
+echo Running in %ENVIRONMENT% mode
+echo.
+
+:: Check if Docker is installed
+where docker >nul 2>&1
+if %ERRORLEVEL% neq 0 (
     echo Docker is not installed! Please install Docker Desktop first.
     echo You can download it from: https://www.docker.com/products/docker-desktop
     pause
     exit /b 1
 )
 
-REM Check if Docker is running
-docker info > nul 2>&1
-if errorlevel 1 (
+:: Check if Docker is running
+docker info >nul 2>&1
+if %ERRORLEVEL% neq 0 (
     echo Docker is not running! Please start Docker Desktop.
     pause
     exit /b 1
@@ -26,25 +36,40 @@ echo Starting Course Data Extractor...
 echo This may take a few minutes on first run...
 echo.
 
-REM Create data directory if it doesn't exist
-if not exist "data" mkdir data
+:: Create required directories if they don't exist
+if not exist uploads mkdir uploads
+if not exist downloads mkdir downloads
+if not exist logs mkdir logs
 
-REM Pull and start the containers
-docker-compose up --build -d
+:: Pull and start the containers with environment variable
+echo Building and starting Course Extractor...
+set ENVIRONMENT=%ENVIRONMENT%
+docker compose up --build -d
 
-REM Wait for the application to start
+:: Wait for the application to start
 echo Waiting for the application to start...
-timeout /t 10 /nobreak > nul
+timeout /t 5 /nobreak >nul
 
-REM Open the browser
-start http://localhost:8501
+:: Check if the application is running
+docker compose ps | findstr "course-extractor" >nul
+if %ERRORLEVEL% equ 0 (
+    echo Course Extractor is running!
+    echo Backend API: http://localhost:8000
+    echo Frontend: http://localhost:5173
+) else (
+    echo Error: Course Extractor failed to start
+    docker compose logs
+    exit /b 1
+)
+
+:: Open the browser
+start http://localhost:5173
 
 echo.
 echo Application is running!
-echo You can access it at: http://localhost:8501
+echo You can access it at: http://localhost:5173
 echo.
 echo To stop the application, close this window and run stop_extractor.bat
 echo.
 
-REM Keep the window open
 pause

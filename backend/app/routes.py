@@ -17,6 +17,11 @@ class FrontendLogEntry(BaseModel):
     details: Optional[Dict[str, Any]] = None
     environment: str
 
+@router.get("/health")
+async def health_check():
+    """Health check endpoint for Docker"""
+    return {"status": "healthy"}
+
 @router.post("/frontend-logs")
 async def save_frontend_log(log_entry: FrontendLogEntry):
     try:

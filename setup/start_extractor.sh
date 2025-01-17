@@ -5,6 +5,12 @@ echo "Course Data Extractor Launcher"
 echo "============================"
 echo
 
+# Check if environment argument is provided
+ENVIRONMENT=${1:-development}  # Default to development if no arg provided
+
+echo "Running in $ENVIRONMENT mode"
+echo
+
 # Check if Docker is installed
 if ! command -v docker &> /dev/null; then
     echo "Docker is not installed! Please install Docker Desktop first."
@@ -25,13 +31,13 @@ echo "This may take a few minutes on first run..."
 echo
 
 # Create required directories if they don't exist
-mkdir -p data/individual
-mkdir -p data/combined
+mkdir -p uploads
+mkdir -p downloads
 mkdir -p logs
 
-# Pull and start the containers
+# Pull and start the containers with environment variable
 echo "Building and starting Course Extractor..."
-docker compose up --build -d
+ENVIRONMENT=$ENVIRONMENT docker compose up --build -d
 
 # Wait for the application to start
 echo "Waiting for the application to start..."

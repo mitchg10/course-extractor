@@ -10,7 +10,16 @@ export default defineConfig({
     },
   },
   server: {
+    host: true, // Needed for Docker - listen on all addresses
     port: 5173,
+    strictPort: true, // Force the port to be used
+    watch: {
+      usePolling: true // Better performance for Docker volumes
+    },
+    hmr: {
+      host: 'localhost',
+      protocol: 'ws'
+    },
     proxy: {
       '/api': {
         target: 'http://localhost:8000',
