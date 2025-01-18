@@ -52,7 +52,7 @@ ENV PORT=8000
 ENV ENVIRONMENT=production
 
 # Expose port (Render will use PORT env variable)
-EXPOSE ${PORT}
+EXPOSE 8000
 
 # Start FastAPI server
-CMD ["uvicorn", "backend.app.main:app", "--host", "0.0.0.0", "--port", "${PORT}"]
+CMD uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
