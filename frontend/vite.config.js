@@ -4,30 +4,22 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  base: '/', // Use relative paths
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
   },
-  // server: {
-  //   host: true, // Needed for Docker - listen on all addresses
-  //   port: 5173,
-  //   strictPort: true, // Force the port to be used
-  //   watch: {
-  //     usePolling: true // Better performance for Docker volumes
-  //   },
-  //   hmr: {
-  //     host: 'localhost',
-  //     protocol: 'ws'
-  //   },
-  //   proxy: {
-  //     '/api': {
-  //       target: 'http://localhost:8000',
-  //       changeOrigin: true,
-  //       rewrite: (path) => path.replace(/^\/api/, ''),
-  //     },
-  //   },
-  // },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined // Disable chunk splitting
+      }
+    }
+  },
   server: {
     host: true,
     port: process.env.PORT || 5173,
