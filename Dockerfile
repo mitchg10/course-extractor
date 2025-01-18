@@ -44,7 +44,6 @@ RUN mkdir -p uploads downloads logs frontend/dist
 
 # Copy frontend build and assets
 COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist
-COPY --from=frontend-builder /app/frontend/public /app/frontend/public
 
 # Set environment variables
 ENV PYTHONPATH=/app
