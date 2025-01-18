@@ -42,14 +42,16 @@ COPY backend/ backend/
 # Create necessary directories
 RUN mkdir -p uploads downloads logs frontend/dist
 
-# Copy frontend build
+# Copy frontend build and assets
 COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist
+COPY --from=frontend-builder /app/frontend/public /app/frontend/public
 
 # Set environment variables
 ENV PYTHONPATH=/app
 ENV PYTHONUNBUFFERED=1
 ENV PORT=8000
 ENV ENVIRONMENT=production
+ENV STATIC_DIR=/app/frontend/dist
 
 # Expose port (Render will use PORT env variable)
 EXPOSE 8000

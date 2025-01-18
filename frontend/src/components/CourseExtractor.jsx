@@ -200,9 +200,52 @@ const CourseExtractor = () => {
 
     return (
         <Box sx={{ maxWidth: 'lg', mx: 'auto', p: 3 }}>
-            <Typography variant="h3" component="h1" sx={{ textAlign: 'center', mb: 3 }}>
-                Course Data Extractor
+            <Typography variant="h3" component="h1" sx={{ textAlign: 'center', mb: 2 }}>
+                VT Course Extractor
             </Typography>
+            <Typography variant="h5" component="h2" sx={{ textAlign: 'center', mb: 4, color: 'text.secondary' }}>
+                College of Engineering Course Analysis Tool
+            </Typography>
+
+            {/* Instructions Section */}
+            <Paper sx={{ p: 3, mb: 4, bgcolor: 'background.paper' }}>
+                <Typography variant="h6" gutterBottom>
+                    How to Extract Course Data:
+                </Typography>
+                <Box component="ol" sx={{ pl: 2, '& li': { mb: 1 } }}>
+                    <Typography component="li">
+                        Access HokieSpa and navigate to <strong>Timetable of Classes</strong>
+                    </Typography>
+                    <Typography component="li">
+                        Select <strong>College of Engineering</strong> department information
+                    </Typography>
+                    <Typography component="li">
+                        Click <strong>FIND class sections</strong>
+                    </Typography>
+                    <Typography component="li">
+                        Click <strong>Printer Friendly List</strong>
+                    </Typography>
+                    <Typography component="li">
+                        Print the page and save as PDF
+                    </Typography>
+                    <Typography component="li">
+                        Repeat for all College of Engineering departments
+                    </Typography>
+                </Box>
+
+                <Typography variant="h6" sx={{ mt: 3, mb: 1 }}>
+                    Output Files:
+                </Typography>
+                <Box component="ul" sx={{ pl: 2, '& li': { mb: 1 } }}>
+                    <Typography component="li">
+                        <strong>Complete Course List:</strong> A CSV file containing all courses from uploaded PDF files
+                    </Typography>
+                    <Typography component="li">
+                        <strong>Underenrolled Courses:</strong> A CSV file showing courses with fewer than 6 enrolled students
+                    </Typography>
+                </Box>
+            </Paper>
+            
             {/* Upload area */}
             <Paper
                 variant="outlined"
