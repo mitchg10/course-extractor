@@ -5,6 +5,7 @@ import os
 from fastapi import FastAPI, UploadFile, File, BackgroundTasks, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 import uvicorn
 import logging
 from typing import List
@@ -26,16 +27,27 @@ logger = setup_logger("course_extractor")
 
 app = FastAPI(title="Course Extractor API")
 
+origins = [
+    "http://localhost:5173",  # Development
+    "https://course-extractor.onrender.com",  # Production
+    "*"  # During initial testing - remove this in production
+]
+
 # Configure CORS for frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Vite's default port
+    allow_origins=origins,
     allow_credentials=True,
     allow_headers=["*"],
     allow_methods=["GET", "POST", "OPTIONS"],
     expose_headers=["Content-Disposition", "Content-Type"],
     max_age=600,
 )
+
+# Mount static files for frontend
+static_directory = Path("/app/frontend/dist")
+if static_directory.exists():
+    app.mount("/assets", StaticFiles(directory=str(static_directory / "assets")), name="assets")
 
 # Include the router
 app.include_router(router)
@@ -185,7 +197,7 @@ async def download_file(task_id: str, filename: str):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@app.get("/health")
+@app.get("/health")  # Health check for Render
 async def health_check():
     try:
         # Test S3 connection
@@ -193,7 +205,7 @@ async def health_check():
             's3',
             aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
             aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY'),
-            region_name=os.getenv('AWS_REGION', 'us-east-1')
+            region_name=os.getenv('AWS_REGION', 'us-east-2')
         )
         s3_client.head_bucket(Bucket=os.getenv('AWS_BUCKET_NAME'))
 
@@ -208,6 +220,20 @@ async def health_check():
             "timestamp": datetime.now().isoformat(),
             "error": str(e)
         }
+
+
+@app.get("/{full_path:path}")
+async def serve_frontend(full_path: str):
+    # Skip API routes
+    if full_path.startswith(("api/", "process", "status", "available-files", "download", "health")):
+        raise HTTPException(status_code=404, detail="API route not found")
+
+    # Serve index.html for all other routes
+    index_path = static_directory / "index.html"
+    if index_path.exists():
+        return FileResponse(str(index_path))
+    else:
+        raise HTTPException(status_code=404, detail="Frontend not found")
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

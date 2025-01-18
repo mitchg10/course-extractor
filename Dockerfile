@@ -40,7 +40,7 @@ RUN pip install pyvt/
 COPY backend/ backend/
 
 # Create necessary directories
-RUN mkdir -p uploads downloads logs
+RUN mkdir -p uploads downloads logs frontend/dist
 
 # Copy frontend build
 COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist
