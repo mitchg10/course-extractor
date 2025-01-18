@@ -229,7 +229,7 @@ const CourseExtractor = () => {
                         Print the page and save as PDF
                     </Typography>
                     <Typography component="li">
-                        Repeat for all College of Engineering departments
+                        Repeat for all College of Engineering departments, and upload the PDF files here
                     </Typography>
                 </Box>
 
