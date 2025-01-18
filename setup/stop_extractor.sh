@@ -1,28 +1,26 @@
-@echo off
-setlocal enabledelayedexpansion
+#!/bin/bash
 
-echo Stopping Course Data Extractor...
+echo "Stopping Course Data Extractor..."
 
-:: Check if Docker is running
-docker info >nul 2>&1
-if %ERRORLEVEL% neq 0 (
-    echo Error: Docker is not running!
-    pause
-    exit /b 1
-)
+# Check if Docker is running
+if ! docker info &> /dev/null; then
+    echo "Error: Docker is not running!"
+    read -p "Press Enter to exit..."
+    exit 1
+fi
 
-:: Stop the containers
+# Stop the containers
 docker compose down
 
-:: Verify all containers are stopped
-if %ERRORLEVEL% equ 0 (
-    echo.
-    echo Application stopped successfully!
-) else (
-    echo.
-    echo Error: There was a problem stopping the application.
-    echo Please check if any containers are still running with: docker ps
-)
+# Verify all containers are stopped
+if [ $? -eq 0 ]; then
+    echo
+    echo "Application stopped successfully!"
+else
+    echo
+    echo "Error: There was a problem stopping the application."
+    echo "Please check if any containers are still running with: docker ps"
+fi
 
-echo.
-pause
+echo
+read -p "Press Enter to exit..."

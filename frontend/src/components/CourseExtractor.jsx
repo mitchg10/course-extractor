@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { logger } from '@/utils/logger';
 import ProcessingButton from '@/components/ProcessingButton';
+import { endpoints } from '@/config/api';
 import { Box, Paper, Button, FormControl, Grid, IconButton, InputLabel, List, ListItem, ListItemIcon, ListItemText, MenuItem, Select, Typography, Alert, Slide } from '@mui/material';
 import {
     Upload,
@@ -166,7 +167,7 @@ const CourseExtractor = () => {
 
             formData.append('metadata', JSON.stringify(metadata));
 
-            const response = await fetch('http://localhost:8000/process', {
+            const response = await fetch(endpoints.process, {
                 method: 'POST',
                 body: formData
             });

@@ -1,5 +1,7 @@
 # backend/app/main.py
+import datetime
 from http.client import HTTPException
+import os
 from fastapi import FastAPI, UploadFile, File, BackgroundTasks, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -9,6 +11,7 @@ from typing import List
 import uuid
 from pathlib import Path
 import json
+import boto3
 
 # from app.core.pdf_processor import process_pdf_files
 from .core.pdf_processor import PdfProcessor
@@ -180,6 +183,31 @@ async def download_file(task_id: str, filename: str):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/health")
+async def health_check():
+    try:
+        # Test S3 connection
+        s3_client = boto3.client(
+            's3',
+            aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
+            aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY'),
+            region_name=os.getenv('AWS_REGION', 'us-east-1')
+        )
+        s3_client.head_bucket(Bucket=os.getenv('AWS_BUCKET_NAME'))
+
+        return {
+            "status": "healthy",
+            "timestamp": datetime.now().isoformat(),
+            "s3_connection": "ok"
+        }
+    except Exception as e:
+        return {
+            "status": "unhealthy",
+            "timestamp": datetime.now().isoformat(),
+            "error": str(e)
+        }
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

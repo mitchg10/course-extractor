@@ -27,7 +27,7 @@ const ProcessingButton = ({
 
     const checkStatus = async () => {
         try {
-            const response = await fetch(`http://localhost:8000/status/${taskId}`);
+            const response = await fetch(endpoints.status(taskId));
             if (!response.ok) throw new Error('Failed to fetch status');
 
             const data = await response.json();
@@ -62,7 +62,7 @@ const ProcessingButton = ({
             logger.info('Starting download process...');
 
             // Get available files
-            const response = await fetch(`http://localhost:8000/available-files/${taskId}`, {
+            const response = await fetch(endpoints.availableFiles(taskId), {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -85,7 +85,7 @@ const ProcessingButton = ({
                 logger.info(`Attempting to download: ${file.filename}`);
 
                 const downloadResponse = await fetch(
-                    `http://localhost:8000/download/${taskId}/${file.filename}`,
+                    endpoints.download(taskId, file.filename),
                     {
                         method: 'GET',
                         headers: {

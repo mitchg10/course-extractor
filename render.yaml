@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: course-extractor
+    env: docker
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: ENVIRONMENT
+        value: production
+      - key: AWS_ACCESS_KEY_ID
+        sync: false  # Manually in Render dashboard
+      - key: AWS_SECRET_ACCESS_KEY
+        sync: false  # Manually in Render dashboard
+      - key: AWS_BUCKET_NAME
+        value: coe-graduate-and-professional-studies
+      - key: AWS_REGION
+        value: us-east-2  # Virginia
+      - key: FILE_EXPIRATION_DAYS
+        value: 7
+    healthCheckPath: /health
