@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Button, CircularProgress, Typography, Fade } from '@mui/material';
 import { Database, Download, Check } from 'lucide-react';
 import { logger } from '@/utils/logger';
+import { endpoints } from '@/config/api';
 
 const ProcessingButton = ({
     taskId,

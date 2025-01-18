@@ -1,5 +1,5 @@
 export const API_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://course-extractor.onrender.com'  // Update this with your Render URL
+  ? 'https://course-extractor-rior.onrender.com'
   : 'http://localhost:8000';
 
 export const endpoints = {
