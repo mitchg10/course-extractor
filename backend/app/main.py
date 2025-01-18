@@ -46,8 +46,8 @@ app.add_middleware(
 # Mount static files for frontend
 static_directory = Path("/app/frontend/dist")
 if static_directory.exists():
-    app.mount("/assets", StaticFiles(directory=str(static_directory / "assets")), name="assets")
-    
+    app.mount("/assets", StaticFiles(directory=str(static_directory / "assets")), name="assets")    
+    app.mount("/", StaticFiles(directory=str(static_directory), html=True), name="static")
 
 # Include the router
 app.include_router(router)
