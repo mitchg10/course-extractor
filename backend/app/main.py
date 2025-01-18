@@ -29,7 +29,7 @@ app = FastAPI(title="Course Extractor API")
 
 origins = [
     "http://localhost:5173",  # Development
-    "https://course-extractor.onrender.com",  # Production
+    "https://course-extractor-rior.onrender.com",  # Production
     "*"  # During initial testing - remove this in production
 ]
 
