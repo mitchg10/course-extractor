@@ -30,6 +30,7 @@ app = FastAPI(title="Course Extractor API")
 origins = [
     "http://localhost:5173",  # Development
     "https://course-extractor-rior.onrender.com",  # Production
+    f"http://0.0.0.0:{os.getenv('PORT', '8000')}" # Production
 ]
 
 # Configure CORS for frontend

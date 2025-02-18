@@ -14,6 +14,7 @@ const ENGINEERING_PROGRAMS = [
     ["AOE", "Aerospace and Ocean Engineering"],
     ["BC", "Building Construction"],
     ["BSE", "Biological Systems Engineering"],
+    ["BMES", "Biomedical Engineering and Sciences"],
     ["CEE", "Civil and Environmental Engineering"],
     ["CHE", "Chemical Engineering"],
     ["CS", "Computer Science"],
