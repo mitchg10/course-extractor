@@ -28,20 +28,28 @@ logger = setup_logger("course_extractor")
 app = FastAPI(title="Course Extractor API")
 
 origins = [
-    "http://localhost:5173",  # Development
-    "https://course-extractor-rior.onrender.com",  # Production
-    f"http://0.0.0.0:{os.getenv('PORT', '8000')}" # Production
+    "http://localhost:5173",    # Vite dev server
+    "http://localhost:8000",    # FastAPI dev server
+    "https://course-extractor-rior.onrender.com",  # Production URL
+    f"http://0.0.0.0:{os.getenv('PORT', '8000')}"  # Docker
 ]
 
 # Configure CORS for frontend
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=origins,
+#     allow_credentials=True,
+#     allow_headers=["*"],
+#     allow_methods=["GET", "POST", "OPTIONS"],
+#     expose_headers=["Content-Disposition", "Content-Type"],
+#     max_age=600,
+# )
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
+    allow_methods=["*"],
     allow_headers=["*"],
-    allow_methods=["GET", "POST", "OPTIONS"],
-    expose_headers=["Content-Disposition", "Content-Type"],
-    max_age=600,
 )
 
 # Mount static files for frontend

@@ -26,43 +26,64 @@ if ! docker info &> /dev/null; then
     exit 1
 fi
 
-echo "Starting Course Data Extractor..."
-echo "This may take a few minutes on first run..."
-echo
-
 # Create required directories if they don't exist
-mkdir -p uploads
-mkdir -p downloads
-mkdir -p logs
+mkdir -p uploads downloads logs
+
+# Set environment variables
+export ENVIRONMENT=$ENVIRONMENT
+export FRONTEND_PORT=5173
+export API_PORT=8000
+
+# Clean up any existing containers
+echo "Cleaning up existing containers..."
+docker compose down
 
 # Pull and start the containers with environment variable
 echo "Building and starting Course Extractor..."
-ENVIRONMENT=$ENVIRONMENT docker compose up --build -d
+docker compose up --build -d
 
 # Wait for the application to start
 echo "Waiting for the application to start..."
-sleep 5
+sleep 10
 
 # Check if the application is running
 if docker compose ps | grep -q "course-extractor"; then
     echo "Course Extractor is running!"
+    if [ "$ENVIRONMENT" = "development" ]; then
+        echo "Frontend: http://localhost:5173"
+    else
+        echo "Application: http://localhost:8000"
+    fi
     echo "Backend API: http://localhost:8000"
-    echo "Frontend: http://localhost:5173"
 else
     echo "Error: Course Extractor failed to start"
-    docker-compose logs
+    docker compose logs
     exit 1
 fi
 
-# Open the browser (works on macOS)
-open http://localhost:5173
+# Open the browser (platform-independent)
+if [ "$ENVIRONMENT" = "development" ]; then
+    URL="http://localhost:5173"
+else
+    URL="http://localhost:8000"
+fi
+
+# Open browser based on operating system
+case "$(uname -s)" in
+    Darwin*)    open "$URL" ;;             # macOS
+    MINGW*)     start "$URL" ;;            # Git Bash on Windows
+    MSYS*)      start "$URL" ;;            # MSYS on Windows
+    CYGWIN*)    cygstart "$URL" ;;         # Cygwin on Windows
+    *)          xdg-open "$URL" ;;         # Linux
+esac
 
 echo
 echo "Application is running!"
-echo "You can access it at: http://localhost:5173"
+echo "You can access it at: $URL"
 echo
-echo "To stop the application, close this window and run stop_extractor.sh"
+echo "To stop the application, run: ./stop_extractor.sh"
+echo "To view logs, run: docker compose logs -f"
 echo
 
-# Make sure the script doesn't exit immediately
-read -p "Press Enter to exit..."
+# Keep container running and show logs
+docker compose logs -f

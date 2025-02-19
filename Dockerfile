@@ -1,6 +1,10 @@
 # Stage 1: Build frontend
 FROM node:18-slim AS frontend-builder
 
+# Add build argument for environment
+ARG ENVIRONMENT=production
+ENV NODE_ENV=${ENVIRONMENT}
+
 WORKDIR /app/frontend
 
 # Copy frontend files
@@ -11,11 +15,20 @@ RUN npm install
 # Copy frontend source
 COPY frontend/ .
 
-# Build frontend
-RUN npm run build
+# Always create dist directory and build in production
+RUN mkdir -p dist && \
+    if [ "$ENVIRONMENT" = "production" ] ; then \
+        npm run build ; \
+    else \
+        echo "Development mode - skipping production build" ; \
+    fi
 
 # Stage 2: Python backend and final image
 FROM python:3.11-slim
+
+# Add build argument for environment
+ARG ENVIRONMENT=production
+ENV ENVIRONMENT=${ENVIRONMENT}
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -43,19 +56,25 @@ COPY backend/ backend/
 # Create necessary directories
 RUN mkdir -p uploads downloads logs frontend/dist
 
-# Copy frontend build and assets
-COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist
-RUN chmod -R 755 /app/frontend/dist
+# Always copy frontend files needed for both environments
+COPY --from=frontend-builder /app/frontend /app/frontend
+RUN chmod -R 755 /app/frontend
 
 # Set environment variables
 ENV PYTHONPATH=/app
 ENV PYTHONUNBUFFERED=1
 ENV PORT=8000
-ENV ENVIRONMENT=production
 ENV STATIC_DIR=/app/frontend/dist
+ENV VITE_API_URL=http://localhost:8000
 
-# Expose port (Render will use PORT env variable)
+# Expose ports
 EXPOSE 8000
+EXPOSE 5173
 
-# Start FastAPI server
-CMD uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+# Start command based on environment
+CMD if [ "$ENVIRONMENT" = "production" ] ; then \
+        uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT ; \
+    else \
+        cd /app/frontend && npm run dev & \
+        uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT --reload ; \
+    fi
