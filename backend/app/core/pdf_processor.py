@@ -1,4 +1,6 @@
-from typing import List, Dict
+import os
+import tempfile
+from typing import BinaryIO, List, Dict
 from pathlib import Path
 import pymupdf
 import re
@@ -6,12 +8,14 @@ import pandas as pd
 from ..utils.logger import setup_logger
 from .merger import CourseDataMerger
 from .constants import ENGINEERING_CODES, EXPECTED_HEADERS, IGNORE_COURSES
+from .storage import get_storage
 from ..config import Settings
 from pyvt import Timetable
 
 settings = Settings()
 
 # TODO: Edit file paths and verify they download to the user's machine
+
 
 class PdfProcessor:
     def __init__(self):
@@ -35,6 +39,7 @@ class PdfProcessor:
         self.all_graduate_courses = []
         self.underenrolled_courses = []
         self.logger = setup_logger("pdf_processor")
+        self.storage = get_storage()
 
     def process_pdf_files(self,
                           task_id: str,
@@ -67,9 +72,11 @@ class PdfProcessor:
 
                     # Process PDF content
                     pdf_courses = self._process_pdf(file_path)
+                    self.logger.info(f"Found {len(pdf_courses)} courses in PDF")
 
                     # Fetch timetable data using metadata
                     timetable_data = self._fetch_from_timetable(subject_code, term_year)
+                    self.logger.info(f"Found {len(timetable_data)} courses in timetable")
 
                     # Merge data
                     merger = CourseDataMerger()
@@ -103,15 +110,12 @@ class PdfProcessor:
 
             # If graduate courses are found
             if self.all_graduate_courses:
-                # Save them
-                output_file = f"{task_id}_all_graduate_courses.csv"
-                self._save_to_csv(self.all_graduate_courses, output_file)
+                self._save_to_csv(task_id, self.all_graduate_courses, settings.ALL_GRADUATES_COURSES_FILENAME)
 
                 # Find underenrolled courses
                 underenrolled = self._find_underenrolled_classes()
                 if underenrolled:
-                    under_file_name = f"{task_id}_underenrolled_courses.csv"
-                    self._save_to_csv(underenrolled, under_file_name)
+                    self._save_to_csv(task_id, underenrolled, settings.UNDERENROLLED_COURSES_FILENAME)
 
             # Update task status with results
             processing_tasks[task_id].update({
@@ -121,7 +125,13 @@ class PdfProcessor:
             })
 
             # Cleanup temporary files
-            self._cleanup_files([m['file_path'] for m in file_metadata])
+            # self._cleanup_files([m['file_path'] for m in file_metadata])
+
+            # After processing, clean up the files
+            for metadata in file_metadata:
+                storage_path = metadata['file_path']
+                self.logger.info(f"Deleting file from storage: {storage_path}")
+                self.storage.delete_file(storage_path)
 
         except Exception as e:
             self.logger.error(f"Task {task_id} failed: {str(e)}")
@@ -156,61 +166,93 @@ class PdfProcessor:
         except Exception as e:
             self.logger.error(f"Error removing directory: {str(e)}")
 
-    def _process_pdf(self, file_path: Path):
+    def _process_pdf(self, storage_path: str):
         """
-        Process all pages in the PDF and extract course information.
-        Headers are only on the first page, so we'll use those column boundaries for all pages.
-
-        Args:
-            pdf_path (str): Path to the PDF file
-
-        Returns:
-            list: List of validated course dictionaries
+        Process PDF from storage (S3 or local)
         """
-        # Open PDF file
-        doc = pymupdf.open(file_path)
-        all_courses = []
+        try:
+            # Get file from storage
+            file_content = self.storage.download_file(storage_path)
+            
+            if not file_content:
+                self.logger.error(f"Could not download file from storage: {storage_path}")
+                return []
+            
+            self.logger.info(f"Processing PDF from storage: {storage_path}")
 
-        # Get headers from first page only
-        first_page = doc[0]
-        first_page_words = first_page.get_text("words")
+            # Create a temporary file to hold the PDF content
+            with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+                # Handle different types of file objects
+                if hasattr(file_content, 'read'):
+                    # If it's a file-like object (either from S3 or local)
+                    content = file_content.read()
+                    if isinstance(content, str):
+                        content = content.encode('utf-8')
+                    temp_file.write(content)
+                else:
+                    temp_file.write(file_content)
+                
+                temp_path = temp_file.name
 
-        if not first_page_words:
+            # Process the PDF using the temporary file
+            doc = pymupdf.open(temp_path)
+            all_courses = []
+
+            # Get headers from first page only
+            first_page = doc[0]
+            first_page_words = first_page.get_text("words")
+
+            # If no words found, log and return empty list
+            if not first_page_words:
+                self.logger.error("No words found in PDF")
+                return []
+
+            # Find header line and get column boundaries
+            header_words = self._find_header_lines(first_page_words, EXPECTED_HEADERS)
+            if not header_words:
+                return []
+
+            header_y_bottom = max(hw['y1'] for hw in header_words)
+            column_boundaries = self._get_column_boundaries(header_words)
+
+            # Process each page using the column boundaries from first page
+            for page_num in range(len(doc)):
+                self.logger.info(f"Processing page {page_num + 1} of {len(doc)}")
+                page = doc[page_num]
+                words = page.get_text("words")
+
+                # Skip empty pages
+                if not words:
+                    continue
+
+                # For first page, use the header_y_bottom
+                # For other pages, start from top of page (or use a small offset)
+                page_start_y = header_y_bottom if page_num == 0 else 0
+
+                words_in_columns = self._assign_words_to_columns(words, column_boundaries, page_start_y)
+                rows = self._cluster_words_into_rows(words_in_columns)
+
+                # Extract course info from this page
+                page_courses = self._extract_course_info(rows, page_num)
+                self.logger.info(f"Found {len(page_courses)} courses on page {page_num + 1}")
+                all_courses.extend(page_courses)
+                
+            return all_courses
+                
+        except Exception as e:
+            self.logger.error(f"Error processing PDF from storage: {str(e)}")
+            self.logger.error("Full error details:", exc_info=True)  # Add full traceback
             return []
-
-        # Find header line and get column boundaries
-        header_words = self._find_header_lines(first_page_words, EXPECTED_HEADERS)
-        if not header_words:
-            return []
-
-        header_y_bottom = max(hw['y1'] for hw in header_words)
-        column_boundaries = self._get_column_boundaries(header_words)
-
-        # Process each page using the column boundaries from first page
-        for page_num in range(len(doc)):
-            self.logger.info(f"Processing page {page_num + 1} of {len(doc)}")
-            page = doc[page_num]
-            words = page.get_text("words")
-
-            # Skip empty pages
-            if not words:
-                continue
-
-            # For first page, use the header_y_bottom we found
-            # For other pages, we can start from top of page (or use a small offset)
-            page_start_y = header_y_bottom if page_num == 0 else 0
-
-            words_in_columns = self._assign_words_to_columns(words, column_boundaries, page_start_y)
-            rows = self._cluster_words_into_rows(words_in_columns)
-
-            # Extract course info from this page
-            page_courses = self._extract_course_info(rows, page_num)
-            self.logger.info(f"Found {len(page_courses)} courses on page {page_num + 1}")
-            all_courses.extend(page_courses)
-
-        doc.close()
-
-        return all_courses
+        
+        finally:
+            # Clean up temporary file
+            if doc:
+                doc.close()
+            if temp_path and os.path.exists(temp_path):
+                try:
+                    os.unlink(temp_path)
+                except Exception as e:
+                    self.logger.error(f"Error cleaning up temporary file: {str(e)}")
 
     def _find_header_lines(self, words, expected_headers):
         """
@@ -410,11 +452,19 @@ class PdfProcessor:
                 graduate_courses.append(course.copy())
         return graduate_courses
 
-    def _save_to_csv(self, data, filename):
-        output_path = settings.DOWNLOAD_DIR / filename
-        df = pd.DataFrame(data)
-        df.to_csv(output_path, index=False)
-        self.logger.info(f"Saved data to {output_path}")
+    def _save_to_csv(self, task_id, data, filename):
+        """
+        Save data to CSV using storage abstraction
+        """
+        try:
+            if self.storage.save_csv(task_id, pd.DataFrame(data), filename):
+                self.logger.info(f"Successfully saved data to {filename}")
+            else:
+                raise Exception(f"Failed to save CSV to {filename}")
+
+        except Exception as e:
+            self.logger.error(f"Error saving CSV: {str(e)}")
+            raise
 
     def _find_underenrolled_classes(self):
         # Group courses by code and name to handle cross-listings

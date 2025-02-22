@@ -244,6 +244,9 @@ const CourseExtractor = () => {
                     <Typography component="li">
                         <strong>Underenrolled Courses:</strong> A CSV file showing courses with fewer than 6 enrolled students
                     </Typography>
+                    <Typography component="li">
+                        <strong>Note:</strong> Please check to verify a course is not cross-listed with an undergraduate course. Only graduate cross-listings are checked at this time.
+                    </Typography>
                 </Box>
             </Paper>
             

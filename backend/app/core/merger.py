@@ -78,20 +78,6 @@ class CourseDataMerger:
         self.merged_data = merged_courses
         return merged_courses
 
-    def save_to_csv(self, output_path: str):
-        """
-        Save merged data to CSV file
-        Args:
-            output_path: Path to save the CSV file
-        """
-        if not self.merged_data:
-            logger.warning("No merged data available to save")
-            return
-
-        df = pd.DataFrame(self.merged_data)
-        df.to_csv(output_path, index=False)
-        logger.info(f"Saved merged data to {output_path}")
-
     def get_statistics(self) -> Dict:
         """
         Get statistics about the merged data

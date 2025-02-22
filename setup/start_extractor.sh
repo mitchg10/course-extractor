@@ -1,89 +1,54 @@
 #!/bin/bash
 
-# Print header
-echo "Course Data Extractor Launcher"
-echo "============================"
-echo
+# Default to development mode
+ENVIRONMENT=${1:-development}
+echo "Starting Course Extractor in $ENVIRONMENT mode..."
 
-# Check if environment argument is provided
-ENVIRONMENT=${1:-development}  # Default to development if no arg provided
-
-echo "Running in $ENVIRONMENT mode"
-echo
-
-# Check if Docker is installed
-if ! command -v docker &> /dev/null; then
-    echo "Docker is not installed! Please install Docker Desktop first."
-    echo "You can download it from: https://www.docker.com/products/docker-desktop"
-    read -p "Press Enter to exit..."
-    exit 1
-fi
-
-# Check if Docker is running
+# Verify the user has docker installed
 if ! docker info &> /dev/null; then
-    echo "Docker is not running! Please start Docker Desktop."
+    echo "Error: Docker is not running!"
     read -p "Press Enter to exit..."
     exit 1
 fi
 
-# Create required directories if they don't exist
+# Check if docker compose is installed
+if ! docker compose --version &> /dev/null; then
+    echo "Error: Docker Compose is not installed!"
+    read -p "Press Enter to exit..."
+    exit 1
+fi
+
+# Install docker compose if not installed
+if ! docker compose --version &> /dev/null; then
+    echo "Installing Docker Compose..."
+    sudo apt-get install -y docker-compose
+fi
+
+# Create basic directories
 mkdir -p uploads downloads logs
 
-# Set environment variables
-export ENVIRONMENT=$ENVIRONMENT
-export FRONTEND_PORT=5173
-export API_PORT=8000
-
 # Clean up any existing containers
-echo "Cleaning up existing containers..."
 docker compose down
 
-# Pull and start the containers with environment variable
-echo "Building and starting Course Extractor..."
+# Start the containers
 docker compose up --build -d
 
-# Wait for the application to start
-echo "Waiting for the application to start..."
-sleep 10
-
-# Check if the application is running
-if docker compose ps | grep -q "course-extractor"; then
-    echo "Course Extractor is running!"
-    if [ "$ENVIRONMENT" = "development" ]; then
-        echo "Frontend: http://localhost:5173"
-    else
-        echo "Application: http://localhost:8000"
-    fi
-    echo "Backend API: http://localhost:8000"
+# Verify the containers are running
+if [ $? -eq 0 ]; then
+    echo
+    echo "Application started successfully!"
 else
-    echo "Error: Course Extractor failed to start"
-    docker compose logs
-    exit 1
+    echo
+    echo "Error: There was a problem starting the application."
+    echo "Please check the logs for more information."
 fi
 
-# Open the browser (platform-independent)
-if [ "$ENVIRONMENT" = "development" ]; then
-    URL="http://localhost:5173"
-else
-    URL="http://localhost:8000"
-fi
-
-# Open browser based on operating system
-case "$(uname -s)" in
-    Darwin*)    open "$URL" ;;             # macOS
-    MINGW*)     start "$URL" ;;            # Git Bash on Windows
-    MSYS*)      start "$URL" ;;            # MSYS on Windows
-    CYGWIN*)    cygstart "$URL" ;;         # Cygwin on Windows
-    *)          xdg-open "$URL" ;;         # Linux
-esac
-
+echo "Course Extractor is starting!"
+echo "Frontend: http://localhost:5173"
+echo "Backend API: http://localhost:8000"
 echo
-echo "Application is running!"
-echo "You can access it at: $URL"
-echo
-echo "To stop the application, run: ./stop_extractor.sh"
-echo "To view logs, run: docker compose logs -f"
-echo
+echo "To view logs: docker compose logs -f"
+echo "To stop: docker compose down"
 
-# Keep container running and show logs
+# Show logs
 docker compose logs -f

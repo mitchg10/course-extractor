@@ -13,9 +13,9 @@ def setup_logger(name: str, log_dir: str = "backend") -> logging.Logger:
     """
     # Create logs directory if it doesn't exist
     if log_dir == "frontend":
-        log_dir = settings.FRONTEND_LOG_DIR
+        log_dir = settings.LOGS_DIR / "frontend"
     else:
-        log_dir = settings.BACKEND_LOG_DIR
+        log_dir = settings.LOGS_DIR / "backend"
     log_dir.mkdir(parents=True, exist_ok=True)
     
     # Create logger
