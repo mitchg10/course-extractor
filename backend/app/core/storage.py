@@ -20,15 +20,6 @@ settings = Settings()
 class StorageBase:
     """Base storage class defining interface and common path handling"""
 
-    # def get_upload_path(self, task_id: str, filename: str) -> str:
-    #     """Standardize upload path structure"""
-    #     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-    #     return f"{task_id}/{timestamp}-{self.hyphenate(filename)}"
-
-    # def get_download_path(self, task_id: str, filename: str) -> str:
-    #     """Standardize download path structure"""
-    #     return f"{task_id}/{filename}"
-
     def get_file_path(self, task_id: str, filename: str) -> str:
         """Standardize file path structure"""
         timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -170,6 +161,14 @@ class S3Storage(StorageBase):
         except Exception as e:
             logger.error(f"Failed to delete file from S3: {str(e)}")
             return False
+    
+    def list_files(self, task_id: str) -> List[Dict[str, Union[str, int]]]:
+        """List all files in a task directory with their sizes"""
+        prefix = f"{task_id}/"
+        response = self.s3_client.list_objects_v2(Bucket=self.bucket_name, Prefix=prefix)
+        if 'Contents' not in response:
+            return []
+        return [{'key': obj['Key'], 'size': obj['Size']} for obj in response['Contents']]
 
 
 def get_storage() -> StorageBase:

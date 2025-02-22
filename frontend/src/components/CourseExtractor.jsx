@@ -249,7 +249,7 @@ const CourseExtractor = () => {
                     </Typography>
                 </Box>
             </Paper>
-            
+
             {/* Upload area */}
             <Paper
                 variant="outlined"

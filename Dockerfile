@@ -1,3 +1,6 @@
+# Define the environment
+ARG ENVIRONMENT=development
+
 # Stage 1: Build frontend
 FROM node:18-slim AS frontend-builder
 WORKDIR /app/frontend
@@ -9,7 +12,7 @@ COPY frontend/ .
 
 # In development, we only need node_modules
 # In production, we build the static files
-ARG ENVIRONMENT=development
+ARG ENVIRONMENT
 RUN if [ "$ENVIRONMENT" = "production" ]; then \
         npm run build; \
     fi

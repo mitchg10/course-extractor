@@ -14,9 +14,6 @@ from pyvt import Timetable
 
 settings = Settings()
 
-# TODO: Edit file paths and verify they download to the user's machine
-
-
 class PdfProcessor:
     def __init__(self):
         self.row_gap_threshold = 10.0

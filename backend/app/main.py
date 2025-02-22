@@ -65,9 +65,9 @@ async def save_frontend_log(log_entry: FrontendLogEntry):
 
 @api_router.post("/process", response_model=ProcessingResponse)
 async def process_files(
+    background_tasks: BackgroundTasks,
     files: List[UploadFile] = File(...),
     metadata: str = Form(...),
-    background_tasks: BackgroundTasks = None
 ):
     """
     Process uploaded PDF files asynchronously
@@ -155,7 +155,7 @@ async def get_available_files(task_id: str):
 
         if settings.is_production:
             # List files from S3
-            s3_files = storage.list_files(prefix=f"downloads/{task_id}")
+            s3_files = storage.list_files(task_id)
             for s3_file in s3_files:
                 if any(pattern in s3_file['key'] for pattern in patterns):
                     files.append(
@@ -187,7 +187,7 @@ async def get_available_files(task_id: str):
 
 
 @api_router.get("/download/{task_id}/{filename}")
-async def download_file(task_id: str, filename: str):
+async def download_file(task_id: str, filename: str, background_tasks: BackgroundTasks):
     """Download a specific file for a task."""
     try:
         if task_id not in processing_tasks:
@@ -198,7 +198,7 @@ async def download_file(task_id: str, filename: str):
 
         if settings.is_production:
             # Get file from S3
-            s3_key = f"downloads/{task_id}/{filename}"
+            s3_key = f"{task_id}/{filename}"
             file_content = storage.download_file(s3_key)
 
             if not file_content:
@@ -209,12 +209,17 @@ async def download_file(task_id: str, filename: str):
                 temp_file.write(file_content.read())
                 temp_path = temp_file.name
 
+            # Add the cleanup task properly
+            async def cleanup_temp_file():
+                os.unlink(temp_path)
+
+            background_tasks.add_task(cleanup_temp_file)
+
             return FileResponse(
                 path=temp_path,
                 filename=filename,
                 media_type="text/csv",
-                headers={"Content-Disposition": f"attachment; filename={filename}"},
-                background=BackgroundTasks([lambda: os.unlink(temp_path)])
+                headers={"Content-Disposition": f"attachment; filename={filename}"}
             )
         else:
             # Get file from local storage

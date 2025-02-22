@@ -7,7 +7,7 @@ const LOG_LEVELS = {
 };
 
 // Get current environment
-const IS_DEVELOPMENT = import.meta.env?.ENVIRONMENT === "development" || true;
+const IS_DEVELOPMENT = import.meta.env.ENVIRONMENT === "development";
 
 // Configuration object for logger
 import { endpoints } from "../config/api.js";
@@ -36,7 +36,8 @@ const sendToBackend = async (level, message, details = {}) => {
     };
 
     console.log("Attempting to send log to backend:", logData);
-
+    console.log("Backend endpoint:", config.backendLogEndpoint);
+    
     const response = await fetch(config.backendLogEndpoint, {
       method: "POST",
       headers: {
