@@ -14,7 +14,7 @@ class FrontendLogEntry(BaseModel):
 
 class Settings(BaseSettings):
     # Environment
-    ENVIRONMENT: str = "development"
+    NODE_ENV: str = "development"
 
     # Base directory for the project
     BASE_DIR: Path = Path(__file__).parent.parent.parent
@@ -44,7 +44,7 @@ class Settings(BaseSettings):
 
     @property
     def is_production(self) -> bool:
-        return self.ENVIRONMENT.lower() == "production"
+        return self.NODE_ENV.lower() == "production"
 
     def ensure_directories(self):
         """Ensure all necessary directories exist"""

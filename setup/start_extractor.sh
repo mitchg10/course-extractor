@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Default to development mode
-ENVIRONMENT=${1:-development}
-echo "Starting Course Extractor in $ENVIRONMENT mode..."
+NODE_ENV=${1:-development}
+echo "Starting Course Extractor in $NODE_ENV mode..."
 
 # Verify the user has docker installed
 if ! docker info &> /dev/null; then

@@ -3,7 +3,7 @@ services:
     build: 
       context: .
       args:
-        - ENVIRONMENT=${ENVIRONMENT:-development}
+        - NODE_ENV=${NODE_ENV:-development}
     container_name: course-extractor
     ports:
       - "8000:8000"  # FastAPI backend

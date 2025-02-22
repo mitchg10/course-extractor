@@ -247,7 +247,7 @@ async def health_check():
         status = {
             "status": "healthy",
             "timestamp": datetime.datetime.now().isoformat(),
-            "environment": settings.ENVIRONMENT,
+            "environment": settings.NODE_ENV,
         }
 
         # Test storage

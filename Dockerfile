@@ -1,5 +1,5 @@
 # Define the environment
-ARG ENVIRONMENT=development
+ARG NODE_ENV=development
 
 # Stage 1: Build frontend
 FROM node:18-slim AS frontend-builder
@@ -12,8 +12,8 @@ COPY frontend/ .
 
 # In development, we only need node_modules
 # In production, we build the static files
-ARG ENVIRONMENT
-RUN if [ "$ENVIRONMENT" = "production" ]; then \
+ARG NODE_ENV
+RUN if [ "$NODE_ENV" = "production" ]; then \
         npm run build; \
     fi
 
@@ -54,7 +54,7 @@ RUN chmod -R 755 /app/frontend
 EXPOSE 8000 5173
 
 # Start the application
-CMD if [ "$ENVIRONMENT" = "production" ]; then \
+CMD if [ "$NODE_ENV" = "production" ]; then \
         uvicorn backend.app.main:app --host 0.0.0.0 --port 8000; \
     else \
         cd /app/frontend && npm run dev -- --host 0.0.0.0 --port 5173 & \

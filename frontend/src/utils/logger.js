@@ -7,7 +7,7 @@ const LOG_LEVELS = {
 };
 
 // Get current environment
-const IS_DEVELOPMENT = import.meta.env.ENVIRONMENT === "development";
+const IS_DEVELOPMENT = import.meta.env.NODE_ENV === "development";
 
 // Configuration object for logger
 import { endpoints } from "../config/api.js";
