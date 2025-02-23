@@ -27,15 +27,28 @@ storage = get_storage()
 
 app = FastAPI(title="Course Extractor API")
 
-origins = [
-    "http://localhost:5173",  # Vite dev server
-    "http://localhost:8000",  # FastAPI server
-    "https://course-extractor-rior.onrender.com",  # Render deployment
-]
+
+def get_allowed_origins():
+    if settings.is_production:
+        return [
+            "https://course-extractor-rior.onrender.com",
+        ]
+    else:
+        return [
+            "http://localhost:5173",  # Vite dev server
+            "http://localhost:8000",  # FastAPI server
+        ]
+
+# origins = [
+#     "http://localhost:5173",  # Vite dev server
+#     "http://localhost:8000",  # FastAPI server
+#     "https://course-extractor-rior.onrender.com",  # Render deployment
+# ]
+
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=get_allowed_origins(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
