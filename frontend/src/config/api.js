@@ -1,6 +1,6 @@
 const BASE_URL =
   import.meta.env.NODE_ENV === "production"
-    ? "/api"
+    ? "https://course-extractor-rior.onrender.com/api"
     : "http://localhost:8000/api";
 
 export const endpoints = {
