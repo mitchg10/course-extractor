@@ -6,15 +6,21 @@ import path from "path";
 // https://stackoverflow.com/questions/66389043/how-can-i-use-vite-env-variables-in-vite-config-js
 
 export default defineConfig(({ mode }) => {
-  const env = loadEnv("mock", process.cwd(), "");
+  // const env = loadEnv("mock", process.cwd(), "");
+  // const processEnvValues = {
+  //   "process.env": Object.entries(env).reduce((prev, [key, val]) => {
+  //     console.log(key, val);
+  //     return {
+  //       ...prev,
+  //       [key]: val,
+  //     };
+  //   }, {}),
+  // };
+  const env = loadEnv(mode, process.cwd(), "");
   const processEnvValues = {
-    "process.env": Object.entries(env).reduce((prev, [key, val]) => {
-      console.log(key, val);
-      return {
-        ...prev,
-        [key]: val,
-      };
-    }, {}),
+    'process.env': {
+      NODE_ENV: JSON.stringify(mode),
+    }
   };
 
   const config = {
@@ -30,7 +36,9 @@ export default defineConfig(({ mode }) => {
       assetsDir: "assets",
       sourcemap: mode === "development",
     },
-    define: processEnvValues,
+    define: {
+      'process.env.NODE_ENV': JSON.stringify(mode),
+    },
   };
 
   if (mode == "development") {
@@ -46,5 +54,7 @@ export default defineConfig(({ mode }) => {
     };
   }
 
+  console.log(`Building in ${mode} mode with NODE_ENV=${mode}`);
+  
   return config;
 });
