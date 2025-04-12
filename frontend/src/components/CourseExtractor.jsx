@@ -203,10 +203,10 @@ const CourseExtractor = () => {
     return (
         <Box sx={{ maxWidth: 'lg', mx: 'auto', p: 3 }}>
             <Typography variant="h3" component="h1" sx={{ textAlign: 'center', mb: 2 }}>
-                VT Course Extractor
+                Graduate Course Enrollment Reporting Tool
             </Typography>
             <Typography variant="h5" component="h2" sx={{ textAlign: 'center', mb: 4, color: 'text.secondary' }}>
-                College of Engineering Course Analysis Tool
+                Provided by <strong>Virginia Tech College of Engineering Graduate and Professional Studies</strong> 
             </Typography>
 
             {/* Instructions Section */}
@@ -233,6 +233,9 @@ const CourseExtractor = () => {
                     <Typography component="li">
                         Repeat for all College of Engineering departments, and upload the PDF files here
                     </Typography>
+                    <Typography component="li">
+                        Refresh this page to restart if required
+                    </Typography>
                 </Box>
 
                 <Typography variant="h6" sx={{ mt: 3, mb: 1 }}>
@@ -243,10 +246,17 @@ const CourseExtractor = () => {
                         <strong>Complete Course List:</strong> A CSV file containing all courses from uploaded PDF files
                     </Typography>
                     <Typography component="li">
-                        <strong>Underenrolled Courses:</strong> A CSV file showing courses with fewer than 6 enrolled students
+                        <strong>Underenrolled Courses:</strong> A CSV file showing courses with fewer than 6 enrolled students for all the PDFs uploaded
                     </Typography>
                     <Typography component="li">
-                        <strong>Note:</strong> Please check to verify a course is not cross-listed with an undergraduate course. Only graduate cross-listings are checked at this time.
+                        <strong>File Output Location:</strong> The output files will be saved to your Downloads folder. Use either the File Explorer or Finder to locate them. 
+                    </Typography>
+                    <Typography component="li">
+                        <strong>Notes:</strong> 
+                        <Box component="ul" sx={{ pl: 2, '& li': { mb: 1 } }}>
+                            <Typography component="li">Please check to verify a course is not cross-listed with an undergraduate course. Only graduate cross-listings are checked at this time.</Typography>
+                            <Typography component="li">If you upload more than one PDF, the program will combine all the courses into two CSV files total (one for all courses and one for underenrolled courses).</Typography>
+                        </Box>
                     </Typography>
                 </Box>
             </Paper>

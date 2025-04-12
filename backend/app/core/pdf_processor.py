@@ -467,7 +467,12 @@ class PdfProcessor:
         # Group courses by code and name to handle cross-listings
         course_groups = {}
         for course in self.all_graduate_courses:
-            if course['name'] in IGNORE_COURSES:
+            # Skip courses from IGNORE_COURSES
+            if any(ignore in course['name'] for ignore in IGNORE_COURSES):
+                continue
+
+            # Ensure the course has an instructor
+            if not course.get('instructor'):
                 continue
 
             key = (course['code'], course['name'])

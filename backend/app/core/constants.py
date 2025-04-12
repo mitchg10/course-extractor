@@ -2,5 +2,4 @@ ENGINEERING_CODES = ["AOE", "BC", "BSE", "BMES", "CEE", "CHE", "CS", "ECE", "ENG
 
 EXPECTED_HEADERS = ["CRN", "Course", "Title", "Schedule Type", "Modality", "Cr Hrs", "Seats", "Capacity", "Instructor", "Days", "Begin", "End", "Location", "on"]
 
-IGNORE_COURSES = ['Research and Dissertation', 'Project and Report', 'Independent Study',
-                  'Research and Thesis', 'Final Examination', 'Seminar', 'Capstone Project']
+IGNORE_COURSES = ['Research and Dissertation', 'Project and Report', 'Independent Study', 'IS', 'Research and Thesis', 'Final Examination', 'Seminar', 'Capstone Project']

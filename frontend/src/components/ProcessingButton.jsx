@@ -15,6 +15,7 @@ const ProcessingButton = ({
     const [isComplete, setIsComplete] = useState(false);
     const [showCheck, setShowCheck] = useState(false);
     const [downloading, setDownloading] = useState(false);
+    const [downloaded, setDownloaded] = useState(false);
 
     useEffect(() => {
         let interval;
@@ -120,6 +121,7 @@ const ProcessingButton = ({
             }
 
             logger.info('Successfully completed all downloads');
+            setDownloaded(true); // Mark as downloaded
         } catch (error) {
             logger.error('Error downloading files:', error);
             onError?.(error.message || 'Failed to download files');
@@ -130,6 +132,19 @@ const ProcessingButton = ({
 
     // Button content based on state
     const buttonContent = () => {
+        if (downloaded) {
+            return (
+                <Fade in={downloaded}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0.5 }}>
+                        <Typography variant="button">Downloaded!</Typography>
+                        <Typography variant="caption" sx={{ fontSize: '0.75rem' }}>
+                            The files can be found in your Downloads folder
+                        </Typography>
+                    </Box>
+                </Fade>
+            );
+        }
+
         if (downloading) {
             return (
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -188,8 +203,8 @@ const ProcessingButton = ({
         <Button
             variant="contained"
             color={isComplete ? "success" : "primary"}
-            disabled={processing || downloading}
-            onClick={isComplete ? handleDownload : onClick}
+            disabled={processing || downloading || downloaded}
+            onClick={isComplete && !downloaded ? handleDownload : onClick}
             sx={{
                 px: 4,
                 py: 1.5,
