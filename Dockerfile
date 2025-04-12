@@ -6,16 +6,9 @@ FROM node:18-slim AS frontend-builder
 WORKDIR /app/frontend
 
 # Copy frontend files
-COPY frontend/package.json frontend/.npmrc ./
+COPY frontend/package.json frontend/.npmrc frontend/vite.config.js frontend/index.html ./
+COPY frontend/src frontend/public ./
 RUN npm install --verbose
-COPY frontend/ .
-
-# In development, we only need node_modules
-# In production, we build the static files
-ARG NODE_ENV
-RUN if [ "$NODE_ENV" = "production" ]; then \
-        npm run build; \
-    fi
 
 # Stage 2: Python backend
 FROM python:3.11-slim
@@ -54,9 +47,10 @@ RUN chmod -R 755 /app/frontend
 EXPOSE 8000 5173
 
 # Start the application
-CMD if [ "$NODE_ENV" = "production" ]; then \
+CMD ["/bin/sh", "-c", "if [ \"$NODE_ENV\" = \"production\" ]; then \
+        cd /app/frontend && npm run build; \
         uvicorn backend.app.main:app --host 0.0.0.0 --port 8000; \
     else \
         cd /app/frontend && npm run dev & \
         uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --reload; \
-    fi
+    fi"]
