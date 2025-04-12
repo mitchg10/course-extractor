@@ -6,8 +6,8 @@ FROM node:18-slim AS frontend-builder
 WORKDIR /app/frontend
 
 # Copy frontend files
-COPY frontend/package*.json frontend/.npmrc ./
-RUN npm install
+COPY frontend/package.json frontend/.npmrc ./
+RUN npm install --verbose
 COPY frontend/ .
 
 # In development, we only need node_modules
@@ -57,6 +57,6 @@ EXPOSE 8000 5173
 CMD if [ "$NODE_ENV" = "production" ]; then \
         uvicorn backend.app.main:app --host 0.0.0.0 --port 8000; \
     else \
-        cd /app/frontend && npm run dev -- --host 0.0.0.0 --port 5173 & \
+        cd /app/frontend && npm run dev & \
         uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --reload; \
     fi

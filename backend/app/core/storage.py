@@ -1,5 +1,3 @@
-# backend/app/core/storage.py
-
 from typing import BinaryIO, Optional, List, Dict
 from io import BytesIO
 import pandas as pd
@@ -51,7 +49,7 @@ class LocalStorage(StorageBase):
         file_path = settings.UPLOAD_DIR / key
         if not file_path.exists():
             return None
-    
+
         # Return BytesIO to match S3's behavior
         with open(file_path, 'rb') as f:
             data = BytesIO(f.read())
@@ -107,7 +105,6 @@ class S3Storage(StorageBase):
 
     async def upload_file(self, file: UploadFile, task_id: str) -> str:
         """Save uploaded file and return S3 key"""
-        # key = self.get_upload_path(task_id, file.filename)
         key = self.get_file_path(task_id, file.filename)
         content = await file.read()
 
@@ -161,7 +158,7 @@ class S3Storage(StorageBase):
         except Exception as e:
             logger.error(f"Failed to delete file from S3: {str(e)}")
             return False
-    
+
     def list_files(self, task_id: str) -> List[Dict[str, Union[str, int]]]:
         """List all files in a task directory with their sizes"""
         prefix = f"{task_id}/"
@@ -174,12 +171,10 @@ class S3Storage(StorageBase):
 def get_storage() -> StorageBase:
     """Factory function to get appropriate storage based on environment"""
     if settings.is_production:
-        # In production, we need AWS credentials
         if not all([settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY, settings.AWS_BUCKET_NAME]):
             raise ValueError("Production mode requires AWS credentials (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_BUCKET_NAME)")
         logger.info("Using S3 storage in production")
         return S3Storage()
 
-    # In development, always use local storage
     logger.info("Using local storage in development")
     return LocalStorage()

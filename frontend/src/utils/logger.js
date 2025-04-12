@@ -1,4 +1,3 @@
-// Define log levels to match Python's logging levels
 const LOG_LEVELS = {
   DEBUG: 10, // Matching Python's logging.DEBUG
   INFO: 20, // Matching Python's logging.INFO
@@ -6,14 +5,10 @@ const LOG_LEVELS = {
   ERROR: 40, // Matching Python's logging.ERROR
 };
 
-// Get current environment
-// const IS_DEVELOPMENT = import.meta.env.NODE_ENV === "development";
-const IS_DEVELOPMENT = process.env.NODE_ENV !== "production";
-
 // Configuration object for logger
-import { endpoints } from "../config/api.js";
+import { endpoints, isProd } from "../config/api.js";
 const config = {
-  minLevel: IS_DEVELOPMENT ? LOG_LEVELS.DEBUG : LOG_LEVELS.INFO,
+  minLevel: isProd ? LOG_LEVELS.DEBUG : LOG_LEVELS.INFO,
   enabled: true,
   prefix: "📋 [CourseExtractor]",
   backendLogEndpoint: endpoints.frontendLogs,
@@ -23,7 +18,7 @@ const config = {
 // Immediate initialization log
 console.log(
   `Logger initialized in ${
-    IS_DEVELOPMENT ? "development" : "production"
+    isProd ? "development" : "production"
   } mode with config:`,
   config
 );
@@ -39,7 +34,7 @@ const sendToBackend = async (level, message, details = {}) => {
       level,
       message,
       details,
-      environment: IS_DEVELOPMENT ? "development" : "production",
+      environment: isProd ? "development" : "production",
     };
 
     console.log("Attempting to send log to backend:", logData);
@@ -174,7 +169,7 @@ export const logger = {
 
   // Development-only logging
   dev: async (message, ...args) => {
-    if (IS_DEVELOPMENT) {
+    if (isProd) {
       await log(
         LOG_LEVELS.DEBUG,
         "color: #8b5cf6;",

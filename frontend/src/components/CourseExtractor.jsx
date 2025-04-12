@@ -3,6 +3,7 @@ import { logger } from '@/utils/logger';
 import ProcessingButton from '@/components/ProcessingButton';
 import { endpoints } from '@/config/api';
 import { Box, Paper, Button, FormControl, Grid, IconButton, InputLabel, List, ListItem, ListItemIcon, ListItemText, MenuItem, Select, Typography, Alert, Slide } from '@mui/material';
+import { v4 as uuidv4 } from 'uuid';
 import {
     Upload,
     FileText,
@@ -95,7 +96,7 @@ const CourseExtractor = () => {
             program: '',
             semester: '',
             year: new Date().getFullYear(),
-            id: crypto.randomUUID()
+            id: uuidv4()
         }));
 
         logger.info(`Successfully validated ${validFiles.length} files`);
@@ -197,7 +198,7 @@ const CourseExtractor = () => {
             });
             setFilesData(updatedFilesData);
         }
-    }, [filesData]);
+    }, []);
 
     return (
         <Box sx={{ maxWidth: 'lg', mx: 'auto', p: 3 }}>
@@ -330,7 +331,7 @@ const CourseExtractor = () => {
                                 </Box>
 
                                 <Grid container spacing={2} sx={{ px: 2, pb: 2 }}>
-                                    <Grid item xs={12} md={4}>
+                                    <Grid size={{xs: 12, md: 4}}>
                                         <FormControl fullWidth size="small">
                                             <InputLabel>Engineering Program</InputLabel>
                                             <Select
@@ -347,7 +348,7 @@ const CourseExtractor = () => {
                                             </Select>
                                         </FormControl>
                                     </Grid>
-                                    <Grid item xs={12} md={4}>
+                                    <Grid size={{xs: 12, md: 4}}>
                                         <FormControl fullWidth size="small">
                                             <InputLabel>Semester</InputLabel>
                                             <Select
@@ -364,7 +365,7 @@ const CourseExtractor = () => {
                                             </Select>
                                         </FormControl>
                                     </Grid>
-                                    <Grid item xs={12} md={4}>
+                                    <Grid size={{xs: 12, md: 4}}>
                                         <FormControl fullWidth size="small">
                                             <InputLabel>Year</InputLabel>
                                             <Select

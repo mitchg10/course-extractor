@@ -39,12 +39,6 @@ def get_allowed_origins():
             "http://localhost:8000",  # FastAPI server
         ]
 
-# origins = [
-#     "http://localhost:5173",  # Vite dev server
-#     "http://localhost:8000",  # FastAPI server
-#     "https://course-extractor-rior.onrender.com",  # Render deployment
-# ]
-
 
 app.add_middleware(
     CORSMiddleware,
