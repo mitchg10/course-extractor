@@ -7,7 +7,8 @@ WORKDIR /app/frontend
 
 # Copy frontend files
 COPY frontend/package.json frontend/.npmrc frontend/vite.config.js frontend/index.html ./
-COPY frontend/src frontend/public ./
+COPY frontend/src frontend/src
+COPY frontend/public frontend/public
 RUN npm install --verbose
 
 # Stage 2: Python backend
