@@ -206,13 +206,13 @@ const CourseExtractor = () => {
                 Graduate Course Enrollment Reporting Tool
             </Typography>
             <Typography variant="h5" component="h2" sx={{ textAlign: 'center', mb: 4, color: 'text.secondary' }}>
-                Provided by <strong>Virginia Tech College of Engineering Graduate and Professional Studies</strong> 
+                Provided by <strong>Virginia Tech College of Engineering Graduate and Professional Studies</strong>
             </Typography>
 
             {/* Instructions Section */}
             <Paper sx={{ p: 3, mb: 4, bgcolor: 'background.paper' }}>
                 <Typography variant="h6" gutterBottom>
-                    How to Extract Course Data:
+                    How to Extract Course Data: <a href="https://virginiatech.sharepoint.com/:w:/r/sites/COEGraduateandProfessionalStudies/Shared%20Documents/GPS/GPS%20Enrollments/VT%20Course%20Extractor%20Step-by-Step%20Guide.docx?d=w7147911a1af14dc69033e6024aa6a378&csf=1&web=1&e=Ygnxwf" target="_blank" rel="noopener noreferrer">VT COE Graduate Course Enrollment Reporting Tool: Step-by-Step Guide</a>
                 </Typography>
                 <Box component="ol" sx={{ pl: 2, '& li': { mb: 1 } }}>
                     <Typography component="li">
@@ -249,10 +249,10 @@ const CourseExtractor = () => {
                         <strong>Underenrolled Courses:</strong> A CSV file showing courses with fewer than 6 enrolled students for all the PDFs uploaded
                     </Typography>
                     <Typography component="li">
-                        <strong>File Output Location:</strong> The output files will be saved to your Downloads folder. Use either the File Explorer or Finder to locate them. 
+                        <strong>File Output Location:</strong> The output files will be saved to your Downloads folder. Use either the File Explorer or Finder to locate them.
                     </Typography>
                     <Typography component="li">
-                        <strong>Notes:</strong> 
+                        <strong>Notes:</strong>
                         <Box component="ul" sx={{ pl: 2, '& li': { mb: 1 } }}>
                             <Typography component="li">Please check to verify a course is not cross-listed with an undergraduate course. Only graduate cross-listings are checked at this time.</Typography>
                             <Typography component="li">If you upload more than one PDF, the program will combine all the courses into two CSV files total (one for all courses and one for underenrolled courses).</Typography>
@@ -341,7 +341,7 @@ const CourseExtractor = () => {
                                 </Box>
 
                                 <Grid container spacing={2} sx={{ px: 2, pb: 2 }}>
-                                    <Grid size={{xs: 12, md: 4}}>
+                                    <Grid size={{ xs: 12, md: 4 }}>
                                         <FormControl fullWidth size="small">
                                             <InputLabel>Engineering Program</InputLabel>
                                             <Select
@@ -358,7 +358,7 @@ const CourseExtractor = () => {
                                             </Select>
                                         </FormControl>
                                     </Grid>
-                                    <Grid size={{xs: 12, md: 4}}>
+                                    <Grid size={{ xs: 12, md: 4 }}>
                                         <FormControl fullWidth size="small">
                                             <InputLabel>Semester</InputLabel>
                                             <Select
@@ -375,7 +375,7 @@ const CourseExtractor = () => {
                                             </Select>
                                         </FormControl>
                                     </Grid>
-                                    <Grid size={{xs: 12, md: 4}}>
+                                    <Grid size={{ xs: 12, md: 4 }}>
                                         <FormControl fullWidth size="small">
                                             <InputLabel>Year</InputLabel>
                                             <Select
