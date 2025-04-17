@@ -1,10 +1,10 @@
-# Course Data Extractor
+# VT COE Graduate Course Enrollment Reporting Tool
 
-A containerized solution for extracting course data from PDF timetables using local LLM processing.
+A containerized solution for extracting course data from PDF timetables
 
 ## Overview
 
-This application provides a user-friendly interface for processing Virginia Tech timetable PDFs and extracting structured course data. It uses a locally hosted LLM via Ollama for processing and outputs both individual and combined CSV files.
+This application provides a user-friendly interface for processing Virginia Tech timetable PDFs and extracting structured course data. It uses metadata fields (program, semester, year) for better organization and outputs both individual and combined CSV files.
 
 ## System Requirements
 
@@ -21,6 +21,10 @@ This application provides a user-friendly interface for processing Virginia Tech
 3. Double-click `start_extractor.bat` (Windows) or run `./start_extractor.sh` (Mac/Linux)
 4. Wait for your browser to open automatically to the application
 5. To stop, use `stop_extractor.bat` or `stop_extractor.sh`
+
+## Step-by-Step User Guide
+
+Please see: [VT COE Graduate Course Enrollment Reporting Tool: Step-by-Step Guide](https://virginiatech.sharepoint.com/:w:/r/sites/COEGraduateandProfessionalStudies/Shared%20Documents/GPS/GPS%20Enrollments/VT%20Course%20Extractor%20Step-by-Step%20Guide.docx?d=w7147911a1af14dc69033e6024aa6a378&csf=1&web=1&e=Ygnxwf)
 
 ## Folder Structure
 
@@ -43,14 +47,15 @@ See `./file-structure.txt` for a detailed breakdown of the folder structure.
    - The web interface will open automatically
 
 2. **Processing PDFs**
-   - Drag and drop PDF files onto the interface
-   - Or click "Choose Files" to select them
+   - Drag and drop PDF files onto the interface or click "Choose Files" to select them
+   - Fill in metadata fields (program, semester, year) for each file
    - Click "Extract Course Data"
    - Wait for processing to complete
 
 3. **Accessing Results**
    - Individual CSVs will be saved in `data/individual/`
    - Combined CSV will be saved in `data/combined/`
+   - Underenrolled courses (fewer than 6 students) will be saved in a separate CSV
    - Download links will appear after processing
 
 4. **Monitoring & Troubleshooting**
